@@ -4,6 +4,8 @@ import Script from "next/script";
 import Link from "next/link";
 import "./globals.css";
 import Providers from "./Providers";
+import { cookies } from "next/headers";
+import type { SupportedLocale } from "@/i18n";
 import Header from "./components/Header";
 import SiteFooter from "./components/Footer";
 
@@ -56,11 +58,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Determine locale from cookie; default to 'he'
+  const cookieStore = cookies();
+  const cookieLocale = (cookieStore.get("locale")?.value as SupportedLocale) || ("he" as SupportedLocale);
+  const dir = cookieLocale === "he" ? "rtl" : "ltr";
   return (
-    <html lang="he" dir="rtl">
+    <html lang={cookieLocale} dir={dir}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* Skip link now localized in Header via i18n if needed; keeping static anchor is fine */}
-        <Providers>
+        <Providers defaultLocale={cookieLocale}>
           <Header />
           <main id="main" role="main" tabIndex={-1} className="outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)]">
             {children}

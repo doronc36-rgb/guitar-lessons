@@ -4,19 +4,12 @@ import Section from "./ui/Section";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useI18n } from "@/i18n";
 import { t as tf } from "@/i18n";
-import heReviewsJson from "@/content/reviews.he.json";
-import enReviewsJson from "@/content/reviews.en.json";
-
-type Review = {
-  name: string;
-  role: string;
-  text: string;
-  rating: number;
-};
+import { reviews as allReviews, type Review } from "@/data/reviews";
 
 export default function Testimonials({ dir }: { dir?: "ltr" | "rtl" }) {
   const { locale, t } = useI18n();
   const listRef = useRef<HTMLUListElement>(null);
+  const scrollerRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const [expandedMap, setExpandedMap] = useState<Record<string, boolean>>({});
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -34,15 +27,13 @@ export default function Testimonials({ dir }: { dir?: "ltr" | "rtl" }) {
   const isRtl = effectiveDir === "rtl";
 
   const baseReviews: Review[] = useMemo(() => {
-    const heSource = (heReviewsJson as Review[]) || [];
-    const enSource = (enReviewsJson as Review[]) || [];
-    const byLocale = locale === "en" ? enSource : heSource;
-    const chosen = Array.isArray(byLocale) ? byLocale : [];
-    // Fallback: if EN is empty, use HE
-    if (locale === "en" && chosen.length === 0) {
-      return Array.isArray(heSource) ? heSource : [];
-    }
-    return chosen;
+    const primary = allReviews.filter((r) => r.lang === locale);
+    const secondary = allReviews.filter((r) => r.lang !== locale);
+    if (primary.length >= 3) return primary;
+    // If fewer than 3, pad with up to 3 random from the other locale (no duplicates by id)
+    const needed = 3 - primary.length;
+    const shuffled = [...secondary].sort(() => Math.random() - 0.5);
+    return [...primary, ...shuffled.slice(0, needed)];
   }, [locale]);
 
   const reviews: Review[] = useMemo(() => {
@@ -59,23 +50,54 @@ export default function Testimonials({ dir }: { dir?: "ltr" | "rtl" }) {
   // Show carousel only if there are more than the visible count
   const visible = 3;
   const isCarousel = reviews.length > visible;
-  const maxIndex = Math.max(0, reviews.length - visible);
+  const maxIndex = Math.max(0, reviews.length - 1);
 
+  // Auto-advance
   useEffect(() => {
     if (!isCarousel) return;
-    const id = setInterval(() => setIndex((i) => (i >= maxIndex ? 0 : i + 1)), 4000);
+    const id = setInterval(() => {
+      setIndex((i) => {
+        const next = i >= maxIndex ? 0 : i + 1;
+        const scroller = scrollerRef.current;
+        const item = scroller?.querySelectorAll<HTMLLIElement>("li[data-slide]")[next];
+        item?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+        return next;
+      });
+    }, 5000);
     return () => clearInterval(id);
   }, [isCarousel, maxIndex]);
 
   useEffect(() => {
     if (!isCarousel) return;
     setIsTransitioning(true);
-    const t = setTimeout(() => setIsTransitioning(false), 500);
+    const t = setTimeout(() => setIsTransitioning(false), 300);
     return () => clearTimeout(t);
   }, [index, isCarousel]);
 
+  // Warn if empty dataset
+  useEffect(() => {
+    if (baseReviews.length === 0) {
+      // eslint-disable-next-line no-console
+      console.warn("Testimonials: reviews array is empty");
+    }
+  }, [baseReviews.length]);
+
   function toggleExpand(key: string) {
     setExpandedMap((prev) => ({ ...prev, [key]: !prev[key] }));
+  }
+
+  function trimText(text: string, limit = 280): { short: string; isTrimmed: boolean } {
+    if (text.length <= limit) return { short: text, isTrimmed: false };
+    return { short: text.slice(0, limit - 1) + "…", isTrimmed: true };
+  }
+
+  function formatDate(iso: string): string {
+    try {
+      const d = new Date(iso);
+      return new Intl.DateTimeFormat(locale, { year: "numeric", month: "short", day: "2-digit" }).format(d);
+    } catch {
+      return iso;
+    }
   }
 
   function Stars({ rating }: { rating: number }) {
@@ -104,8 +126,9 @@ export default function Testimonials({ dir }: { dir?: "ltr" | "rtl" }) {
         ) : !isCarousel ? (
           <ul className="grid gap-4 md:grid-cols-2">
             {baseReviews.map((r, i) => {
-              const key = `${r.name}-${i}`;
+              const key = `${r.id}-${i}`;
               const isExpanded = !!expandedMap[key];
+              const { short, isTrimmed } = trimText(r.text);
               return (
                 <li
                   key={key}
@@ -114,16 +137,17 @@ export default function Testimonials({ dir }: { dir?: "ltr" | "rtl" }) {
                   aria-label={tf('home.testimonials.slideAria', locale, { index: i + 1, total: baseReviews.length })}
                 >
                   <div className="flex items-center justify-between">
-                    <div className="font-medium">{r.name}</div>
+                    <div className="font-medium">{r.author}</div>
                     <span className="inline-flex items-center gap-1 text-sm">
                       <span className="sr-only">{tf('home.testimonials.ratingSr', locale, { rating: r.rating })}</span>
                       <Stars rating={r.rating} />
                     </span>
                   </div>
-                  <div className="text-xs text-neutral-600 mt-1">{r.role}</div>
+                  <div className="text-xs text-neutral-600 mt-1">{formatDate(r.dateISO)}</div>
                   <div className={!isExpanded ? 'h-[8.75rem] sm:h-auto' : ''}>
-                    <p className={`mt-2 text-neutral-800 leading-7 ${!isExpanded ? 'line-clamp-5' : ''}`}>{r.text}</p>
+                    <p className={`mt-2 text-neutral-800 leading-7 ${!isExpanded ? 'line-clamp-5' : ''}`}>{isExpanded ? r.text : short}</p>
                   </div>
+                  {(isTrimmed || isExpanded) && (
                   <button
                     type="button"
                     className="mt-2 text-sm font-medium text-[color:var(--accent)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
@@ -132,38 +156,46 @@ export default function Testimonials({ dir }: { dir?: "ltr" | "rtl" }) {
                   >
                     {isExpanded ? t.home.testimonials.readLess : t.home.testimonials.readMore}
                   </button>
+                  )}
                 </li>
               );
             })}
           </ul>
         ) : (
           <div className="relative">
-            <ul
-              ref={listRef}
-              className={`grid grid-flow-col auto-cols-[minmax(260px,1fr)] gap-4 overflow-hidden motion-safe:transition-transform motion-safe:duration-500 motion-safe:ease-out motion-safe:will-change-transform motion-safe:transition-opacity ${isTransitioning ? 'motion-safe:opacity-95' : ''} motion-reduce:transition-none`}
-              style={{ transform: `translateX(${(isRtl ? 1 : -1) * index * 100}%)` }}
+            <div
+              ref={scrollerRef}
+              dir={effectiveDir}
+              className={`flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2
+              [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden`}
+              aria-roledescription="carousel"
+              aria-label={t.home.testimonials.regionAria}
             >
+              <ul ref={listRef} className="flex gap-4">
               {reviews.map((r, i) => {
-                const key = `${r.name}-${i}`;
+                const key = `${r.id}-${i}`;
                 const isExpanded = !!expandedMap[key];
+                const { short, isTrimmed } = trimText(r.text);
                 return (
                   <li
                     key={key}
-                    className="surface rounded-2xl shadow-sm md:shadow p-5 min-h-[180px]"
+                    data-slide
+                    className="surface rounded-2xl shadow-sm md:shadow p-5 min-h-[200px] w-[280px] sm:w-[320px] snap-start shrink-0"
                     aria-roledescription="slide"
                     aria-label={tf('home.testimonials.slideAria', locale, { index: i + 1, total: reviews.length })}
                   >
                     <div className="flex items-center justify-between">
-                      <div className="font-medium">{r.name}</div>
+                      <div className="font-medium">{r.author}</div>
                       <span className="inline-flex items-center gap-1 text-sm">
                         <span className="sr-only">{tf('home.testimonials.ratingSr', locale, { rating: r.rating })}</span>
                         <Stars rating={r.rating} />
                       </span>
                     </div>
-                    <div className="text-xs text-neutral-600 mt-1">{r.role}</div>
+                    <div className="text-xs text-neutral-600 mt-1">{formatDate(r.dateISO)}</div>
                     <div className={!isExpanded ? 'h-[8.75rem] sm:h-auto' : ''}>
-                      <p className={`mt-2 text-neutral-800 leading-7 ${!isExpanded ? 'line-clamp-5' : ''}`}>{r.text}</p>
+                      <p className={`mt-2 text-neutral-800 leading-7 ${!isExpanded ? 'line-clamp-5' : ''}`}>{isExpanded ? r.text : short}</p>
                     </div>
+                    {(isTrimmed || isExpanded) && (
                     <button
                       type="button"
                       className="mt-2 text-sm font-medium text-[color:var(--accent)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
@@ -172,10 +204,12 @@ export default function Testimonials({ dir }: { dir?: "ltr" | "rtl" }) {
                     >
                       {isExpanded ? t.home.testimonials.readLess : t.home.testimonials.readMore}
                     </button>
+                    )}
                   </li>
                 );
               })}
-            </ul>
+              </ul>
+            </div>
 
             <div className="flex items-center justify-between mt-4">
               <div className="flex gap-2" role="tablist" aria-label={t.home.testimonials.dotsAria}>
@@ -187,7 +221,12 @@ export default function Testimonials({ dir }: { dir?: "ltr" | "rtl" }) {
                     role="tab"
                     aria-selected={i === index}
                     className={`w-2.5 h-2.5 rounded-full ${i === index ? 'bg-[color:var(--accent)]' : 'bg-neutral-300'} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]`}
-                    onClick={() => setIndex(i)}
+                    onClick={() => {
+                      setIndex(i);
+                      const scroller = scrollerRef.current;
+                      const item = scroller?.querySelectorAll<HTMLLIElement>('li[data-slide]')[i];
+                      item?.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+                    }}
                   />
                 ))}
               </div>
@@ -195,7 +234,15 @@ export default function Testimonials({ dir }: { dir?: "ltr" | "rtl" }) {
                 <button
                   type="button"
                   className="surface px-3 py-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
-                  onClick={() => setIndex((i) => (i <= 0 ? maxIndex : i - 1))}
+                  onClick={() => {
+                    setIndex((i) => {
+                      const next = i <= 0 ? maxIndex : i - 1;
+                      const scroller = scrollerRef.current;
+                      const item = scroller?.querySelectorAll<HTMLLIElement>('li[data-slide]')[next];
+                      item?.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+                      return next;
+                    });
+                  }}
                   aria-label={t.home.testimonials.prev}
                 >
                   ◀
@@ -203,7 +250,15 @@ export default function Testimonials({ dir }: { dir?: "ltr" | "rtl" }) {
                 <button
                   type="button"
                   className="surface px-3 py-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
-                  onClick={() => setIndex((i) => (i >= maxIndex ? 0 : i + 1))}
+                  onClick={() => {
+                    setIndex((i) => {
+                      const next = i >= maxIndex ? 0 : i + 1;
+                      const scroller = scrollerRef.current;
+                      const item = scroller?.querySelectorAll<HTMLLIElement>('li[data-slide]')[next];
+                      item?.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+                      return next;
+                    });
+                  }}
                   aria-label={t.home.testimonials.next}
                 >
                   ▶

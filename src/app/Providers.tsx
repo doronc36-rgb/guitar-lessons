@@ -1,10 +1,10 @@
 "use client";
 
 import { ReactNode } from "react";
-import { I18nProvider } from "@/i18n";
+import { I18nProvider, SupportedLocale } from "@/i18n";
 
-export default function Providers({ children }: { children: ReactNode }) {
-  return <I18nProvider>{children}</I18nProvider>; 
+export default function Providers({ children, defaultLocale = "he" as SupportedLocale }: { children: ReactNode; defaultLocale?: SupportedLocale }) {
+  return <I18nProvider defaultLocale={defaultLocale}>{children}</I18nProvider>;
 }
 
 

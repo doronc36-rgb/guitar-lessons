@@ -7,8 +7,7 @@ import Section from "./components/ui/Section";
 import Testimonials from "./components/Testimonials";
 
 export default function HomeClient() {
-  const { t, locale } = useI18n();
-  const dir: "ltr" | "rtl" = locale === "he" ? "rtl" : "ltr";
+  const { t } = useI18n();
   return (
     <div className="min-h-screen">
       <div className="relative isolate overflow-hidden">
@@ -58,7 +57,7 @@ export default function HomeClient() {
       </Container>
 
       <Container>
-        <Testimonials dir={dir} />
+        <Testimonials />
       </Container>
 
       {/* Mobile CTA bar */}

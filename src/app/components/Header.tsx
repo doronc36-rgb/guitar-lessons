@@ -5,6 +5,14 @@ import { useI18n } from "@/i18n";
 import { t as tf } from "@/i18n";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+function setLocaleCookie(value: "he" | "en") {
+  try {
+    if (typeof document !== "undefined") {
+      const oneYear = 60 * 60 * 24 * 365;
+      document.cookie = `locale=${value}; Max-Age=${oneYear}; Path=/`;
+    }
+  } catch {}
+}
 
 export default function Header() {
   const { locale, setLocale, t } = useI18n();
@@ -20,6 +28,12 @@ export default function Header() {
 
   const linkClass = (href: string) =>
     `hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] ${pathname === href ? "underline underline-offset-4" : ""}`;
+  const switchLocale = useCallback(() => {
+    const next = locale === "he" ? "en" : "he";
+    setLocale(next);
+    // persist in cookie for SSR layout dir/lang
+    setLocaleCookie(next);
+  }, [locale, setLocale]);
 
   const NavLinks = (
     <nav className="flex flex-col md:flex-row gap-4 items-start md:items-center text-sm">
@@ -72,7 +86,7 @@ export default function Header() {
           {NavLinks}
           <button
             type="button"
-            onClick={() => setLocale(locale === "he" ? "en" : "he")}
+            onClick={switchLocale}
             className="rounded-lg border px-3 py-1.5 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
             aria-label={locale === "he" ? t.header.language.switchToEn : t.header.language.switchToHe}
           >
@@ -99,7 +113,7 @@ export default function Header() {
               {NavLinks}
               <button
                 type="button"
-                onClick={() => { setLocale(locale === "he" ? "en" : "he"); close(); }}
+                onClick={() => { switchLocale(); close(); }}
                 className="self-start rounded-lg border px-3 py-1.5 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
                 aria-label={locale === "he" ? t.header.language.switchToEn : t.header.language.switchToHe}
               >

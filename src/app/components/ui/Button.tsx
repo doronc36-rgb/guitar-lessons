@@ -8,7 +8,7 @@ type BaseProps = {
 };
 
 type ButtonProps = BaseProps & ButtonHTMLAttributes<HTMLButtonElement> & { href?: undefined };
-type LinkProps = BaseProps & Pick<AnchorHTMLAttributes<HTMLAnchorElement>, "target" | "rel" | "aria-label" | "onClick"> & { href: string };
+type LinkProps = BaseProps & Pick<AnchorHTMLAttributes<HTMLAnchorElement>, "target" | "rel" | "onClick"> & { href: string };
 
 export default function Button(props: ButtonProps | LinkProps) {
   const { variant = "primary", className = "", children } = props;
@@ -24,13 +24,13 @@ export default function Button(props: ButtonProps | LinkProps) {
   if ("href" in props && props.href) {
     const { href, target, rel, onClick } = props as LinkProps;
     return (
-      <Link href={href} className={base} target={target} rel={rel} onClick={onClick} aria-label={props["aria-label"]}>
+      <Link href={href} className={base} target={target} rel={rel} onClick={onClick}>
         {children}
       </Link>
     );
   }
 
-  const { variant: _ignore1, className: _ignore2, children: _ignore3, ...buttonProps } = props as ButtonProps;
+  const { variant: _v, className: _c, children: _ch, ...buttonProps } = props as ButtonProps;
   return (
     <button className={base} {...buttonProps}>
       {children}

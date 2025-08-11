@@ -83,7 +83,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-8">
+    <div id="contact" className="min-h-screen flex items-center justify-center p-8 scroll-mt-28">
       <div className="max-w-md w-full space-y-6">
         <div className="text-center">
           <h1 className="text-3xl font-semibold">{t.contact.title}</h1>

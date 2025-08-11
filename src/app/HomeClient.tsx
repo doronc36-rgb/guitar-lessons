@@ -16,7 +16,7 @@ export default function HomeClient() {
         <h1 className="text-4xl md:text-5xl font-semibold">{t.home.hero.title}</h1>
         <p className="text-lg text-neutral-700">{t.home.hero.subtitle}</p>
             <div className="mt-6 flex gap-3 justify-center flex-wrap">
-              <Button href="/booking" aria-label={t.home.hero.ariaBookTrial}>
+              <Button href="/contact?type=trial" aria-label={t.home.hero.ariaBookTrial}>
                 {t.home.hero.ctaBooking}
               </Button>
               <Button href="https://wa.me/972535247393" target="_blank" rel="noopener noreferrer" variant="secondary" aria-label={t.home.hero.ariaWhatsapp}>
@@ -32,7 +32,7 @@ export default function HomeClient() {
 
       <Container className="mt-12">
         <div className="grid gap-8 md:grid-cols-3">
-          <Section title={t.home.fitFor.title}>
+          <Section id="about" className="scroll-mt-28" title={t.home.fitFor.title}>
             <ul className="list-disc pr-6 mt-1 text-neutral-800 space-y-1">
               {t.home.fitFor.items.map((item) => (
                 <li key={item}>{item}</li>
@@ -57,7 +57,9 @@ export default function HomeClient() {
       </Container>
 
       <Container>
-        <Testimonials />
+        <div id="reviews" className="scroll-mt-28">
+          <Testimonials />
+        </div>
       </Container>
 
       {/* Mobile CTA bar */}
@@ -65,7 +67,7 @@ export default function HomeClient() {
         <Container>
           <div className="surface px-3 py-3 flex justify-between items-center">
             <span className="font-medium">{t.home.mobileCta.ready}</span>
-            <Button href="/booking">{t.home.hero.ctaBooking}</Button>
+            <Button href="/contact?type=trial">{t.home.hero.ctaBooking}</Button>
           </div>
         </Container>
       </div>

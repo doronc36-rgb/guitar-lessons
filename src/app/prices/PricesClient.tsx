@@ -6,7 +6,7 @@ import Button from "../components/ui/Button";
 export default function PricesClient() {
   const { t } = useI18n();
   return (
-    <div className="min-h-screen p-6 md:p-10 max-w-3xl mx-auto space-y-8">
+    <div id="pricing" className="min-h-screen p-6 md:p-10 max-w-3xl mx-auto space-y-8 scroll-mt-28">
       <h1 className="text-3xl font-semibold">{t.prices.title}</h1>
 
       <ul className="divide-y border rounded-lg">

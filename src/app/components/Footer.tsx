@@ -36,7 +36,7 @@ export default function SiteFooter() {
             </li>
             <li>
               <Link
-                href="/prices"
+                href="/prices#pricing"
                 aria-label={t.footer.links.prices}
                 className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
@@ -54,6 +54,15 @@ export default function SiteFooter() {
             </li>
             <li>
               <Link
+                href="/#reviews"
+                aria-label={t.home?.testimonials?.regionAria || 'Reviews'}
+                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+              >
+                {t.home?.testimonials?.title || 'Reviews'}
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/booking"
                 aria-label={t.footer.links.booking}
                 className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
@@ -63,7 +72,7 @@ export default function SiteFooter() {
             </li>
             <li>
               <Link
-                href="/contact"
+                href="/contact#contact"
                 aria-label={t.footer.links.contact}
                 className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
@@ -79,7 +88,7 @@ export default function SiteFooter() {
               <a
                 href="https://wa.me/972535247393"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 aria-label={t.footer.aria.whatsappOpen}
                 className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >

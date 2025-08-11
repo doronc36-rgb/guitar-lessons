@@ -36,6 +36,13 @@ body {
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 
+/* Smooth scrolling for in-page anchors, while respecting reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
+}
+
 /* Common elements */
 a {
   text-underline-offset: 2px;

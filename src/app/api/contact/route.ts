@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
     // - Send an email notification
     // - Integrate with a CRM system
     
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true }, { status: 200 });
   } catch (error) {
     console.error('Error processing contact form:', error);
     return NextResponse.json(

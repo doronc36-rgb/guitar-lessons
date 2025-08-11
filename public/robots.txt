@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://guitar-lessons.vercel.app/sitemap.xml
+
+

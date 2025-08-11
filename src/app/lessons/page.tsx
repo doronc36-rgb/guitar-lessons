@@ -3,7 +3,7 @@ import LessonsClient from "./LessonsClient";
 import { getSeoByKey, getServerLocale } from "@/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const locale = getServerLocale();
+  const locale = await getServerLocale();
   const seo = getSeoByKey("lessons", locale);
   return {
     title: seo.title,

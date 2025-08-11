@@ -13,9 +13,9 @@ export type SeoKey =
   | "terms"
   | "accessibility";
 
-export function getServerLocale(): SupportedLocale {
+export async function getServerLocale(): Promise<SupportedLocale> {
   try {
-    const c = cookies();
+    const c = await cookies();
     const v = c.get("locale")?.value as SupportedLocale | undefined;
     if (v === "en" || v === "he") return v;
   } catch {}

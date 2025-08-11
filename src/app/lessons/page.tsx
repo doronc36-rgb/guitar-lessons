@@ -1,16 +1,22 @@
 import type { Metadata } from "next";
 import LessonsClient from "./LessonsClient";
+import { getSeoByKey, getServerLocale } from "@/i18n/server";
 
-export const metadata: Metadata = {
-  title: "השיעורים",
-  description:
-    "שיעורי גיטרה (אקוסטית/חשמלית/קלאסית) ופסנתר. שיעורים פרטיים 1:1, קבוצות 2–4, וחוגים בבתי ספר/פנימיות.",
-  keywords: [
-    "שיעורי גיטרה באשקלון",
-    "שיעורי פסנתר אשקלון",
-    "חוגי גיטרה אשקלון",
-  ],
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = getServerLocale();
+  const seo = getSeoByKey("lessons", locale);
+  return {
+    title: seo.title,
+    description: seo.description,
+    alternates: {
+      canonical: "/lessons",
+      languages: {
+        en: "/lessons?hl=en",
+        he: "/lessons?hl=he",
+      },
+    },
+  } satisfies Metadata;
+}
 
 export default function LessonsPage() {
   return <LessonsClient />;

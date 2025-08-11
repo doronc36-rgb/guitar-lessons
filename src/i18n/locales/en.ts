@@ -204,6 +204,43 @@ export const en = {
   a11y: {
     skipToContent: "Skip to content",
   },
+  seo: {
+    home: {
+      title: "Guitar and Piano Lessons in Ashkelon",
+      description:
+        "Guitar and piano lessons in Ashkelon. Private 1:1, small groups, and school programs. For all levels. Book a trial lesson today.",
+    },
+    lessons: {
+      title: "Lessons",
+      description:
+        "Acoustic/Electric/Classical guitar and piano lessons. Private lessons, small groups, and school programs.",
+    },
+    prices: {
+      title: "Prices",
+      description:
+        "Lesson prices: Studio 60 min ₪120, Student's home (Ashkelon) 60 min ₪150, group by arrangement. 24h cancellation policy.",
+    },
+    faq: {
+      title: "FAQ",
+      description: "Answers to common questions about lessons, equipment, online options and more.",
+    },
+    booking: {
+      title: "Book a lesson",
+      description: "Book a short trial lesson. Benefits and call-to-action for a call or WhatsApp.",
+    },
+    contact: {
+      title: "Contact us",
+      description: "Contact form for guitar and piano lessons in Ashkelon. Send a message, call or WhatsApp.",
+    },
+    terms: {
+      title: "Terms of Service",
+      description: "Short terms of service for lessons.",
+    },
+    accessibility: {
+      title: "Accessibility Statement",
+      description: "Commitment to accessibility: proper headings, skip links, contrast and visible focus.",
+    },
+  },
 };
 
 export type EnglishDictionary = typeof en;

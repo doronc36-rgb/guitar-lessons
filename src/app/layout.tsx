@@ -4,6 +4,8 @@ import Script from "next/script";
 import Link from "next/link";
 import "./globals.css";
 import Providers from "./Providers";
+import ClientMeta from "./ClientMeta";
+import LocaleFromQuery from "./LocaleFromQuery";
 import { cookies } from "next/headers";
 import type { SupportedLocale } from "@/i18n";
 import Header from "./components/Header";
@@ -72,6 +74,10 @@ export default function RootLayout({
             {children}
           </main>
           <SiteFooter />
+          {/* Keep client-side meta in sync with language toggles */}
+          <ClientMeta />
+          {/* Allow switching locale by hl=en|he in URL */}
+          <LocaleFromQuery />
         </Providers>
         <Script id="ld-local-business" type="application/ld+json">
           {JSON.stringify({

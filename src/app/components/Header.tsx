@@ -15,18 +15,21 @@ export default function Header() {
   const toggle = useCallback(() => setOpen((v) => !v), []);
   const goBack = useCallback(() => router.back(), [router]);
 
+  const linkClass = (href: string) =>
+    `hover:opacity-80 ${pathname === href ? "underline underline-offset-4" : ""}`;
+
   const NavLinks = (
     <nav className="flex flex-col md:flex-row gap-4 items-start md:items-center text-sm">
-      <Link href="/lessons" onClick={close} className="hover:opacity-80">
+      <Link href="/lessons" onClick={close} className={linkClass("/lessons")} aria-current={pathname === "/lessons" ? "page" : undefined}>
         השיעורים
       </Link>
-      <Link href="/prices" onClick={close} className="hover:opacity-80">
+      <Link href="/prices" onClick={close} className={linkClass("/prices")} aria-current={pathname === "/prices" ? "page" : undefined}>
         מחירים
       </Link>
-      <Link href="/faq" onClick={close} className="hover:opacity-80">
+      <Link href="/faq" onClick={close} className={linkClass("/faq")} aria-current={pathname === "/faq" ? "page" : undefined}>
         שאלות
       </Link>
-      <Link href="/contact" onClick={close} className="hover:opacity-80">
+      <Link href="/contact" onClick={close} className={linkClass("/contact")} aria-current={pathname === "/contact" ? "page" : undefined}>
         צור קשר
       </Link>
       <Link

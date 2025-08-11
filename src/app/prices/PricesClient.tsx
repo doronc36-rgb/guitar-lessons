@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useI18n } from "@/i18n";
+import Button from "../components/ui/Button";
 
 export default function PricesClient() {
   const { t } = useI18n();
@@ -21,20 +21,10 @@ export default function PricesClient() {
       <p className="text-neutral-700">{t.prices.cancellation}</p>
 
       <div className="flex gap-3">
-        <Link
-          href="/booking"
-          className="rounded-xl px-4 py-2 bg-black text-white hover:bg-neutral-800 focus-visible:ring-2 focus-visible:ring-black"
-        >
-          {t.common.bookLesson}
-        </Link>
-        <a
-          href="https://wa.me/972535247393"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-xl px-4 py-2 border hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-black"
-        >
+        <Button href="/booking">{t.common.bookLesson}</Button>
+        <Button href="https://wa.me/972535247393" target="_blank" rel="noopener noreferrer" variant="secondary">
           {t.common.whatsapp}
-        </a>
+        </Button>
       </div>
     </div>
   );

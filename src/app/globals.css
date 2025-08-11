@@ -7,6 +7,8 @@
   --muted: #3a3a3a;
   --border: rgba(17, 17, 17, 0.12);
   --surface: #ffffffcc; /* translucent white on cream */
+  --accent: #f5a524; /* warm amber accent */
+  --accent-contrast: #1b1103;
 }
 
 @theme inline {
@@ -48,6 +50,6 @@ a {
 
 /* Focus outlines for better a11y */
 :where(a, button, [role="button"], input, textarea, select):focus-visible {
-  outline: 2px solid var(--foreground);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }

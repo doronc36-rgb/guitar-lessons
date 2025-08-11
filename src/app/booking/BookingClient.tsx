@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useI18n } from "@/i18n";
+import Button from "../components/ui/Button";
 
 export default function BookingClient() {
   const { t } = useI18n();
@@ -15,20 +16,12 @@ export default function BookingClient() {
       </ul>
 
       <div className="flex gap-3">
-        <a
-          href="https://wa.me/972535247393"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-xl px-4 py-2 bg-black text-white hover:bg-neutral-800 focus-visible:ring-2 focus-visible:ring-black"
-        >
+        <Button href="https://wa.me/972535247393" target="_blank" rel="noopener noreferrer">
           {t.common.whatsapp}
-        </a>
-        <a
-          href="tel:+972535247393"
-          className="rounded-xl px-4 py-2 border hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-black"
-        >
+        </Button>
+        <Button href="tel:+972535247393" variant="secondary">
           {t.common.call}
-        </a>
+        </Button>
       </div>
 
       <p className="text-sm text-neutral-600">{t.booking.todo}</p>

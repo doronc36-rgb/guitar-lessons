@@ -14,7 +14,7 @@ export default function Button(props: ButtonProps | LinkProps) {
   const { variant = "primary", className = "", children } = props;
   const style =
     variant === "primary"
-      ? "bg-black text-white hover:bg-neutral-800"
+      ? "bg-[color:var(--accent)] text-[color:var(--accent-contrast)] hover:brightness-95"
       : variant === "secondary"
       ? "border hover:bg-black/5"
       : "hover:bg-black/5";

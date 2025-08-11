@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useI18n } from "@/i18n";
 import Container from "./components/ui/Container";
 import Button from "./components/ui/Button";
 import Section from "./components/ui/Section";
+import Testimonials from "./components/Testimonials";
 
 export default function HomeClient() {
   const { t } = useI18n();
@@ -54,6 +54,37 @@ export default function HomeClient() {
             </ol>
           </Section>
         </div>
+      </Container>
+
+      <Container>
+        <Testimonials
+          items={[
+            {
+              name: "Elya",
+              date: "08/2024",
+              text: "מורה סבלני, מקצועי, משיב לשאלות מהר. שיעור ראשון וכבר מרגישים התקדמות.",
+              score: 10,
+            },
+            {
+              name: "Michel",
+              date: "06/2024",
+              text: "מורה מאוד סבלני, הולך עם קצב התלמיד. ביתי ניהנה מאוד מהשיעורים עם דורון.",
+              score: 10,
+            },
+            {
+              name: "דבורה",
+              date: "04/2024",
+              text: "מורה מעולה!", 
+              score: 10,
+            },
+            {
+              name: "אלכסנדרה",
+              date: "02/2024",
+              text: "תמיד עם פוזיטיביות וסבלנות! יודע איך ללמד ולדבר על שירים אהובים. מומלץ!",
+              score: 10,
+            },
+          ]}
+        />
       </Container>
 
       {/* Mobile CTA bar */}

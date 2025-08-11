@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Alex",
+    "role": "Student",
+    "text": "Patient and clear. Highly recommended!",
+    "rating": 5
+  },
+  {
+    "name": "Sarah",
+    "role": "Parent",
+    "text": "My daughter enjoys the lessons and is progressing fast.",
+    "rating": 5
+  }
+]
+

@@ -57,58 +57,7 @@ export default function HomeClient() {
       </Container>
 
       <Container>
-        <Testimonials
-          items={[
-            {
-              name: "Elya",
-              date: "08/2024",
-              text: "מורה סבלני, מקצועי, משיב לשאלות מהר. שיעור ראשון וכבר מרגישים התקדמות.",
-              score: 10,
-            },
-            {
-              name: "Michel",
-              date: "06/2024",
-              text: "מורה מאוד סבלני, הולך עם קצב התלמיד. ביתי ניהנה מאוד מהשיעורים עם דורון.",
-              score: 10,
-            },
-            {
-              name: "דבורה",
-              date: "04/2024",
-              text: "מורה מעולה!", 
-              score: 10,
-            },
-            {
-              name: "אלכסנדרה",
-              date: "02/2024",
-              text: "תמיד עם פוזיטיביות וסבלנות! יודע איך ללמד ולדבר על שירים אהובים. מומלץ!",
-              score: 10,
-            },
-            {
-              name: "_kaktusik_",
-              date: "08/2025",
-              text: "מסביר הכל בסבלנות, נותן טיפים כדי לנגן טוב יותר. אווירה נעימה, קלים למתחילים ולמתקדמים.",
-              score: 5,
-            },
-            {
-              name: "Coco Baby",
-              date: "08/2025",
-              text: "Patient and clear, amazing teacher.",
-              score: 5,
-            },
-            {
-              name: "tami van",
-              date: "08/2025",
-              text: "דורון מורה מדהים שלא רק מלמד אלא יש לו גישה ממש לתלמידים. מומלץ בחום!!!",
-              score: 5,
-            },
-            {
-              name: "Yoed Levy",
-              date: "07/2025",
-              text: "מורה ממש טוב, סבלני ומקצועי. מרגיש שיפור משמעותי בגיטרה.",
-              score: 5,
-            },
-          ]}
-        />
+        <Testimonials />
       </Container>
 
       {/* Mobile CTA bar */}

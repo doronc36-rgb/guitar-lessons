@@ -55,14 +55,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   // Determine locale from cookie; default to 'he'
-  const cookieStore = cookies();
-  const cookieLocale = (cookieStore.get("locale")?.value as SupportedLocale) || ("he" as SupportedLocale);
+  const store = await cookies();
+  const cookieLocale =
+    (store.get("locale")?.value as SupportedLocale) ?? ("he" as SupportedLocale);
   const dir = cookieLocale === "he" ? "rtl" : "ltr";
   return (
     <html lang={cookieLocale} dir={dir}>

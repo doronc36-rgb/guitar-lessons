@@ -48,7 +48,7 @@ export default function Header() {
       aria-label="תפריט עליון"
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           {!isHome && (
             <button
               type="button"
@@ -59,7 +59,8 @@ export default function Header() {
               ← חזרה
             </button>
           )}
-          <Link href="/" className="font-semibold text-lg">
+          <Link href="/" className="font-semibold text-lg inline-flex items-center gap-2">
+            <img src="/logo.svg" alt="לוגו" className="w-7 h-7"/>
             דורון — שיעורי גיטרה/פסנתר
           </Link>
         </div>

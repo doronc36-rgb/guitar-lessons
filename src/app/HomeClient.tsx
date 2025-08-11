@@ -83,6 +83,30 @@ export default function HomeClient() {
               text: "תמיד עם פוזיטיביות וסבלנות! יודע איך ללמד ולדבר על שירים אהובים. מומלץ!",
               score: 10,
             },
+            {
+              name: "_kaktusik_",
+              date: "08/2025",
+              text: "מסביר הכל בסבלנות, נותן טיפים כדי לנגן טוב יותר. אווירה נעימה, קלים למתחילים ולמתקדמים.",
+              score: 5,
+            },
+            {
+              name: "Coco Baby",
+              date: "08/2025",
+              text: "Patient and clear, amazing teacher.",
+              score: 5,
+            },
+            {
+              name: "tami van",
+              date: "08/2025",
+              text: "דורון מורה מדהים שלא רק מלמד אלא יש לו גישה ממש לתלמידים. מומלץ בחום!!!",
+              score: 5,
+            },
+            {
+              name: "Yoed Levy",
+              date: "07/2025",
+              text: "מורה ממש טוב, סבלני ומקצועי. מרגיש שיפור משמעותי בגיטרה.",
+              score: 5,
+            },
           ]}
         />
       </Container>

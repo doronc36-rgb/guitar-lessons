@@ -77,17 +77,17 @@ export default function RootLayout({
               <div>
                 <div className="font-medium text-[color:var(--foreground)]">קישורים מהירים</div>
                 <ul className="mt-2 space-y-1">
-                  <li><a href="/lessons" className="hover:opacity-80">השיעורים</a></li>
-                  <li><a href="/prices" className="hover:opacity-80">מחירים</a></li>
-                  <li><a href="/booking" className="hover:opacity-80">קבעו שיעור</a></li>
+                  <li><a href="/lessons" className="hover:opacity-80 underline underline-offset-4">השיעורים</a></li>
+                  <li><a href="/prices" className="hover:opacity-80 underline underline-offset-4">מחירים</a></li>
+                  <li><a href="/booking" className="hover:opacity-80 underline underline-offset-4">קבעו שיעור</a></li>
                 </ul>
               </div>
               <div>
                 <div className="font-medium text-[color:var(--foreground)]">יצירת קשר</div>
                 <ul className="mt-2 space-y-1">
-                  <li><a href="https://wa.me/972535247393" className="hover:opacity-80">וואטסאפ</a></li>
-                  <li><a href="tel:+972535247393" className="hover:opacity-80">טלפון: 053-524-7393</a></li>
-                  <li><a href="/contact" className="hover:opacity-80">טופס יצירת קשר</a></li>
+                  <li><a href="https://wa.me/972535247393" className="hover:opacity-80 underline underline-offset-4">וואטסאפ</a></li>
+                  <li><a href="tel:+972535247393" className="hover:opacity-80 underline underline-offset-4">טלפון: 053-524-7393</a></li>
+                  <li><a href="/contact" className="hover:opacity-80 underline underline-offset-4">טופס יצירת קשר</a></li>
                 </ul>
               </div>
             </div>

@@ -7,8 +7,8 @@
   --muted: #3a3a3a;
   --border: rgba(17, 17, 17, 0.12);
   --surface: #ffffffcc; /* translucent white on cream */
-  --accent: #f5a524; /* warm amber accent */
-  --accent-contrast: #1b1103;
+  --accent: #14b8a6; /* modern teal */
+  --accent-contrast: #041311;
 }
 
 @theme inline {

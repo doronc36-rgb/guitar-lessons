@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Providers from "./Providers";
+import Header from "./components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,9 +64,35 @@ export default function RootLayout({
           דלג לתוכן
         </a>
         <Providers>
+          <Header />
           <main id="main" role="main" className="outline-none focus-visible:ring-2 focus-visible:ring-black">
             {children}
           </main>
+          <footer className="mt-16 border-t">
+            <div className="max-w-6xl mx-auto px-4 py-8 grid gap-6 md:grid-cols-3 text-sm text-[color:var(--muted)]">
+              <div>
+                <div className="font-medium text-[color:var(--foreground)]">על השיעורים</div>
+                <p className="mt-2">שיעורים אישיים וקבוצתיים באשקלון והסביבה. גיטרה ופסנתר לכל הרמות.</p>
+              </div>
+              <div>
+                <div className="font-medium text-[color:var(--foreground)]">קישורים מהירים</div>
+                <ul className="mt-2 space-y-1">
+                  <li><a href="/lessons" className="hover:opacity-80">השיעורים</a></li>
+                  <li><a href="/prices" className="hover:opacity-80">מחירים</a></li>
+                  <li><a href="/booking" className="hover:opacity-80">קבעו שיעור</a></li>
+                </ul>
+              </div>
+              <div>
+                <div className="font-medium text-[color:var(--foreground)]">יצירת קשר</div>
+                <ul className="mt-2 space-y-1">
+                  <li><a href="https://wa.me/972535247393" className="hover:opacity-80">וואטסאפ</a></li>
+                  <li><a href="tel:+972535247393" className="hover:opacity-80">טלפון: 053-524-7393</a></li>
+                  <li><a href="/contact" className="hover:opacity-80">טופס יצירת קשר</a></li>
+                </ul>
+              </div>
+            </div>
+            <div className="text-center text-xs text-[color:var(--muted)] pb-8">© {new Date().getFullYear()} Doron Music Lessons</div>
+          </footer>
         </Providers>
         <Script id="ld-local-business" type="application/ld+json">
           {JSON.stringify({

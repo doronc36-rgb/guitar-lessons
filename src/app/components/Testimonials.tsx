@@ -14,14 +14,24 @@ type Review = {
   rating: number;
 };
 
-export default function Testimonials() {
+export default function Testimonials({ dir }: { dir?: "ltr" | "rtl" }) {
   const { locale, t } = useI18n();
   const listRef = useRef<HTMLUListElement>(null);
   const [index, setIndex] = useState(0);
   const [expandedMap, setExpandedMap] = useState<Record<string, boolean>>({});
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [docDir, setDocDir] = useState<"ltr" | "rtl">("rtl");
 
-  const isRtl = locale === "he";
+  useEffect(() => {
+    // Prefer explicit prop, else read from document to stay in sync with <html dir>
+    if (!dir) {
+      const current = typeof document !== "undefined" && document.documentElement?.getAttribute("dir");
+      setDocDir(current === "rtl" ? "rtl" : "ltr");
+    }
+  }, [dir, locale]);
+
+  const effectiveDir: "ltr" | "rtl" = dir ?? docDir;
+  const isRtl = effectiveDir === "rtl";
 
   const baseReviews: Review[] = useMemo(() => {
     const heSource = (heReviewsJson as Review[]) || [];
@@ -88,7 +98,7 @@ export default function Testimonials() {
 
   return (
     <Section title={t.home.testimonials.title} className="mt-12">
-      <div role="region" aria-label={t.home.testimonials.regionAria}>
+      <div role="region" aria-label={t.home.testimonials.regionAria} dir={effectiveDir}>
         {baseReviews.length === 0 ? (
           <div className="surface p-6 text-center text-neutral-700">{t.home.testimonials.empty}</div>
         ) : !isCarousel ? (

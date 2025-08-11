@@ -6,7 +6,7 @@ export default function Home() {
           Guitar & Piano Lessons in Ashkelon
         </h1>
         <p className="text-lg text-neutral-600">
-          Friendly, structured lessons. Hebrew & English. Book a trial today.
+          Friendly, structured lessons + 10% discount. Hebrew Spanish & English. Book a trial today.
         </p>
         <div className="mt-6 flex gap-3 justify-center">
           <a href="/contact" className="rounded-xl px-4 py-2 bg-black text-white">

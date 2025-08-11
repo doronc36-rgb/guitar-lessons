@@ -3,6 +3,7 @@
 import Section from "./ui/Section";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useI18n } from "@/i18n";
+import { t as tf } from "@/i18n";
 import heReviewsJson from "@/content/reviews.he.json";
 import enReviewsJson from "@/content/reviews.en.json";
 
@@ -14,7 +15,7 @@ type Review = {
 };
 
 export default function Testimonials() {
-  const { locale } = useI18n();
+  const { locale, t } = useI18n();
   const listRef = useRef<HTMLUListElement>(null);
   const [index, setIndex] = useState(0);
   const [expandedMap, setExpandedMap] = useState<Record<string, boolean>>({});
@@ -23,8 +24,15 @@ export default function Testimonials() {
   const isRtl = locale === "he";
 
   const baseReviews: Review[] = useMemo(() => {
-    const source = (locale === "en" ? (enReviewsJson as Review[]) : (heReviewsJson as Review[])) || [];
-    return Array.isArray(source) ? source : [];
+    const heSource = (heReviewsJson as Review[]) || [];
+    const enSource = (enReviewsJson as Review[]) || [];
+    const byLocale = locale === "en" ? enSource : heSource;
+    const chosen = Array.isArray(byLocale) ? byLocale : [];
+    // Fallback: if EN is empty, use HE
+    if (locale === "en" && chosen.length === 0) {
+      return Array.isArray(heSource) ? heSource : [];
+    }
+    return chosen;
   }, [locale]);
 
   const reviews: Review[] = useMemo(() => {
@@ -79,10 +87,10 @@ export default function Testimonials() {
   }
 
   return (
-    <Section title="מה אומרים התלמידים" className="mt-12">
-      <div role="region" aria-label="ביקורות">
+    <Section title={t.home.testimonials.title} className="mt-12">
+      <div role="region" aria-label={t.home.testimonials.regionAria}>
         {baseReviews.length === 0 ? (
-          <div className="surface p-6 text-center text-neutral-700">אין עדיין ביקורות להצגה</div>
+          <div className="surface p-6 text-center text-neutral-700">{t.home.testimonials.empty}</div>
         ) : !isCarousel ? (
           <ul className="grid gap-4 md:grid-cols-2">
             {baseReviews.map((r, i) => {
@@ -93,12 +101,12 @@ export default function Testimonials() {
                   key={key}
                   className="surface rounded-2xl shadow-sm md:shadow p-5 min-h-[180px]"
                   aria-roledescription="slide"
-                  aria-label={`ביקורת ${i + 1} מתוך ${baseReviews.length}`}
+                  aria-label={tf('home.testimonials.slideAria', locale, { index: i + 1, total: baseReviews.length })}
                 >
                   <div className="flex items-center justify-between">
                     <div className="font-medium">{r.name}</div>
                     <span className="inline-flex items-center gap-1 text-sm">
-                      <span className="sr-only">{`דירוג: ${r.rating} מתוך 5`}</span>
+                      <span className="sr-only">{tf('home.testimonials.ratingSr', locale, { rating: r.rating })}</span>
                       <Stars rating={r.rating} />
                     </span>
                   </div>
@@ -112,7 +120,7 @@ export default function Testimonials() {
                     aria-expanded={isExpanded}
                     onClick={() => toggleExpand(key)}
                   >
-                    {isExpanded ? 'הצג פחות' : 'קראו עוד'}
+                    {isExpanded ? t.home.testimonials.readLess : t.home.testimonials.readMore}
                   </button>
                 </li>
               );
@@ -133,12 +141,12 @@ export default function Testimonials() {
                     key={key}
                     className="surface rounded-2xl shadow-sm md:shadow p-5 min-h-[180px]"
                     aria-roledescription="slide"
-                    aria-label={`ביקורת ${i + 1} מתוך ${reviews.length}`}
+                    aria-label={tf('home.testimonials.slideAria', locale, { index: i + 1, total: reviews.length })}
                   >
                     <div className="flex items-center justify-between">
                       <div className="font-medium">{r.name}</div>
                       <span className="inline-flex items-center gap-1 text-sm">
-                        <span className="sr-only">{`דירוג: ${r.rating} מתוך 5`}</span>
+                        <span className="sr-only">{tf('home.testimonials.ratingSr', locale, { rating: r.rating })}</span>
                         <Stars rating={r.rating} />
                       </span>
                     </div>
@@ -152,7 +160,7 @@ export default function Testimonials() {
                       aria-expanded={isExpanded}
                       onClick={() => toggleExpand(key)}
                     >
-                      {isExpanded ? 'הצג פחות' : 'קראו עוד'}
+                      {isExpanded ? t.home.testimonials.readLess : t.home.testimonials.readMore}
                     </button>
                   </li>
                 );
@@ -160,12 +168,12 @@ export default function Testimonials() {
             </ul>
 
             <div className="flex items-center justify-between mt-4">
-              <div className="flex gap-2" role="tablist" aria-label="בקרת שקופיות ביקורות">
+              <div className="flex gap-2" role="tablist" aria-label={t.home.testimonials.dotsAria}>
                 {Array.from({ length: maxIndex + 1 }).map((_, i) => (
                   <button
                     key={i}
                     type="button"
-                    aria-label={`שקופית ${i + 1}`}
+                    aria-label={`${i + 1}`}
                     role="tab"
                     aria-selected={i === index}
                     className={`w-2.5 h-2.5 rounded-full ${i === index ? 'bg-[color:var(--accent)]' : 'bg-neutral-300'} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]`}
@@ -178,7 +186,7 @@ export default function Testimonials() {
                   type="button"
                   className="surface px-3 py-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
                   onClick={() => setIndex((i) => (i <= 0 ? maxIndex : i - 1))}
-                  aria-label="שקופית קודמת"
+                  aria-label={t.home.testimonials.prev}
                 >
                   ◀
                 </button>
@@ -186,7 +194,7 @@ export default function Testimonials() {
                   type="button"
                   className="surface px-3 py-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
                   onClick={() => setIndex((i) => (i >= maxIndex ? 0 : i + 1))}
-                  aria-label="שקופית הבאה"
+                  aria-label={t.home.testimonials.next}
                 >
                   ▶
                 </button>

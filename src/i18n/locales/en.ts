@@ -4,6 +4,28 @@ export const en = {
     call: "Phone call",
     bookLesson: "Book a lesson",
   },
+  header: {
+    brand: "Doron — Guitar/Piano Lessons",
+    topNavAria: "Top navigation",
+    nav: {
+      lessons: "Lessons",
+      prices: "Prices",
+      faq: "FAQ",
+      contact: "Contact",
+    },
+    back: "← Back",
+    backAria: "Back to previous page",
+    logoAlt: "Logo",
+    language: {
+      switchToEn: "Switch language to English",
+      switchToHe: "Switch language to Hebrew",
+    },
+    menu: {
+      open: "Open menu",
+      close: "Close menu",
+      label: "Menu",
+    },
+  },
   home: {
     hero: {
       title: "Guitar and Piano Lessons in Ashkelon",
@@ -11,6 +33,8 @@ export const en = {
       ctaBooking: "Book a lesson",
       ctaWhatsapp: "WhatsApp",
       ctaLessons: "About the lessons",
+      ariaBookTrial: "Book a trial lesson",
+      ariaWhatsapp: "Send a WhatsApp message",
     },
     fitFor: {
       title: "Who it's for",
@@ -35,6 +59,21 @@ export const en = {
         "Trial lesson (60 minutes)",
         "Personal learning plan and scheduling",
       ],
+    },
+    mobileCta: {
+      ready: "Ready to start?",
+    },
+    testimonials: {
+      title: "What students say",
+      regionAria: "Reviews",
+      empty: "No reviews to show yet",
+      readMore: "Read more",
+      readLess: "Show less",
+      ratingSr: "Rating: {rating} out of 5",
+      slideAria: "Review {index} of {total}",
+      dotsAria: "Reviews slider controls",
+      prev: "Previous slide",
+      next: "Next slide",
     },
   },
   lessons: {
@@ -93,6 +132,7 @@ export const en = {
     ],
     todo: "TODO: integrate Calendly",
     linkPrices: "Go to prices",
+    wantPrices: "Want to know prices?",
   },
   terms: {
     title: "Terms of Service",
@@ -128,6 +168,41 @@ export const en = {
     whatsappLabel: "WhatsApp",
     emailLabel: "Email",
     backHome: "Back to home",
+    aria: {
+      call: "Dial phone",
+      whatsapp: "Send WhatsApp message",
+      email: "Send email",
+    },
+  },
+  footer: {
+    about: {
+      title: "About the lessons",
+      body: "Private and group lessons in the Ashkelon area. Guitar and piano for all levels.",
+    },
+    links: {
+      title: "Quick links",
+      home: "Home",
+      lessons: "Lessons",
+      prices: "Prices",
+      faq: "FAQ",
+      booking: "Booking",
+      contact: "Contact",
+    },
+    contact: {
+      title: "Contact",
+      whatsapp: "WhatsApp",
+      phone: "Phone: 053-524-7393",
+      email: "Email: doron.c@live.com",
+    },
+    aria: {
+      whatsappOpen: "Open WhatsApp",
+      phoneDial: "Dial phone",
+      emailSend: "Send email",
+    },
+    copyright: "© {year} Doron Music Lessons",
+  },
+  a11y: {
+    skipToContent: "Skip to content",
   },
 };
 

@@ -173,7 +173,7 @@ export default function ContactForm() {
             <a
               href="tel:+972535247393"
               className="text-neutral-700 hover:text-black transition-colors underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
-              aria-label="חיוג טלפון"
+              aria-label={t.contact.aria.call}
             >
               {t.contact.phoneLabel}
             </a>
@@ -183,7 +183,7 @@ export default function ContactForm() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-700 hover:text-black transition-colors underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
-              aria-label="שליחת הודעת וואטסאפ"
+              aria-label={t.contact.aria.whatsapp}
             >
               {t.contact.whatsappLabel}
             </a>
@@ -191,7 +191,7 @@ export default function ContactForm() {
             <a
               href="mailto:doron.c@live.com"
               className="text-neutral-700 hover:text-black transition-colors underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
-              aria-label="שליחת אימייל"
+              aria-label={t.contact.aria.email}
             >
               {t.contact.emailLabel}
             </a>

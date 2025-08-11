@@ -27,7 +27,7 @@ export default function BookingClient() {
       <p className="text-sm text-neutral-600">{t.booking.todo}</p>
 
       <p className="text-neutral-700">
-        רוצים לדעת מחירים?{" "}
+        {t.booking.wantPrices}{" "}
         <Link href="/prices" className="underline">
           {t.booking.linkPrices}
         </Link>

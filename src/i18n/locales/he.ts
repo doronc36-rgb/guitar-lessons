@@ -4,6 +4,28 @@ export const he = {
     call: 'שיחה טלפונית',
     bookLesson: 'קבעו שיעור',
   },
+  header: {
+    brand: 'דורון — שיעורי גיטרה/פסנתר',
+    topNavAria: 'תפריט עליון',
+    nav: {
+      lessons: 'השיעורים',
+      prices: 'מחירים',
+      faq: 'שאלות',
+      contact: 'צור קשר',
+    },
+    back: '← חזרה',
+    backAria: 'חזרה לעמוד הקודם',
+    logoAlt: 'לוגו',
+    language: {
+      switchToEn: 'Switch language to English',
+      switchToHe: 'החלף שפה לעברית',
+    },
+    menu: {
+      open: 'פתיחת תפריט',
+      close: 'סגירת תפריט',
+      label: 'תפריט',
+    },
+  },
   home: {
     hero: {
       title: 'שיעורי גיטרה ופסנתר באשקלון והסביבה',
@@ -11,6 +33,8 @@ export const he = {
       ctaBooking: 'קבעו שיעור',
       ctaWhatsapp: 'וואטסאפ',
       ctaLessons: 'על השיעורים',
+      ariaBookTrial: 'קביעת שיעור ניסיון',
+      ariaWhatsapp: 'שליחת הודעת וואטסאפ',
     },
     fitFor: {
       title: 'למי זה מתאים',
@@ -35,6 +59,21 @@ export const he = {
         'שיעור ניסיון באורך 60 דקות',
         'בניית מסלול למידה אישי וקביעת זמנים',
       ],
+    },
+    mobileCta: {
+      ready: 'מוכנים להתחיל?',
+    },
+    testimonials: {
+      title: 'מה אומרים התלמידים',
+      regionAria: 'ביקורות',
+      empty: 'אין עדיין ביקורות להצגה',
+      readMore: 'קראו עוד',
+      readLess: 'הצג פחות',
+      ratingSr: 'דירוג: {rating} מתוך 5',
+      slideAria: 'ביקורת {index} מתוך {total}',
+      dotsAria: 'בקרת שקופיות ביקורות',
+      prev: 'שקופית קודמת',
+      next: 'שקופית הבאה',
     },
   },
   lessons: {
@@ -93,6 +132,7 @@ export const he = {
     ],
     todo: 'TODO: הטמעת Calendly לקביעת פגישה אוטומטית.',
     linkPrices: 'עברו לדף המחירים',
+    wantPrices: 'רוצים לדעת מחירים?',
   },
   terms: {
     title: 'תנאי שימוש',
@@ -116,11 +156,11 @@ export const he = {
       messagePlaceholder: 'ספרו לנו על היעדים המוזיקליים שלכם...',
       submit: 'שליחת הודעה',
       sending: 'שולח...',
-      nameRequired: 'Name is required',
-      emailRequired: 'Email is required',
-      emailInvalid: 'Please enter a valid email address',
-      messageRequired: 'Message is required',
-      messageTooShort: 'Message must be at least 10 characters long',
+      nameRequired: 'שם הוא שדה חובה',
+      emailRequired: 'אימייל הוא שדה חובה',
+      emailInvalid: 'אנא הזינו כתובת אימייל תקינה',
+      messageRequired: 'הודעה היא שדה חובה',
+      messageTooShort: 'ההודעה חייבת להכיל לפחות 10 תווים',
     },
     successTitle: 'ההודעה נשלחה בהצלחה!',
     successBody: 'נחזור אליכם בהקדם.',
@@ -130,6 +170,41 @@ export const he = {
     whatsappLabel: 'וואטסאפ',
     emailLabel: 'אימייל',
     backHome: 'חזרה לדף הבית',
+    aria: {
+      call: 'חיוג טלפון',
+      whatsapp: 'שליחת הודעת וואטסאפ',
+      email: 'שליחת אימייל',
+    },
+  },
+  footer: {
+    about: {
+      title: 'על השיעורים',
+      body: 'שיעורים אישיים וקבוצתיים באשקלון והסביבה. גיטרה ופסנתר לכל הרמות.',
+    },
+    links: {
+      title: 'קישורים מהירים',
+      home: 'דף הבית',
+      lessons: 'שיעורים',
+      prices: 'מחירים',
+      faq: 'שאלות נפוצות',
+      booking: 'קביעת שיעור',
+      contact: 'צור קשר',
+    },
+    contact: {
+      title: 'יצירת קשר',
+      whatsapp: 'וואטסאפ',
+      phone: 'טלפון: 053-524-7393',
+      email: 'אימייל: doron.c@live.com',
+    },
+    aria: {
+      whatsappOpen: 'פתיחת וואטסאפ',
+      phoneDial: 'חיוג טלפון',
+      emailSend: 'שליחת אימייל',
+    },
+    copyright: '© {year} Doron Music Lessons',
+  },
+  a11y: {
+    skipToContent: 'דלג לתוכן',
   },
 };
 

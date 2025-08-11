@@ -48,6 +48,14 @@ a {
   border-radius: 1rem; /* 16px */
 }
 
+/* Line clamp utility for up to 5 lines */
+.line-clamp-5 {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* Focus outlines for better a11y */
 :where(a, button, [role="button"], input, textarea, select, summary):focus-visible {
   outline: 2px solid var(--foreground);

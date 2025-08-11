@@ -17,6 +17,8 @@ export default function Testimonials() {
   const { locale } = useI18n();
   const listRef = useRef<HTMLUListElement>(null);
   const [index, setIndex] = useState(0);
+  const [expandedMap, setExpandedMap] = useState<Record<string, boolean>>({});
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const isRtl = locale === "he";
 
@@ -47,6 +49,35 @@ export default function Testimonials() {
     return () => clearInterval(id);
   }, [isCarousel, maxIndex]);
 
+  useEffect(() => {
+    if (!isCarousel) return;
+    setIsTransitioning(true);
+    const t = setTimeout(() => setIsTransitioning(false), 500);
+    return () => clearTimeout(t);
+  }, [index, isCarousel]);
+
+  function toggleExpand(key: string) {
+    setExpandedMap((prev) => ({ ...prev, [key]: !prev[key] }));
+  }
+
+  function Stars({ rating }: { rating: number }) {
+    const rounded = Math.round(rating);
+    return (
+      <span aria-hidden="true" className="inline-flex items-center gap-0.5">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <svg
+            key={i}
+            viewBox="0 0 20 20"
+            className={`${i < rounded ? 'text-[color:var(--accent)]' : 'text-neutral-300'} w-4 h-4`}
+            fill="currentColor"
+          >
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.802 2.035a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.802-2.035a1 1 0 00-1.175 0l-2.802 2.035c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        ))}
+      </span>
+    );
+  }
+
   return (
     <Section title="מה אומרים התלמידים" className="mt-12">
       <div role="region" aria-label="ביקורות">
@@ -54,50 +85,78 @@ export default function Testimonials() {
           <div className="surface p-6 text-center text-neutral-700">אין עדיין ביקורות להצגה</div>
         ) : !isCarousel ? (
           <ul className="grid gap-4 md:grid-cols-2">
-            {baseReviews.map((r, i) => (
-              <li
-                key={`${r.name}-${i}`}
-                className="surface p-4 min-h-[160px]"
-                aria-roledescription="slide"
-                aria-label={`ביקורת ${i + 1} מתוך ${baseReviews.length}`}
-              >
-                <div className="flex items-center justify-between">
-                  <div className="font-medium">{r.name}</div>
-                  <span className="inline-flex items-center gap-1 text-sm" aria-label={`דירוג ${r.rating} מתוך 5`}>
-                    <span className="inline-block w-2 h-2 rounded-full bg-[color:var(--accent)]" />
-                    {r.rating}
-                  </span>
-                </div>
-                <div className="text-xs text-neutral-600 mt-1">{r.role}</div>
-                <p className="mt-2 text-neutral-800 leading-7">{r.text}</p>
-              </li>
-            ))}
+            {baseReviews.map((r, i) => {
+              const key = `${r.name}-${i}`;
+              const isExpanded = !!expandedMap[key];
+              return (
+                <li
+                  key={key}
+                  className="surface rounded-2xl shadow-sm md:shadow p-5 min-h-[180px]"
+                  aria-roledescription="slide"
+                  aria-label={`ביקורת ${i + 1} מתוך ${baseReviews.length}`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="font-medium">{r.name}</div>
+                    <span className="inline-flex items-center gap-1 text-sm">
+                      <span className="sr-only">{`דירוג: ${r.rating} מתוך 5`}</span>
+                      <Stars rating={r.rating} />
+                    </span>
+                  </div>
+                  <div className="text-xs text-neutral-600 mt-1">{r.role}</div>
+                  <div className={!isExpanded ? 'h-[8.75rem] sm:h-auto' : ''}>
+                    <p className={`mt-2 text-neutral-800 leading-7 ${!isExpanded ? 'line-clamp-5' : ''}`}>{r.text}</p>
+                  </div>
+                  <button
+                    type="button"
+                    className="mt-2 text-sm font-medium text-[color:var(--accent)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                    aria-expanded={isExpanded}
+                    onClick={() => toggleExpand(key)}
+                  >
+                    {isExpanded ? 'הצג פחות' : 'קראו עוד'}
+                  </button>
+                </li>
+              );
+            })}
           </ul>
         ) : (
           <div className="relative">
             <ul
               ref={listRef}
-              className="grid grid-flow-col auto-cols-[minmax(260px,1fr)] gap-4 overflow-hidden"
+              className={`grid grid-flow-col auto-cols-[minmax(260px,1fr)] gap-4 overflow-hidden motion-safe:transition-transform motion-safe:duration-500 motion-safe:ease-out motion-safe:will-change-transform motion-safe:transition-opacity ${isTransitioning ? 'motion-safe:opacity-95' : ''} motion-reduce:transition-none`}
+              style={{ transform: `translateX(${(isRtl ? 1 : -1) * index * 100}%)` }}
             >
-              {reviews.map((r, i) => (
-                <li
-                  key={`${r.name}-${i}`}
-                  className="surface p-4 transition-transform duration-500 min-h-[160px]"
-                  style={{ transform: `translateX(${(isRtl ? 1 : -1) * index * 100}%)` }}
-                  aria-roledescription="slide"
-                  aria-label={`ביקורת ${i + 1} מתוך ${reviews.length}`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="font-medium">{r.name}</div>
-                    <span className="inline-flex items-center gap-1 text-sm" aria-label={`דירוג ${r.rating} מתוך 5`}>
-                      <span className="inline-block w-2 h-2 rounded-full bg-[color:var(--accent)]" />
-                      {r.rating}
-                    </span>
-                  </div>
-                  <div className="text-xs text-neutral-600 mt-1">{r.role}</div>
-                  <p className="mt-2 text-neutral-800 leading-7">{r.text}</p>
-                </li>
-              ))}
+              {reviews.map((r, i) => {
+                const key = `${r.name}-${i}`;
+                const isExpanded = !!expandedMap[key];
+                return (
+                  <li
+                    key={key}
+                    className="surface rounded-2xl shadow-sm md:shadow p-5 min-h-[180px]"
+                    aria-roledescription="slide"
+                    aria-label={`ביקורת ${i + 1} מתוך ${reviews.length}`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="font-medium">{r.name}</div>
+                      <span className="inline-flex items-center gap-1 text-sm">
+                        <span className="sr-only">{`דירוג: ${r.rating} מתוך 5`}</span>
+                        <Stars rating={r.rating} />
+                      </span>
+                    </div>
+                    <div className="text-xs text-neutral-600 mt-1">{r.role}</div>
+                    <div className={!isExpanded ? 'h-[8.75rem] sm:h-auto' : ''}>
+                      <p className={`mt-2 text-neutral-800 leading-7 ${!isExpanded ? 'line-clamp-5' : ''}`}>{r.text}</p>
+                    </div>
+                    <button
+                      type="button"
+                      className="mt-2 text-sm font-medium text-[color:var(--accent)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                      aria-expanded={isExpanded}
+                      onClick={() => toggleExpand(key)}
+                    >
+                      {isExpanded ? 'הצג פחות' : 'קראו עוד'}
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
 
             <div className="flex items-center justify-between mt-4">

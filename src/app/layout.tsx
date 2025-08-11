@@ -66,7 +66,7 @@ export default function RootLayout({
         </a>
         <Providers>
           <Header />
-          <main id="main" role="main" tabIndex={-1} className="outline-none focus-visible:ring-2 focus-visible:ring-black">
+          <main id="main" role="main" tabIndex={-1} className="outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)]">
             {children}
           </main>
           <footer className="mt-16 border-t">
@@ -78,17 +78,94 @@ export default function RootLayout({
               <div>
                 <div className="font-medium text-[color:var(--foreground)]">קישורים מהירים</div>
                 <ul className="mt-2 space-y-1">
-                  <li><Link href="/lessons" className="hover:opacity-80 underline underline-offset-4">השיעורים</Link></li>
-                  <li><Link href="/prices" className="hover:opacity-80 underline underline-offset-4">מחירים</Link></li>
-                  <li><Link href="/booking" className="hover:opacity-80 underline underline-offset-4">קבעו שיעור</Link></li>
+                  <li>
+                    <Link
+                      href="/"
+                      aria-label="דף הבית"
+                      className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                    >
+                      דף הבית
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/lessons"
+                      aria-label="שיעורים"
+                      className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                    >
+                      שיעורים
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/prices"
+                      aria-label="מחירים"
+                      className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                    >
+                      מחירים
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/faq"
+                      aria-label="שאלות נפוצות"
+                      className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                    >
+                      שאלות נפוצות
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/booking"
+                      aria-label="קביעת שיעור"
+                      className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                    >
+                      קביעת שיעור
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/contact"
+                      aria-label="צור קשר"
+                      className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                    >
+                      צור קשר
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div>
                 <div className="font-medium text-[color:var(--foreground)]">יצירת קשר</div>
                 <ul className="mt-2 space-y-1">
-                  <li><a href="https://wa.me/972535247393" className="hover:opacity-80 underline underline-offset-4">וואטסאפ</a></li>
-                  <li><a href="tel:+972535247393" className="hover:opacity-80 underline underline-offset-4">טלפון: 053-524-7393</a></li>
-                  <li><Link href="/contact" className="hover:opacity-80 underline underline-offset-4">טופס יצירת קשר</Link></li>
+                  <li>
+                    <a
+                      href="https://wa.me/972535247393"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="פתיחת וואטסאפ"
+                      className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                    >
+                      וואטסאפ
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="tel:+972535247393"
+                      aria-label="חיוג טלפון"
+                      className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                    >
+                      טלפון: 053-524-7393
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="mailto:doron.c@live.com"
+                      aria-label="שליחת אימייל"
+                      className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                    >
+                      אימייל: doron.c@live.com
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -102,7 +179,7 @@ export default function RootLayout({
             name: "שיעורי גיטרה ופסנתר באשקלון - דורון",
             areaServed: "אשקלון והסביבה",
             telephone: "+972535247393",
-            email: "mailto:lessons@example.com",
+            email: "mailto:doron.c@live.com",
             url: "https://guitar-lessons.vercel.app",
             sameAs: ["https://wa.me/972535247393"],
             address: {

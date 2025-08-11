@@ -83,7 +83,7 @@ export default function ContactForm() {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-8">
+    <div className="min-h-screen flex items-center justify-center p-8">
       <div className="max-w-md w-full space-y-6">
         <div className="text-center">
           <h1 className="text-3xl font-semibold">{t.contact.title}</h1>
@@ -99,7 +99,7 @@ export default function ContactForm() {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition-colors ${
+              className={`w-full px-3 py-2 border rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] transition-colors ${
                 errors.name ? 'border-red-500' : 'border-gray-300'
               }`}
               placeholder={t.contact.form.namePlaceholder}
@@ -117,7 +117,7 @@ export default function ContactForm() {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition-colors ${
+              className={`w-full px-3 py-2 border rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] transition-colors ${
                 errors.email ? 'border-red-500' : 'border-gray-300'
               }`}
               placeholder={t.contact.form.emailPlaceholder}
@@ -135,7 +135,7 @@ export default function ContactForm() {
               value={formData.message}
               onChange={handleInputChange}
               rows={4}
-              className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition-colors resize-none ${
+              className={`w-full px-3 py-2 border rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] transition-colors resize-none ${
                 errors.message ? 'border-red-500' : 'border-gray-300'
               }`}
               placeholder={t.contact.form.messagePlaceholder}
@@ -148,21 +148,21 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
           >
             {isSubmitting ? t.contact.form.sending : t.contact.form.submit}
           </button>
         </form>
 
         {submitStatus === 'success' && (
-          <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
+          <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center" role="status" aria-live="polite">
             <p className="text-green-800 font-medium">{t.contact.successTitle}</p>
             <p className="text-green-600 text-sm mt-1">{t.contact.successBody}</p>
           </div>
         )}
 
         {submitStatus === 'error' && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center" role="status" aria-live="polite">
             <p className="text-red-800 font-medium">{t.contact.errorTitle}</p>
             <p className="text-red-600 text-sm mt-1">{t.contact.errorBody}</p>
           </div>
@@ -172,7 +172,7 @@ export default function ContactForm() {
           <div className="space-y-2">
             <a
               href="tel:+972535247393"
-              className="text-neutral-700 hover:text-black transition-colors underline"
+              className="text-neutral-700 hover:text-black transition-colors underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               aria-label="חיוג טלפון"
             >
               {t.contact.phoneLabel}
@@ -182,26 +182,26 @@ export default function ContactForm() {
               href="https://wa.me/972535247393"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-700 hover:text-black transition-colors underline"
+              className="text-neutral-700 hover:text-black transition-colors underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               aria-label="שליחת הודעת וואטסאפ"
             >
               {t.contact.whatsappLabel}
             </a>
             <br />
             <a
-              href="mailto:lessons@example.com"
-              className="text-neutral-700 hover:text-black transition-colors underline"
+              href="mailto:doron.c@live.com"
+              className="text-neutral-700 hover:text-black transition-colors underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               aria-label="שליחת אימייל"
             >
               {t.contact.emailLabel}
             </a>
           </div>
           <div className="mt-4">
-            <Link href="/" className="text-neutral-600 hover:text-black transition-colors">{t.contact.backHome}</Link>
+            <Link href="/" className="text-neutral-600 hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]">{t.contact.backHome}</Link>
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
 

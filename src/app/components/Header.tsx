@@ -18,7 +18,7 @@ export default function Header() {
   const goBack = useCallback(() => router.back(), [router]);
 
   const linkClass = (href: string) =>
-    `hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] ${pathname === href ? "underline underline-offset-4" : ""}`;
+    `hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] ${pathname === href ? "underline underline-offset-4" : ""}`;
 
   const NavLinks = (
     <nav className="flex flex-col md:flex-row gap-4 items-start md:items-center text-sm">
@@ -37,7 +37,7 @@ export default function Header() {
       <Link
         href="/booking"
         onClick={close}
-        className="rounded-lg px-3 py-1.5 bg-black text-white hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+          className="rounded-lg px-3 py-1.5 bg-black text-white hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
       >
         קבעו שיעור
       </Link>
@@ -55,7 +55,7 @@ export default function Header() {
             <button
               type="button"
               onClick={goBack}
-              className="rounded-lg border px-3 py-1.5 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+              className="rounded-lg border px-3 py-1.5 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               aria-label="חזרה לעמוד הקודם"
             >
               ← חזרה
@@ -72,7 +72,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setLocale(locale === "he" ? "en" : "he")}
-            className="rounded-lg border px-3 py-1.5 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+            className="rounded-lg border px-3 py-1.5 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
             aria-label={locale === "he" ? "Switch language to English" : "החלף שפה לעברית"}
           >
             {locale === "he" ? "EN" : "HE"}
@@ -85,7 +85,7 @@ export default function Header() {
           className="md:hidden rounded-lg border px-3 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
           aria-expanded={open}
           aria-controls="site-menu"
-          aria-label="פתיחת תפריט"
+          aria-label={open ? "סגירת תפריט" : "פתיחת תפריט"}
         >
           תפריט
         </button>
@@ -99,7 +99,7 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => { setLocale(locale === "he" ? "en" : "he"); close(); }}
-                className="self-start rounded-lg border px-3 py-1.5 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                className="self-start rounded-lg border px-3 py-1.5 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
                 aria-label={locale === "he" ? "Switch language to English" : "החלף שפה לעברית"}
               >
                 {locale === "he" ? "EN" : "HE"}

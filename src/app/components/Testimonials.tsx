@@ -66,12 +66,15 @@ export default function Testimonials({ items }: { items: Testimonial[] }) {
               </li>
             ))}
           </ul>
-          <div className="flex justify-center gap-2 mt-4">
+          <div className="flex justify-center gap-2 mt-4" role="tablist" aria-label="בקרת שקופיות המלצות">
             {Array.from({ length: maxIndex + 1 }).map((_, i) => (
               <button
                 key={i}
+                type="button"
                 aria-label={`שקופית ${i + 1}`}
-                className={`w-2.5 h-2.5 rounded-full ${i === index ? 'bg-[color:var(--accent)]' : 'bg-neutral-300'}`}
+                role="tab"
+                aria-selected={i === index}
+                className={`w-2.5 h-2.5 rounded-full ${i === index ? 'bg-[color:var(--accent)]' : 'bg-neutral-300'} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]`}
                 onClick={() => setIndex(i)}
               />
             ))}

@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
       email: body.email,
       message: body.message,
       userAgent: request.headers.get('user-agent'),
-      ip: request.headers.get('x-forwarded-for') || request.ip || 'unknown'
+      ip: request.headers.get('x-forwarded-for') || 'unknown'
     });
     
     // In a real application, you might want to:

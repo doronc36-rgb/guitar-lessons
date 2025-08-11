@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
+import Link from "next/link";
 import "./globals.css";
 import Providers from "./Providers";
 import Header from "./components/Header";
@@ -65,7 +66,7 @@ export default function RootLayout({
         </a>
         <Providers>
           <Header />
-          <main id="main" role="main" className="outline-none focus-visible:ring-2 focus-visible:ring-black">
+          <main id="main" role="main" tabIndex={-1} className="outline-none focus-visible:ring-2 focus-visible:ring-black">
             {children}
           </main>
           <footer className="mt-16 border-t">
@@ -77,9 +78,9 @@ export default function RootLayout({
               <div>
                 <div className="font-medium text-[color:var(--foreground)]">קישורים מהירים</div>
                 <ul className="mt-2 space-y-1">
-                  <li><a href="/lessons" className="hover:opacity-80 underline underline-offset-4">השיעורים</a></li>
-                  <li><a href="/prices" className="hover:opacity-80 underline underline-offset-4">מחירים</a></li>
-                  <li><a href="/booking" className="hover:opacity-80 underline underline-offset-4">קבעו שיעור</a></li>
+                  <li><Link href="/lessons" className="hover:opacity-80 underline underline-offset-4">השיעורים</Link></li>
+                  <li><Link href="/prices" className="hover:opacity-80 underline underline-offset-4">מחירים</Link></li>
+                  <li><Link href="/booking" className="hover:opacity-80 underline underline-offset-4">קבעו שיעור</Link></li>
                 </ul>
               </div>
               <div>
@@ -87,7 +88,7 @@ export default function RootLayout({
                 <ul className="mt-2 space-y-1">
                   <li><a href="https://wa.me/972535247393" className="hover:opacity-80 underline underline-offset-4">וואטסאפ</a></li>
                   <li><a href="tel:+972535247393" className="hover:opacity-80 underline underline-offset-4">טלפון: 053-524-7393</a></li>
-                  <li><a href="/contact" className="hover:opacity-80 underline underline-offset-4">טופס יצירת קשר</a></li>
+                  <li><Link href="/contact" className="hover:opacity-80 underline underline-offset-4">טופס יצירת קשר</Link></li>
                 </ul>
               </div>
             </div>

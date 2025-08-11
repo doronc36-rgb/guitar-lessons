@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useI18n } from "@/i18n";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 export default function Header() {
+  const { locale, setLocale } = useI18n();
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -16,7 +18,7 @@ export default function Header() {
   const goBack = useCallback(() => router.back(), [router]);
 
   const linkClass = (href: string) =>
-    `hover:opacity-80 ${pathname === href ? "underline underline-offset-4" : ""}`;
+    `hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] ${pathname === href ? "underline underline-offset-4" : ""}`;
 
   const NavLinks = (
     <nav className="flex flex-col md:flex-row gap-4 items-start md:items-center text-sm">
@@ -35,7 +37,7 @@ export default function Header() {
       <Link
         href="/booking"
         onClick={close}
-        className="rounded-lg px-3 py-1.5 bg-black text-white hover:bg-neutral-800"
+        className="rounded-lg px-3 py-1.5 bg-black text-white hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
       >
         קבעו שיעור
       </Link>
@@ -53,7 +55,7 @@ export default function Header() {
             <button
               type="button"
               onClick={goBack}
-              className="rounded-lg border px-3 py-1.5 hover:bg-black/5"
+              className="rounded-lg border px-3 py-1.5 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               aria-label="חזרה לעמוד הקודם"
             >
               ← חזרה
@@ -65,12 +67,22 @@ export default function Header() {
           </Link>
         </div>
 
-        <div className="hidden md:block">{NavLinks}</div>
+        <div className="hidden md:flex items-center gap-3">
+          {NavLinks}
+          <button
+            type="button"
+            onClick={() => setLocale(locale === "he" ? "en" : "he")}
+            className="rounded-lg border px-3 py-1.5 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+            aria-label={locale === "he" ? "Switch language to English" : "החלף שפה לעברית"}
+          >
+            {locale === "he" ? "EN" : "HE"}
+          </button>
+        </div>
 
         <button
           type="button"
           onClick={toggle}
-          className="md:hidden rounded-lg border px-3 py-1.5"
+          className="md:hidden rounded-lg border px-3 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
           aria-expanded={open}
           aria-controls="site-menu"
           aria-label="פתיחת תפריט"
@@ -81,7 +93,19 @@ export default function Header() {
 
       {open && (
         <div id="site-menu" className="md:hidden border-t">
-          <div className="max-w-6xl mx-auto px-4 py-4">{NavLinks}</div>
+          <div className="max-w-6xl mx-auto px-4 py-4">
+            <div className="flex flex-col gap-4">
+              {NavLinks}
+              <button
+                type="button"
+                onClick={() => { setLocale(locale === "he" ? "en" : "he"); close(); }}
+                className="self-start rounded-lg border px-3 py-1.5 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                aria-label={locale === "he" ? "Switch language to English" : "החלף שפה לעברית"}
+              >
+                {locale === "he" ? "EN" : "HE"}
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </header>

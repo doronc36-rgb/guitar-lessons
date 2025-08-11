@@ -1,13 +1,16 @@
 "use client";
 
-import { createContext, useContext, useMemo, useState, ReactNode } from "react";
-import { he, type HebrewDictionary } from "./locales/he";
+import { createContext, useContext, useEffect, useMemo, useState, ReactNode } from "react";
+import { he } from "./locales/he";
+import { en } from "./locales/en";
 
-type SupportedLocale = "he";
+export type SupportedLocale = "he" | "en";
+
+type Dictionary = typeof he;
 
 type I18nContextValue = {
   locale: SupportedLocale;
-  t: HebrewDictionary;
+  t: Dictionary;
   setLocale: (l: SupportedLocale) => void;
 };
 
@@ -17,9 +20,14 @@ export function I18nProvider({ children, defaultLocale = "he" as SupportedLocale
   const [locale, setLocale] = useState<SupportedLocale>(defaultLocale);
 
   const value = useMemo<I18nContextValue>(() => {
-    // Only Hebrew currently. Extend here for more locales.
-    const dict = he;
+    const dict = locale === "en" ? en : he;
     return { locale, t: dict, setLocale };
+  }, [locale]);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.lang = locale === "en" ? "en" : "he";
+    root.dir = locale === "en" ? "ltr" : "rtl";
   }, [locale]);
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;

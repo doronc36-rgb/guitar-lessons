@@ -30,9 +30,16 @@ export default function HomeClient() {
         </Container>
       </div>
 
+      {/* Anchor targets for quick links */}
+      {/* 'about' anchored on the actual section below */}
+      <div id="lessons" className="scroll-mt-28" />
+      <div id="prices" className="scroll-mt-28" />
+      <div id="faq" className="scroll-mt-28" />
+      <div id="contact" className="scroll-mt-28" />
+
       <Container className="mt-12">
         <div className="grid gap-8 md:grid-cols-3">
-          <Section id="about" className="scroll-mt-28" title={t.home.fitFor.title}>
+          <Section id="about" title={t.home.fitFor.title}>
             <ul className="list-disc pr-6 mt-1 text-neutral-800 space-y-1">
               {t.home.fitFor.items.map((item) => (
                 <li key={item}>{item}</li>

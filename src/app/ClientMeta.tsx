@@ -4,7 +4,15 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useI18n } from "@/i18n";
 
-function getSeoKey(pathname: string): keyof ReturnType<typeof getSeoShape> {
+function getSeoKey(pathname: string):
+  | "home"
+  | "lessons"
+  | "prices"
+  | "faq"
+  | "booking"
+  | "contact"
+  | "terms"
+  | "accessibility" {
   switch (pathname) {
     case "/":
       return "home";
@@ -25,19 +33,6 @@ function getSeoKey(pathname: string): keyof ReturnType<typeof getSeoShape> {
     default:
       return "home";
   }
-}
-
-function getSeoShape() {
-  return {
-    home: { title: "", description: "" },
-    lessons: { title: "", description: "" },
-    prices: { title: "", description: "" },
-    faq: { title: "", description: "" },
-    booking: { title: "", description: "" },
-    contact: { title: "", description: "" },
-    terms: { title: "", description: "" },
-    accessibility: { title: "", description: "" },
-  } as const;
 }
 
 export default function ClientMeta() {
@@ -63,6 +58,22 @@ export default function ClientMeta() {
       meta.setAttribute("content", description);
     }
 
+    // Open Graph basic tags
+    const ensureMeta = (property: string, content: string) => {
+      let m = document.querySelector<HTMLMetaElement>(`meta[property="${property}"]`);
+      if (!m) {
+        m = document.createElement("meta");
+        m.setAttribute("property", property);
+        document.head.appendChild(m);
+      }
+      m.setAttribute("content", content);
+    };
+    if (title) ensureMeta("og:title", title);
+    if (description) ensureMeta("og:description", description);
+    const htmlLang = document.documentElement.lang;
+    const ogLocale = htmlLang === "en" ? "en_US" : "he_IL";
+    ensureMeta("og:locale", ogLocale);
+
     // Update hreflang alternates if present
     const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
     const currentPath = pathname || "/";
@@ -82,6 +93,16 @@ export default function ClientMeta() {
 
     ensureAlt("en", enHref);
     ensureAlt("he", heHref);
+
+    // Canonical URL (production)
+    const canonicalHref = `${baseUrl}${currentPath}`;
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute("href", canonicalHref);
   }, [pathname, t.seo]);
 
   return null;

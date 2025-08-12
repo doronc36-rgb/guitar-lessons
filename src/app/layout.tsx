@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
-import Link from "next/link";
+// import Link from "next/link";
 import "./globals.css";
 import Providers from "./Providers";
 import ClientMeta from "./ClientMeta";
@@ -68,7 +68,12 @@ export default async function RootLayout({
   return (
     <html lang={cookieLocale} dir={dir}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* Skip link now localized in Header via i18n if needed; keeping static anchor is fine */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 bg-white text-black px-3 py-2 rounded"
+        >
+          Skip to content
+        </a>
         <Providers defaultLocale={cookieLocale}>
           <Header />
           <main id="main" role="main" tabIndex={-1} className="outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)]">
@@ -84,9 +89,11 @@ export default async function RootLayout({
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            name: "שיעורי גיטרה ופסנתר באשקלון - דורון",
-            areaServed: "אשקלון והסביבה",
-            telephone: "+972535247393",
+            name: "דורון כהן — שיעורי גיטרה ופסנתר",
+            areaServed: "Ashkelon",
+            telephone: "+972-53-524-7393",
+            availableLanguage: ["he", "en"],
+            priceRange: "₪120–₪150",
             email: "mailto:doron.c@live.com",
             url: "https://guitar-lessons.vercel.app",
             sameAs: ["https://wa.me/972535247393"],

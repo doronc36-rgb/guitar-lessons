@@ -1,4 +1,21 @@
 import { cookies } from "next/headers";
+import type { SupportedLocale } from ".";
+import { he } from "./locales/he";
+import { en } from "./locales/en";
+
+export async function getServerLocale(): Promise<SupportedLocale> {
+  const store = await cookies();
+  const cookieLocale = store.get("locale")?.value;
+  if (cookieLocale === "en" || cookieLocale === "he") return cookieLocale;
+  return "he";
+}
+
+export function getSeoByKey<T extends keyof typeof he.seo>(key: T, locale: SupportedLocale) {
+  const dict = locale === "en" ? en : he;
+  return dict.seo[key];
+}
+
+import { cookies } from "next/headers";
 import { en } from "./locales/en";
 import { he } from "./locales/he";
 import type { SupportedLocale } from ".";

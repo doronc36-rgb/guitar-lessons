@@ -11,7 +11,7 @@ type ButtonProps = BaseProps & ButtonHTMLAttributes<HTMLButtonElement> & { href?
 type LinkProps = BaseProps & Pick<AnchorHTMLAttributes<HTMLAnchorElement>, "target" | "rel" | "onClick"> & { href: string };
 
 export default function Button(props: ButtonProps | LinkProps) {
-  const { variant = "primary", className = "", children } = props;
+  const { variant = "primary", className = "", children } = props as BaseProps;
   const style =
     variant === "primary"
       ? "bg-[color:var(--accent)] text-[color:var(--accent-contrast)] hover:brightness-95"
@@ -21,7 +21,7 @@ export default function Button(props: ButtonProps | LinkProps) {
 
   const base = `inline-flex items-center justify-center rounded-xl px-4 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] ${style} ${className}`;
 
-  if ("href" in props && props.href) {
+  if ((props as LinkProps).href !== undefined) {
     const { href, target, rel, onClick } = props as LinkProps;
     return (
       <Link href={href} className={base} target={target} rel={rel} onClick={onClick}>
@@ -30,9 +30,8 @@ export default function Button(props: ButtonProps | LinkProps) {
     );
   }
 
-  const { variant: _v, className: _c, children: _ch, ...buttonProps } = props as ButtonProps;
   return (
-    <button className={base} {...buttonProps}>
+    <button className={base} {...(props as ButtonProps)}>
       {children}
     </button>
   );

@@ -2,8 +2,8 @@
 
 import { useState, useCallback } from "react";
 import { useI18n } from "@/i18n";
-import { t as tf } from "@/i18n";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 function setLocaleCookie(value: "he" | "en") {
   try {
@@ -37,16 +37,16 @@ export default function Header() {
 
   const NavLinks = (
     <nav className="flex flex-col md:flex-row gap-4 items-start md:items-center text-sm">
-      <Link href="/lessons" onClick={close} className={linkClass("/lessons")} aria-current={pathname === "/lessons" ? "page" : undefined}>
+      <Link href="/#lessons" onClick={close} className={linkClass("/")}>
         {t.header.nav.lessons}
       </Link>
-      <Link href="/prices" onClick={close} className={linkClass("/prices")} aria-current={pathname === "/prices" ? "page" : undefined}>
+      <Link href="/#prices" onClick={close} className={linkClass("/")}>
         {t.header.nav.prices}
       </Link>
-      <Link href="/faq" onClick={close} className={linkClass("/faq")} aria-current={pathname === "/faq" ? "page" : undefined}>
+      <Link href="/#faq" onClick={close} className={linkClass("/")}>
         {t.header.nav.faq}
       </Link>
-      <Link href="/contact" onClick={close} className={linkClass("/contact")} aria-current={pathname === "/contact" ? "page" : undefined}>
+      <Link href="/#contact" onClick={close} className={linkClass("/")}>
         {t.header.nav.contact}
       </Link>
       <Link
@@ -77,7 +77,7 @@ export default function Header() {
             </button>
           )}
           <Link href="/" className="font-semibold text-lg inline-flex items-center gap-2">
-            <img src="/logo.svg" alt={t.header.logoAlt} className="w-7 h-7"/>
+            <Image src="/logo.svg" alt={t.header.logoAlt} width={28} height={28} priority />
             {t.header.brand}
           </Link>
         </div>

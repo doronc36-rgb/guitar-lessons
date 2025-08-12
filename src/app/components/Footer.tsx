@@ -27,7 +27,7 @@ export default function SiteFooter() {
             </li>
             <li>
               <Link
-                href="/lessons"
+                href="/#lessons"
                 aria-label={t.footer.links.lessons}
                 className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
@@ -36,7 +36,7 @@ export default function SiteFooter() {
             </li>
             <li>
               <Link
-                href="/prices#pricing"
+                href="/#prices"
                 aria-label={t.footer.links.prices}
                 className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
@@ -45,7 +45,7 @@ export default function SiteFooter() {
             </li>
             <li>
               <Link
-                href="/faq"
+                href="/#faq"
                 aria-label={t.footer.links.faq}
                 className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
@@ -72,7 +72,7 @@ export default function SiteFooter() {
             </li>
             <li>
               <Link
-                href="/contact#contact"
+                href="/#contact"
                 aria-label={t.footer.links.contact}
                 className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >

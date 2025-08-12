@@ -8,6 +8,12 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: seo.title,
     description: seo.description,
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      locale: locale === "en" ? "en_US" : "he_IL",
+      type: "website",
+    },
     alternates: {
       canonical: "/",
       languages: {

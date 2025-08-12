@@ -37,7 +37,7 @@ export default function MarketingHero() {
             <Button href="/contact?type=trial" aria-label={t.home.hero.ariaBookTrial}>
               {t.marketing.hero.ctaPrimary}
             </Button>
-            <Button href="/lessons" variant="secondary" className="bg-[color:var(--surface)] text-[color:var(--foreground)] border-[color:var(--border)] hover:bg-[color:var(--background)]"
+            <Button href="/lessons" variant="secondary" className="bg-[color:var(--surface)] text-[color:var(--foreground)] border-[color:var(--border)] hover:bg-[color:var(--background)]">
               {t.marketing.hero.ctaSecondary}
             </Button>
           </div>

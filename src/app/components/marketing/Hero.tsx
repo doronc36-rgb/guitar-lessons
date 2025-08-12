@@ -10,18 +10,10 @@ export default function MarketingHero() {
   const dir = typeof document !== "undefined" ? document.documentElement.getAttribute("dir") || (locale === "he" ? "rtl" : "ltr") : (locale === "he" ? "rtl" : "ltr");
 
   return (
-    <div id="top" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
+    <div id="top" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
+      {/* Background gradient instead of missing image */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/hero-bg.jpg"
-          alt=""
-          fill
-          className="object-cover"
-          priority
-          aria-hidden
-        />
-        <div className="absolute inset-0 hero-overlay"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
       </div>
       
       {/* Content */}

@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  /* Warm Guitar Wood Palette 🎸 */
-  --background: #F7F3E9; /* warm off-white */
-  --foreground: #2C1810; /* dark coffee brown */
-  --muted: #8B6914; /* golden brown */
-  --border: rgba(44, 24, 16, 0.2);
-  --surface: #FFFFFF;
-  --accent: #D2691E; /* saddle brown */
+  /* Modern High-Contrast Music Theme 🎵 */
+  --background: #FFFFFF; /* pure white */
+  --foreground: #1A1A1A; /* near black */
+  --muted: #6B7280; /* neutral gray */
+  --border: rgba(26, 26, 26, 0.1);
+  --surface: #F9FAFB; /* very light gray */
+  --accent: #3B82F6; /* vibrant blue */
   --accent-contrast: #FFFFFF;
 }
 
@@ -20,11 +20,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #1A1611; /* dark wood */
-    --foreground: #F4E4BC; /* cream text */
-    --muted: #B8860B; /* dark goldenrod */
-    --border: rgba(244, 228, 188, 0.2);
-    --surface: #2C1810; /* coffee brown */
+    --background: #0F172A; /* slate 900 */
+    --foreground: #F1F5F9; /* slate 100 */
+    --muted: #94A3B8; /* slate 400 */
+    --border: rgba(241, 245, 249, 0.1);
+    --surface: #1E293B; /* slate 800 */
   }
 }
 

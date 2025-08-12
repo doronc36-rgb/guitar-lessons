@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  /* Slate + Green palette */
-  --background: #f8fafc; /* slate-50 */
-  --foreground: #0f172a; /* slate-900 */
-  --muted: #475569; /* slate-600 */
-  --border: rgba(15, 23, 42, 0.12); /* slate-900 @ 12% */
-  --surface: #ffffff; /* white cards on slate-50 */
-  --accent: #22c55e; /* green-500 */
-  --accent-contrast: #041311; /* deep near-black for AA on green */
+  /* Brand palette */
+  --background: #F2F4F7; /* light gray */
+  --foreground: #0B132B; /* deep navy */
+  --muted: #3A506B; /* slate-blue */
+  --border: rgba(11, 19, 43, 0.12);
+  --surface: #ffffff;
+  --accent: #5BD1D7; /* teal */
+  --accent-contrast: #1C2541;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-heebo);
-  --font-alt: var(--font-inter);
+  --font-sans: var(--font-heebo), var(--font-rubik), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  --font-alt: var(--font-rubik);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,9 +31,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-heebo), var(--font-inter), ui-sans-serif, system-ui, -apple-system,
-    Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: var(--font-sans);
 }
 
 /* Smooth scrolling for in-page anchors, while respecting reduced motion */

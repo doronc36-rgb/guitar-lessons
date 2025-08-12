@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Heebo, Rubik } from "next/font/google";
 import Script from "next/script";
 // import Link from "next/link";
 import "./globals.css";
@@ -11,14 +11,16 @@ import type { SupportedLocale } from "@/i18n";
 import Header from "./components/Header";
 import SiteFooter from "./components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const heebo = Heebo({
+  variable: "--font-heebo",
+  subsets: ["latin", "hebrew"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const rubik = Rubik({
+  variable: "--font-rubik",
+  subsets: ["latin", "hebrew"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -67,7 +69,7 @@ export default async function RootLayout({
   const dir = cookieLocale === "he" ? "rtl" : "ltr";
   return (
     <html lang={cookieLocale} dir={dir}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${heebo.variable} ${rubik.variable} antialiased`}>
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 bg-white text-black px-3 py-2 rounded"

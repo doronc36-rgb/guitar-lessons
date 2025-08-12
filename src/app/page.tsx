@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
-import HomeClient from "./HomeClient";
 import { getSeoByKey, getServerLocale } from "@/i18n/server";
+import MarketingHero from "./components/marketing/Hero";
+import MarketingFeatures from "./components/marketing/Features";
+import MarketingPricing from "./components/marketing/Pricing";
+import MarketingTestimonials from "./components/marketing/Testimonials";
+import MarketingCTA from "./components/marketing/CTA";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getServerLocale();
@@ -25,5 +29,15 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function Home() {
-  return <HomeClient />;
+  return (
+    <div className="min-h-screen">
+      <MarketingHero />
+      <div id="lessons" className="scroll-mt-28" />
+      <MarketingFeatures />
+      <MarketingPricing />
+      <div id="faq" className="scroll-mt-28" />
+      <MarketingTestimonials />
+      <MarketingCTA />
+    </div>
+  );
 }

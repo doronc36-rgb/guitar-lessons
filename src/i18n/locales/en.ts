@@ -76,6 +76,44 @@ export const en = {
       next: "Next slide",
     },
   },
+  marketing: {
+    hero: {
+      title: "Friendly, professional music lessons in Ashkelon",
+      subtitle: "Guitar and piano for all levels. Personalized plan, clear progress and lots of fun.",
+      ctaPrimary: "Book a lesson",
+      ctaSecondary: "About the lessons",
+      quick: {
+        features: "Features",
+        pricing: "Pricing",
+        contact: "Contact",
+      },
+    },
+    features: {
+      title: "What you get",
+      subtitle: "Clear structure, flexible formats and songs you love.",
+      items: [
+        { title: "Personal plan", body: "Goals, schedule and materials tailored to you." },
+        { title: "Flexible formats", body: "Private 1:1, small groups and school programs." },
+        { title: "Practice guidance", body: "Weekly tips, sheets and rhythm/theory basics." },
+      ],
+    },
+    pricing: {
+      title: "Pricing",
+      subtitle: "Transparent and simple. 24h cancellation policy.",
+      ctaContact: "Contact us",
+      ctaLessons: "See lessons",
+    },
+    testimonials: {
+      title: "What students say",
+      subtitle: "Real feedback from students and parents.",
+    },
+    cta: {
+      title: "Ready to start?",
+      subtitle: "Send a message or ping on WhatsApp and book your trial lesson.",
+      ctaPrimary: "Contact",
+      ctaSecondary: "WhatsApp",
+    },
+  },
   lessons: {
     title: "Lessons",
     instruments: {

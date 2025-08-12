@@ -3,7 +3,7 @@
 import Section from "./ui/Section";
 import { useEffect, useMemo, useState } from "react";
 import { useI18n } from "@/i18n";
-import { testimonials as testimonialsByLocale, type Testimonial } from "@/content/testimonials";
+import { reviews as reviewsByLocale, type Review } from "@/content/reviews";
 
 export default function Testimonials({ dir }: { dir?: "ltr" | "rtl" }) {
   const { locale, t } = useI18n();
@@ -20,12 +20,20 @@ export default function Testimonials({ dir }: { dir?: "ltr" | "rtl" }) {
 
   const effectiveDir: "ltr" | "rtl" = dir ?? docDir;
 
-  const list: Testimonial[] = useMemo(() => {
-    return (testimonialsByLocale[locale] as Testimonial[]) || [];
+  const list: Review[] = useMemo(() => {
+    const base = (reviewsByLocale[locale] as Review[]) || [];
+    if (base.length >= 6) return base;
+    const other = (reviewsByLocale[locale === "he" ? "en" : "he"] as Review[]) || [];
+    const merged = [...base];
+    for (const r of other) {
+      if (merged.length >= 6) break;
+      merged.push({ ...r, lang: locale });
+    }
+    return merged;
   }, [locale]);
 
   const isOdd = list.length % 2 === 1;
-  const paddedList = isOdd ? [...list, { name: "", text: "" }] : list;
+  const paddedList = isOdd ? [...list, { name: "", text: "", lang: locale }] : list;
 
   function Stars({ rating = 5 }: { rating?: number }) {
     const rounded = Math.round(rating);
@@ -83,8 +91,8 @@ export default function Testimonials({ dir }: { dir?: "ltr" | "rtl" }) {
                       </span>
                     )}
                   </div>
-                  {r.date && (
-                    <div className="text-xs text-neutral-600 mt-1">{r.date}</div>
+                  {r.dateISO && (
+                    <div className="text-xs text-neutral-600 mt-1">{r.dateISO}</div>
                   )}
                   <p className="mt-2 text-neutral-800 leading-7">{r.text}</p>
                 </li>

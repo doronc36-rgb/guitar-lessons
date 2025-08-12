@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand palette */
-  --background: #F2F4F7; /* light gray */
-  --foreground: #0B132B; /* deep navy */
-  --muted: #3A506B; /* slate-blue */
-  --border: rgba(11, 19, 43, 0.12);
-  --surface: #ffffff;
-  --accent: #5BD1D7; /* teal */
-  --accent-contrast: #1C2541;
+  /* Bold Music-Inspired Palette 🎸 */
+  --background: #FFF8E7; /* warm cream */
+  --foreground: #2D1B69; /* deep purple */
+  --muted: #8B5A8C; /* plum */
+  --border: rgba(45, 27, 105, 0.15);
+  --surface: #FFFFFF;
+  --accent: #FF6B35; /* electric orange */
+  --accent-contrast: #FFFFFF;
 }
 
 @theme inline {
@@ -20,11 +20,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0b1220; /* slate-950-ish */
-    --foreground: #e2e8f0; /* slate-200 */
-    --muted: #94a3b8; /* slate-400 */
-    --border: rgba(226, 232, 240, 0.16);
-    --surface: #111827; /* slate-900 */
+    --background: #1A0B33; /* deep purple night */
+    --foreground: #FFE5B4; /* warm gold */
+    --muted: #B19CD9; /* lavender */
+    --border: rgba(255, 229, 180, 0.2);
+    --surface: #2D1B69; /* rich purple */
   }
 }
 

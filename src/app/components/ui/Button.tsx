@@ -1,37 +1,42 @@
+import { ReactNode } from "react";
 import Link from "next/link";
-import { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 
-type BaseProps = {
-  variant?: "primary" | "secondary" | "ghost";
+interface ButtonProps {
+  href?: string;
+  variant?: "primary" | "secondary";
+  children: ReactNode;
   className?: string;
-  children: React.ReactNode;
-};
+  target?: string;
+  rel?: string;
+  "aria-label"?: string;
+}
 
-type ButtonProps = BaseProps & ButtonHTMLAttributes<HTMLButtonElement> & { href?: undefined };
-type LinkProps = BaseProps & Pick<AnchorHTMLAttributes<HTMLAnchorElement>, "target" | "rel" | "onClick"> & { href: string };
+export default function Button({
+  href,
+  variant = "primary",
+  children,
+  className = "",
+  ...props
+}: ButtonProps) {
+  const baseClasses = "inline-flex items-center justify-center px-4 py-2 rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--primary)] focus-visible:ring-offset-2";
+  
+  const variantClasses = {
+    primary: "bg-[color:var(--primary)] text-white font-bold hover:bg-[#d63384]",
+    secondary: "border border-[color:var(--border)] bg-[color:var(--surface)] text-[color:var(--foreground)] hover:bg-[color:var(--background)]",
+  };
 
-export default function Button(props: ButtonProps | LinkProps) {
-  const { variant = "primary", className = "", children } = props as BaseProps;
-  const style =
-    variant === "primary"
-      ? "bg-[color:var(--accent)] text-[color:var(--accent-contrast)] hover:brightness-95"
-      : variant === "secondary"
-      ? "border hover:bg-black/5"
-      : "hover:bg-black/5";
+  const classes = `${baseClasses} ${variantClasses[variant]} ${className}`;
 
-  const base = `inline-flex items-center justify-center rounded-xl px-4 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] ${style} ${className}`;
-
-  if ((props as LinkProps).href !== undefined) {
-    const { href, target, rel, onClick } = props as LinkProps;
+  if (href) {
     return (
-      <Link href={href} className={base} target={target} rel={rel} onClick={onClick}>
+      <Link href={href} className={classes} {...props}>
         {children}
       </Link>
     );
   }
 
   return (
-    <button className={base} {...(props as ButtonProps)}>
+    <button type="button" className={classes} {...props}>
       {children}
     </button>
   );

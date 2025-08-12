@@ -10,50 +10,50 @@ export default function MarketingHero() {
   const dir = typeof document !== "undefined" ? document.documentElement.getAttribute("dir") || (locale === "he" ? "rtl" : "ltr") : (locale === "he" ? "rtl" : "ltr");
 
   return (
-    <div id="top" className="relative overflow-hidden bg-[color:var(--background)]">
-      <Container className="py-14 md:py-20">
-        <div className="grid md:grid-cols-2 items-center gap-8">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-semibold text-[color:var(--foreground)] leading-tight">
-              {t.marketing.hero.title}
-            </h1>
-            <p className="mt-4 text-lg text-[color:var(--muted)]">
-              {t.marketing.hero.subtitle}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/contact?type=trial" aria-label={t.home.hero.ariaBookTrial}>
-                {t.marketing.hero.ctaPrimary}
-              </Button>
-              <Button href="/lessons" variant="secondary">
-                {t.marketing.hero.ctaSecondary}
-              </Button>
-            </div>
-            <div className="mt-6 flex gap-4 text-sm">
-              <a
-                href="#features"
-                className="underline underline-offset-4 hover:opacity-80"
-              >
-                {t.marketing.hero.quick.features}
-              </a>
-              <a href="#pricing" className="underline underline-offset-4 hover:opacity-80">
-                {t.marketing.hero.quick.pricing}
-              </a>
-              <a href="#contact" className="underline underline-offset-4 hover:opacity-80">
-                {t.marketing.hero.quick.contact}
-              </a>
-            </div>
+    <div id="top" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/hero-bg.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+          aria-hidden
+        />
+        <div className="absolute inset-0 hero-overlay"></div>
+      </div>
+      
+      {/* Content */}
+      <Container className="relative z-10 py-20 text-center">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
+            {t.marketing.hero.title}
+          </h1>
+          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
+            {t.marketing.hero.subtitle}
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center mb-8">
+            <Button href="/contact?type=trial" aria-label={t.home.hero.ariaBookTrial}>
+              {t.marketing.hero.ctaPrimary}
+            </Button>
+            <Button href="/lessons" variant="secondary" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
+              {t.marketing.hero.ctaSecondary}
+            </Button>
           </div>
-          <div className="relative h-56 md:h-80 surface rounded-md shadow-sm flex items-center justify-center">
-            <Image
-              src="/window.svg"
-              alt=""
-              aria-hidden
-              width={320}
-              height={320}
-              className="w-48 h-48 md:w-64 md:h-64"
-              priority
-            />
-            <span className="sr-only">{dir === "rtl" ? "אלמנט קישוטי" : "Decorative element"}</span>
+          <div className="flex gap-6 justify-center text-white/80">
+            <a
+              href="#features"
+              className="underline underline-offset-4 hover:text-white transition-colors"
+            >
+              {t.marketing.hero.quick.features}
+            </a>
+            <a href="#pricing" className="underline underline-offset-4 hover:text-white transition-colors">
+              {t.marketing.hero.quick.pricing}
+            </a>
+            <a href="#contact" className="underline underline-offset-4 hover:text-white transition-colors">
+              {t.marketing.hero.quick.contact}
+            </a>
           </div>
         </div>
       </Container>

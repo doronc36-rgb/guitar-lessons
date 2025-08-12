@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Heebo, Rubik } from "next/font/google";
+import { Poppins, Open_Sans, Pacifico } from "next/font/google";
 import Script from "next/script";
 // import Link from "next/link";
 import "./globals.css";
@@ -11,15 +11,24 @@ import type { SupportedLocale } from "@/i18n";
 import Header from "./components/Header";
 import SiteFooter from "./components/Footer";
 
-const heebo = Heebo({
-  variable: "--font-heebo",
-  subsets: ["latin", "hebrew"],
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
   display: "swap",
 });
 
-const rubik = Rubik({
-  variable: "--font-rubik",
-  subsets: ["latin", "hebrew"],
+const openSans = Open_Sans({
+  variable: "--font-open-sans",
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  display: "swap",
+});
+
+const pacifico = Pacifico({
+  variable: "--font-pacifico",
+  subsets: ["latin"],
+  weight: ["400"],
   display: "swap",
 });
 
@@ -69,7 +78,7 @@ export default async function RootLayout({
   const dir = cookieLocale === "he" ? "rtl" : "ltr";
   return (
     <html lang={cookieLocale} dir={dir}>
-      <body className={`${heebo.variable} ${rubik.variable} antialiased`}>
+      <body className={`${poppins.variable} ${openSans.variable} ${pacifico.variable} antialiased`}>
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 bg-white text-black px-3 py-2 rounded"

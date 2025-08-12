@@ -7,7 +7,7 @@ export type Review = {
   source?: string;
 };
 
-export const reviews = {
+export const reviews: Record<"he" | "en", Review[]> = {
   he: [
     {
       name: "Elya",
@@ -73,6 +73,6 @@ export const reviews = {
       lang: "en",
     },
   ],
-} as const;
+};
 
 

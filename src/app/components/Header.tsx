@@ -52,7 +52,7 @@ export default function Header() {
       <Link
         href="/booking"
         onClick={close}
-          className="rounded-lg px-3 py-1.5 bg-black text-white hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+          className="rounded-lg px-3 py-1.5 bg-[color:var(--accent)] text-[color:var(--accent-contrast)] hover:bg-orange-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
       >
         {t.common.bookLesson}
       </Link>
@@ -70,7 +70,7 @@ export default function Header() {
             <button
               type="button"
               onClick={goBack}
-              className="rounded-lg border px-3 py-1.5 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+              className="rounded-lg border border-[color:var(--border)] px-3 py-1.5 hover:bg-[color:var(--background)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               aria-label={t.header.backAria}
             >
               {t.header.back}
@@ -87,7 +87,7 @@ export default function Header() {
           <button
             type="button"
             onClick={switchLocale}
-            className="rounded-lg border px-3 py-1.5 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+            className="rounded-lg border border-[color:var(--border)] px-3 py-1.5 hover:bg-[color:var(--background)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
             aria-label={locale === "he" ? t.header.language.switchToEn : t.header.language.switchToHe}
           >
             {locale === "he" ? "EN" : "HE"}

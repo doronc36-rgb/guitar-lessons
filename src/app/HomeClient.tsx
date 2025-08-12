@@ -14,7 +14,7 @@ export default function HomeClient() {
         <Container className="py-12 md:py-16">
           <div className="surface px-6 md:px-10 py-10 text-center space-y-5">
         <h1 className="text-4xl md:text-5xl font-semibold">{t.home.hero.title}</h1>
-        <p className="text-lg text-neutral-700">{t.home.hero.subtitle}</p>
+        <p className="text-lg text-[color:var(--muted)]">{t.home.hero.subtitle}</p>
             <div className="mt-6 flex gap-3 justify-center flex-wrap">
               <Button href="/contact?type=trial" aria-label={t.home.hero.ariaBookTrial}>
                 {t.home.hero.ctaBooking}
@@ -40,21 +40,21 @@ export default function HomeClient() {
       <Container className="mt-12">
         <div className="grid gap-8 md:grid-cols-3">
           <Section id="about" title={t.home.fitFor.title}>
-            <ul className="list-disc pr-6 mt-1 text-neutral-800 space-y-1">
+            <ul className="list-disc pr-6 mt-1 text-[color:var(--foreground)] space-y-1">
               {t.home.fitFor.items.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
           </Section>
           <Section title={t.home.whatYouGet.title}>
-            <ul className="list-disc pr-6 mt-1 text-neutral-800 space-y-1">
+            <ul className="list-disc pr-6 mt-1 text-[color:var(--foreground)] space-y-1">
               {t.home.whatYouGet.items.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
           </Section>
           <Section title={t.home.howItWorks.title}>
-            <ol className="list-decimal pr-6 mt-1 text-neutral-800 space-y-1">
+            <ol className="list-decimal pr-6 mt-1 text-[color:var(--foreground)] space-y-1">
               {t.home.howItWorks.steps.map((step) => (
                 <li key={step}>{step}</li>
               ))}

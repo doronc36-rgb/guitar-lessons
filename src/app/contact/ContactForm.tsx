@@ -87,7 +87,7 @@ export default function ContactForm() {
       <div className="max-w-md w-full space-y-6">
         <div className="text-center">
           <h1 className="text-3xl font-semibold">{t.contact.title}</h1>
-          <p className="text-neutral-600 mt-2">{t.contact.subtitle}</p>
+          <p className="text-[color:var(--muted)] mt-2">{t.contact.subtitle}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -148,7 +148,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+            className="w-full bg-[color:var(--accent)] text-[color:var(--accent-contrast)] py-2 px-4 rounded-lg hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
           >
             {isSubmitting ? t.contact.form.sending : t.contact.form.submit}
           </button>

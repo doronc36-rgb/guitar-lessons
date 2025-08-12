@@ -18,10 +18,10 @@ export default function Button({
   className = "",
   ...props
 }: ButtonProps) {
-  const baseClasses = "inline-flex items-center justify-center px-4 py-2 rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--primary)] focus-visible:ring-offset-2";
+  const baseClasses = "inline-flex items-center justify-center px-4 py-2 rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2";
   
   const variantClasses = {
-    primary: "bg-[color:var(--primary)] text-white font-bold hover:bg-[#d63384]",
+    primary: "bg-[color:var(--accent)] text-[color:var(--accent-contrast)] font-bold hover:bg-orange-700",
     secondary: "border border-[color:var(--border)] bg-[color:var(--surface)] text-[color:var(--foreground)] hover:bg-[color:var(--background)]",
   };
 

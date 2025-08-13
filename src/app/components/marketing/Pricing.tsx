@@ -18,7 +18,7 @@ export default function MarketingPricing() {
               "border-l-4 border-indigo-500 bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-indigo-800/20"
             ];
             return (
-              <div key={p.label} className={`p-6 rounded-md shadow-sm border border-gray-100 dark:border-gray-700 ${colors[index % 3]}`}>
+              <div key={p.label} className={`p-6 rounded-md shadow-sm border border-gray-100 dark:border-gray-700 text-center ${colors[index % 3]}`}>
                 <div className="font-medium text-[color:var(--foreground)]">{p.label}</div>
                 <div className="mt-2 text-2xl font-bold text-[color:var(--foreground)]">{p.price}</div>
               </div>

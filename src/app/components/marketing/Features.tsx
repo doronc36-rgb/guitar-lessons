@@ -17,7 +17,7 @@ export default function MarketingFeatures() {
               "border-l-4 border-orange-500 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20"
             ];
             return (
-              <div key={f.title} className={`p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 ${colors[index % 3]}`}>
+              <div key={f.title} className={`p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 text-center ${colors[index % 3]}`}>
                 <div className="text-xl font-semibold text-[color:var(--foreground)] mb-3">{f.title}</div>
                 <p className="text-[color:var(--muted)] leading-relaxed">{f.body}</p>
               </div>

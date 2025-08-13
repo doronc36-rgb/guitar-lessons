@@ -37,16 +37,16 @@ export default function Header() {
 
   const NavLinks = (
     <nav className="flex flex-col md:flex-row gap-4 items-start md:items-center text-sm">
-      <Link href="/#lessons" onClick={close} className={linkClass("/")}>
+      <Link href="/lessons" onClick={close} className={linkClass("/lessons")}>
         {t.header.nav.lessons}
       </Link>
-      <Link href="/#prices" onClick={close} className={linkClass("/")}>
+      <Link href="/prices" onClick={close} className={linkClass("/prices")}>
         {t.header.nav.prices}
       </Link>
-      <Link href="/#faq" onClick={close} className={linkClass("/")}>
+      <Link href="/faq" onClick={close} className={linkClass("/faq")}>
         {t.header.nav.faq}
       </Link>
-      <Link href="/#contact" onClick={close} className={linkClass("/")}>
+      <Link href="/contact" onClick={close} className={linkClass("/contact")}>
         {t.header.nav.contact}
       </Link>
       <Link

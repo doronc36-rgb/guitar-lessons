@@ -96,6 +96,19 @@ export default async function RootLayout({
           {/* Allow switching locale by hl=en|he in URL */}
           <LocaleFromQuery />
         </Providers>
+        {/* Google Analytics 4 */}
+        <Script 
+          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" 
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XXXXXXXXXX');
+          `}
+        </Script>
         <Script id="ld-local-business" type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -114,10 +127,37 @@ export default async function RootLayout({
               addressCountry: "IL",
             },
             makesOffer: [
-              { "@type": "Offer", name: "שיעורי גיטרה פרטיים" },
-              { "@type": "Offer", name: "שיעורי פסנתר פרטיים" },
-              { "@type": "Offer", name: "שיעורים קבוצתיים 2–4" },
+              { 
+                "@type": "Offer", 
+                name: "שיעורי גיטרה פרטיים",
+                description: "שיעורים פרטיים לגיטרה לכל הרמות",
+                priceCurrency: "ILS", 
+                price: "120-150",
+                availability: "https://schema.org/InStock"
+              },
+              { 
+                "@type": "Offer", 
+                name: "שיעורי פסנתר פרטיים",
+                description: "הוראת פסנתר אישית למתחילים ומתקדמים", 
+                priceCurrency: "ILS", 
+                price: "120-150",
+                availability: "https://schema.org/InStock"
+              },
+              { 
+                "@type": "Offer", 
+                name: "שיעורים קבוצתיים 2–4",
+                description: "שיעורים בקבוצות קטנות",
+                priceCurrency: "ILS"
+              },
             ],
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.9",
+              reviewCount: "15",
+              bestRating: "5"
+            },
+            openingHours: "Mo-Su 09:00-21:00",
+            paymentAccepted: "Cash, Bank Transfer",
           })}
         </Script>
       </body>

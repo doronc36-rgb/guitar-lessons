@@ -34,15 +34,6 @@ export default function MarketingHero() {
             </Button>
           </div>
           <div className="flex gap-6 justify-center text-white/80">
-            <a
-              href="#features"
-              className="underline underline-offset-4 hover:text-white transition-colors"
-            >
-              {t.marketing.hero.quick.features}
-            </a>
-            <a href="#pricing" className="underline underline-offset-4 hover:text-white transition-colors">
-              {t.marketing.hero.quick.pricing}
-            </a>
             <a href="#contact" className="underline underline-offset-4 hover:text-white transition-colors">
               {t.marketing.hero.quick.contact}
             </a>

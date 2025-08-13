@@ -168,7 +168,7 @@ export const en = {
       "Gear guidance and home practice",
       "Flexible scheduling and location",
     ],
-    todo: "TODO: integrate Calendly",
+    callToAction: "Contact us to schedule a trial lesson",
     linkPrices: "Go to prices",
     wantPrices: "Want to know prices?",
   },

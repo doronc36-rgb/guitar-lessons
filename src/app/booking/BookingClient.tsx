@@ -24,7 +24,7 @@ export default function BookingClient() {
         </Button>
       </div>
 
-      <p className="text-sm text-neutral-600">{t.booking.todo}</p>
+      <p className="text-sm text-neutral-600">{t.booking.callToAction}</p>
 
       <p className="text-neutral-700">
         {t.booking.wantPrices}{" "}

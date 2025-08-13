@@ -7,50 +7,56 @@ export default function SiteFooter() {
   const { t } = useI18n();
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-16 border-t bg-gradient-to-b from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-950">
-      <div className="max-w-6xl mx-auto px-4 py-10">
+    <footer className="mt-20 bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950 border-t border-neutral-200 dark:border-neutral-800">
+      <div className="max-w-5xl mx-auto px-6 py-12">
         
         {/* Main Footer Content */}
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-sm">
+        <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-sm">
           
           {/* About & Contact Combined */}
-          <div className="space-y-6">
+          <div className="space-y-8">
             <div>
-              <h3 className="font-semibold text-lg text-[color:var(--foreground)] mb-3">{t.footer.about.title}</h3>
-              <p className="text-[color:var(--muted)] leading-relaxed mb-4">{t.footer.about.body}</p>
+              <h3 className="font-bold text-xl text-[color:var(--foreground)] mb-4">{t.footer.about.title}</h3>
+              <p className="text-[color:var(--muted)] leading-relaxed text-base">{t.footer.about.body}</p>
             </div>
             
-            <div>
-              <h4 className="font-medium text-[color:var(--foreground)] mb-3">{t.footer.contact.title}</h4>
-              <div className="space-y-2 text-[color:var(--muted)]">
-                <div className="flex items-center gap-2">
-                  <span className="text-green-600">📱</span>
+            <div className="bg-white dark:bg-neutral-800 rounded-lg p-5 shadow-sm border border-neutral-200 dark:border-neutral-700">
+              <h4 className="font-semibold text-[color:var(--foreground)] mb-4 text-lg">{t.footer.contact.title}</h4>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 group">
+                  <div className="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
+                    <span className="text-green-600 text-sm">📱</span>
+                  </div>
                   <a
                     href="https://wa.me/972535247393"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={t.footer.aria.whatsappOpen}
-                    className="hover:text-[color:var(--foreground)] transition-colors"
+                    className="text-[color:var(--foreground)] hover:text-green-600 transition-colors font-medium"
                   >
-                    053-524-7393
+                    WhatsApp: 053-524-7393
                   </a>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-blue-600">📞</span>
+                <div className="flex items-center gap-3 group">
+                  <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
+                    <span className="text-blue-600 text-sm">📞</span>
+                  </div>
                   <a
                     href="tel:+972535247393"
                     aria-label={t.footer.aria.phoneDial}
-                    className="hover:text-[color:var(--foreground)] transition-colors"
+                    className="text-[color:var(--foreground)] hover:text-blue-600 transition-colors font-medium"
                   >
                     053-524-7393
                   </a>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-600">✉️</span>
+                <div className="flex items-center gap-3 group">
+                  <div className="w-8 h-8 bg-gray-100 dark:bg-gray-900/30 rounded-full flex items-center justify-center">
+                    <span className="text-gray-600 text-sm">✉️</span>
+                  </div>
                   <a
                     href="mailto:doron.c@live.com"
                     aria-label={t.footer.aria.emailSend}
-                    className="hover:text-[color:var(--foreground)] transition-colors"
+                    className="text-[color:var(--foreground)] hover:text-gray-600 transition-colors font-medium"
                   >
                     doron.c@live.com
                   </a>
@@ -61,76 +67,72 @@ export default function SiteFooter() {
 
           {/* Navigation Links */}
           <div>
-            <h3 className="font-semibold text-lg text-[color:var(--foreground)] mb-4">{t.footer.links.title}</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div className="space-y-2">
-                <Link
-                  href="/"
-                  className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-1"
-                >
-                  {t.footer.links.home}
-                </Link>
-                <Link
-                  href="/lessons"
-                  className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-1"
-                >
-                  {t.footer.links.lessons}
-                </Link>
-                <Link
-                  href="/prices"
-                  className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-1"
-                >
-                  {t.footer.links.prices}
-                </Link>
-              </div>
-              <div className="space-y-2">
-                <Link
-                  href="/faq"
-                  className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-1"
-                >
-                  {t.footer.links.faq}
-                </Link>
-                <Link
-                  href="/booking"
-                  className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-1"
-                >
-                  {t.footer.links.booking}
-                </Link>
-                <Link
-                  href="/#reviews"
-                  className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-1"
-                >
-                  {t.home?.testimonials?.title || 'Reviews'}
-                </Link>
-              </div>
+            <h3 className="font-bold text-xl text-[color:var(--foreground)] mb-5">{t.footer.links.title}</h3>
+            <div className="space-y-3">
+              <Link
+                href="/"
+                className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-2 px-3 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 font-medium"
+              >
+                {t.footer.links.home}
+              </Link>
+              <Link
+                href="/lessons"
+                className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-2 px-3 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 font-medium"
+              >
+                {t.footer.links.lessons}
+              </Link>
+              <Link
+                href="/prices"
+                className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-2 px-3 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 font-medium"
+              >
+                {t.footer.links.prices}
+              </Link>
+              <Link
+                href="/faq"
+                className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-2 px-3 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 font-medium"
+              >
+                {t.footer.links.faq}
+              </Link>
+              <Link
+                href="/booking"
+                className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-2 px-3 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 font-medium"
+              >
+                {t.footer.links.booking}
+              </Link>
             </div>
           </div>
 
           {/* Legal & Support */}
           <div>
-            <h3 className="font-semibold text-lg text-[color:var(--foreground)] mb-4">{t.footer.links.legal}</h3>
-            <div className="space-y-2">
+            <h3 className="font-bold text-xl text-[color:var(--foreground)] mb-5">{t.footer.links.legal}</h3>
+            <div className="space-y-3">
               <Link
                 href="/#contact"
-                className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-1"
+                className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-2 px-3 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 font-medium"
               >
                 {t.footer.links.contact}
               </Link>
               <Link
+                href="/#reviews"
+                className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-2 px-3 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 font-medium"
+              >
+                {t.home?.testimonials?.title || 'Reviews'}
+              </Link>
+              <Link
                 href="/terms"
-                className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-1"
+                className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-2 px-3 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 font-medium"
               >
                 {t.terms.title}
               </Link>
               <Link
                 href="/privacy"
-                className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-1"
+                className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-2 px-3 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 font-medium"
               >
                 {t.privacy.title}
               </Link>
               <Link
                 href="/accessibility"
-                className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-1"
+                className="block text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors py-2 px-3 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 font-medium"
               >
                 {t.accessibility.title}
               </Link>

@@ -14,10 +14,20 @@ export async function POST(request: NextRequest) {
       ip: request.headers.get('x-forwarded-for') || 'unknown'
     });
     
-    // In a real application, you might want to:
-    // - Save to a database
-    // - Send an email notification
-    // - Integrate with a CRM system
+    // Send email notification to you
+    const emailResult = await sendContactEmail({
+      name: body.name,
+      email: body.email,
+      message: body.message,
+      timestamp: new Date().toISOString(),
+      userAgent: request.headers.get('user-agent') || 'Unknown',
+      ip: request.headers.get('x-forwarded-for') || 'unknown'
+    });
+    
+    if (!emailResult.success) {
+      console.error('Failed to send email:', emailResult.error);
+      // Still return success to user but log the email failure
+    }
     
     return NextResponse.json({ ok: true }, { status: 200 });
   } catch (error) {
@@ -26,5 +36,48 @@ export async function POST(request: NextRequest) {
       { error: 'Failed to process request' },
       { status: 500 }
     );
+  }
+}
+
+// Email service using EmailJS (free service)
+async function sendContactEmail(data: {
+  name: string;
+  email: string;
+  message: string;
+  timestamp: string;
+  userAgent: string;
+  ip: string;
+}) {
+  try {
+    // Using EmailJS REST API (free tier: 200 emails/month)
+    const emailJSResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        service_id: process.env.EMAILJS_SERVICE_ID || 'service_xxxxxxx', // You need to set this
+        template_id: process.env.EMAILJS_TEMPLATE_ID || 'template_xxxxxxx', // You need to set this
+        user_id: process.env.EMAILJS_PUBLIC_KEY || 'your_public_key', // You need to set this
+        template_params: {
+          to_email: 'doron.c@live.com',
+          from_name: data.name,
+          from_email: data.email,
+          message: data.message,
+          timestamp: data.timestamp,
+          user_agent: data.userAgent,
+          ip_address: data.ip,
+          subject: `New Contact Form Message from ${data.name}`,
+        }
+      })
+    });
+
+    if (emailJSResponse.ok) {
+      return { success: true };
+    } else {
+      return { success: false, error: 'EmailJS API error' };
+    }
+  } catch (error) {
+    return { success: false, error: error };
   }
 }

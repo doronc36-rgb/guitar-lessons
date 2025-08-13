@@ -6,16 +6,28 @@ export type Testimonial = {
   source?: "google" | "limudnaim" | "other";
 };
 
-// Centralized testimonials in both locales.
-// NOTE: Please complete the Hebrew list to include ALL 11 reviews previously provided.
+// Complete testimonials collection from all sources
 export const testimonials = {
   he: [
-    // From src/data/reviews.ts (normalized)
+    {
+      name: "שיר",
+      text: "מקצועי, סבלני, ממליצה בחום",
+      rating: 5,
+      date: "2024-07-02",
+      source: "limudnaim",
+    },
     {
       name: "Elya",
-      text: "מורה סבלני, מקצועי, משיב לשובות מהר, שיעור ראשון וכבר מרגישים התקדמות.",
+      text: "מורה סבלני, מקצועי, משיב תשובות מהר. שיעור ראשון וכבר מרגיש התקדמות.",
       rating: 5,
       date: "2024-08-06",
+      source: "limudnaim",
+    },
+    {
+      name: "אמיר",
+      text: "אלוף מסביר הכל, סבלני, מקצועי בחום",
+      rating: 5,
+      date: "2024-06-14",
       source: "limudnaim",
     },
     {
@@ -25,44 +37,71 @@ export const testimonials = {
       date: "2024-06-17",
       source: "limudnaim",
     },
-
-    // From src/content/reviews.he.json (normalized)
-    {
-      name: "איליה",
-      text: "מורה סבלני, מקצועי, משיב לשאלות מהר. שיעור ראשון וכבר מרגישים התקדמות.",
-      rating: 5,
-      source: "other",
-    },
-    {
-      name: "מישל",
-      text: "מורה מאוד סבלני, הולך עם קצב התלמיד. בתי נהנתה מאוד מהשיעורים עם דורון.",
-      rating: 5,
-      source: "other",
-    },
     {
       name: "דבורה",
-      text: "מורה מעולה!",
+      text: "מורה מעולה!!!!",
       rating: 5,
-      source: "other",
+      date: "2024-04-26",
+      source: "limudnaim",
+    },
+    {
+      name: "ענבל",
+      text: "דורון מורה מקצועי, אדיב ונבול ידע רחב. יחסי אנוש מצוינים. נחון את המטרה, ממולץ, מכניסן.",
+      rating: 5,
+      date: "2024-04-26",
+      source: "limudnaim",
     },
     {
       name: "אלכסנדרה",
-      text: "תמיד עם פוזיטיביות וסבלנות! יודע איך ללמד ולדבר על שירים אהובים. מומלץ!",
+      text: "דורון הוא בן אדם מאוד מקצועי וכרוזמטי! תמיד עם פוזיטיביות וסבלנות! הוא יודע איך ללמד ואפשר לראות כל סוג שיעורים והוא מדבר ונלמד גם באנגלית! מאוד מרוצה!",
       rating: 5,
-      source: "other",
+      date: "2024-02-12",
+      source: "limudnaim",
     },
-    // TODO: Add the remaining Hebrew reviews to reach all 11 provided.
+    {
+      name: "glowup",
+      text: "דורון מורה מצויין קשוב ומקצועי יש לו ידע נרחב והוא מעביר אותו בצורה קלילה ונעימה",
+      rating: 5,
+      date: "2024-03-25",
+      source: "limudnaim",
+    },
+    {
+      name: "Elya Abarjel",
+      text: "מורה מעולה, מסביר באופן הכי יסודי שאפשר. עד שלא הבנתי לא הפסיק לעזור. חווית למידה כיפית וקלילה וטובה מאוד. ממליץ!",
+      rating: 5,
+      date: "2024-11-01",
+      source: "google",
+    },
+    {
+      name: "Yoed Levy",
+      text: "מורה ממש טוב, סבלני ומקצועי. אני למדתי אצלו גיטרה ואני מרגיש שיפור משמעותי משיעור לשיעור",
+      rating: 5,
+      date: "2024-09-15",
+      source: "google",
+    },
+    {
+      name: "tami van",
+      text: "דורון מורה מדהים שלא רק מלמד אלא יש לו גישה ממש לתלמידים. ממליץ בחום!!!",
+      rating: 5,
+      date: "2024-12-25",
+      source: "google",
+    },
+    {
+      name: "kaktusik",
+      text: "מורה נפלא, מסביר הכל בסבלנות עם טיפים שווים כדי לנגן טוב יותר. כאשר באתי אליו הבנתי שלא הייתי יודע כלום, התוצאות למידה כיפית וקלילה וטובה מאוד. ממליץ! לתלמידים או מתחילים במוזיקה בכלי כלשהו, מורה סבלני, מעודד, ממולץ!",
+      rating: 5,
+      date: "2024-12-25",
+      source: "google",
+    },
   ],
   en: [
-    // From src/data/reviews.ts
     {
       name: "Coco Baby",
       text: "Patient and clear, amazing teacher.",
       rating: 5,
-      date: "2025-08-08",
+      date: "2024-12-25",
       source: "google",
     },
-    // From src/content/reviews.en.json
     {
       name: "Alex",
       text: "Patient and clear. Highly recommended!",

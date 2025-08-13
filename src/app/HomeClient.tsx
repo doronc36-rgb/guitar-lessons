@@ -46,7 +46,7 @@ export default function HomeClient() {
               ))}
             </ul>
           </Section>
-          <Section title={t.home.whatYouGet.title}>
+          <Section title={t.home.whatYouGet.title} intro={t.marketing.features.subtitle}>
             <ul className="list-disc pr-6 mt-1 text-[color:var(--foreground)] space-y-1">
               {t.home.whatYouGet.items.map((item) => (
                 <li key={item}>{item}</li>

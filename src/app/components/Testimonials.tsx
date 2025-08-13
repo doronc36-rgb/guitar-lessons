@@ -54,7 +54,7 @@ export default function Testimonials({ dir }: { dir?: "ltr" | "rtl" }) {
   }
 
   return (
-    <Section title={t.home.testimonials.title} className="mt-12">
+    <Section title={t.home.testimonials.title} intro={t.marketing.testimonials.subtitle} className="mt-12">
       <div role="region" aria-label={t.home.testimonials.regionAria} dir={effectiveDir}>
         {paddedList.length === 0 ? (
           <div className="surface p-6 text-center text-[color:var(--muted)]">

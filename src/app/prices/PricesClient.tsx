@@ -7,7 +7,8 @@ export default function PricesClient() {
   const { t } = useI18n();
   return (
     <div id="pricing" className="min-h-screen p-6 md:p-10 max-w-3xl mx-auto space-y-8 scroll-mt-28">
-      <h1 className="text-3xl font-semibold">{t.prices.title}</h1>
+      <h1 className="text-3xl font-semibold text-center">{t.prices.title}</h1>
+      <p className="text-center text-[color:var(--muted)] mt-2">{t.marketing.pricing.subtitle}</p>
 
       <ul className="divide-y border rounded-lg">
         {t.prices.items.map((row) => (

@@ -174,7 +174,49 @@ export const en = {
   },
   terms: {
     title: "Terms of Service",
-    body: "General information about payments, cancellations (24h) and lesson conduct.",
+    body: `
+      <h2>1. General</h2>
+      <p>This website offers private music teaching services. Use of the website is subject to these terms.</p>
+      
+      <h2>2. Payments</h2>
+      <p>Payment is made at the beginning of each lesson or in advance as agreed. Prices may change with advance notice.</p>
+      
+      <h2>3. Cancellations</h2>
+      <p>Lesson cancellation must be made 24 hours in advance. Shorter notice cancellations will be charged in full.</p>
+      
+      <h2>4. Lesson Conduct</h2>
+      <p>Punctual arrival, instrument preparation, and respectful atmosphere are essential requirements.</p>
+      
+      <h2>5. Limited Liability</h2>
+      <p>The instructor is not liable for damages or accidents occurring during lessons.</p>
+      
+      <h2>6. Governing Law</h2>
+      <p>These terms are subject to Israeli law. Israeli courts have jurisdiction.</p>
+    `,
+  },
+  privacy: {
+    title: "Privacy Policy",
+    content: `
+      <h2>1. Information Collection</h2>
+      <p>We collect information you provide through our contact form: name, email, and message. This information is required for contact and lesson coordination.</p>
+      
+      <h2>2. Use of Information</h2>
+      <p>Information is used solely to contact you, coordinate lessons, and respond to your requests. We do not sell or share information with third parties.</p>
+      
+      <h2>3. Information Security</h2>
+      <p>The website is secured with HTTPS standard. Information is stored securely and accessible only to the instructor for contact purposes.</p>
+      
+      <h2>4. Cookies</h2>
+      <p>The website uses only technical cookies to save language preference. No tracking or advertising cookies are used.</p>
+      
+      <h2>5. Your Rights</h2>
+      <p>You can request deletion of your information at any time by calling 053-524-7393 or emailing doron.c@live.com</p>
+      
+      <h2>6. Contact</h2>
+      <p>For questions about this privacy policy, contact us: Phone 053-524-7393 | Email: doron.c@live.com</p>
+      
+      <p><small>Last updated: ${new Date().toLocaleDateString('en-US')}</small></p>
+    `,
   },
   accessibility: {
     title: "Accessibility Statement",
@@ -273,6 +315,10 @@ export const en = {
     terms: {
       title: "Terms of Service",
       description: "Short terms of service for lessons.",
+    },
+    privacy: {
+      title: "Privacy Policy | Music Lessons Ashkelon",
+      description: "Privacy policy for guitar and piano lessons in Ashkelon. How we protect your personal information.",
     },
     accessibility: {
       title: "Accessibility Statement",

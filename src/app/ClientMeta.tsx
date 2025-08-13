@@ -12,6 +12,7 @@ function getSeoKey(pathname: string):
   | "booking"
   | "contact"
   | "terms"
+  | "privacy"
   | "accessibility" {
   switch (pathname) {
     case "/":
@@ -28,6 +29,8 @@ function getSeoKey(pathname: string):
       return "contact";
     case "/terms":
       return "terms";
+    case "/privacy":
+      return "privacy";
     case "/accessibility":
       return "accessibility";
     default:

@@ -9,11 +9,11 @@ export default function SiteFooter() {
   return (
     <footer className="mt-16 border-t">
       <div className="max-w-6xl mx-auto px-4 py-8 grid gap-6 md:grid-cols-3 text-sm text-[color:var(--muted)]">
-        <div>
+        <div className="text-center md:text-left">
           <div className="font-medium text-[color:var(--foreground)]">{t.footer.about.title}</div>
           <p className="mt-2">{t.footer.about.body}</p>
         </div>
-        <div>
+        <div className="text-center md:text-left">
           <div className="font-medium text-[color:var(--foreground)]">{t.footer.links.title}</div>
           <ul className="mt-2 space-y-1">
             <li>
@@ -79,9 +79,36 @@ export default function SiteFooter() {
                 {t.footer.links.contact}
               </Link>
             </li>
+            <li>
+              <Link
+                href="/terms"
+                aria-label={t.terms.title}
+                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+              >
+                {t.terms.title}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/privacy"
+                aria-label={t.privacy.title}
+                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+              >
+                {t.privacy.title}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/accessibility"
+                aria-label={t.accessibility.title}
+                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+              >
+                {t.accessibility.title}
+              </Link>
+            </li>
           </ul>
         </div>
-        <div>
+        <div className="text-center md:text-left">
           <div className="font-medium text-[color:var(--foreground)]">{t.footer.contact.title}</div>
           <ul className="mt-2 space-y-1">
             <li>
@@ -116,7 +143,9 @@ export default function SiteFooter() {
           </ul>
         </div>
       </div>
-      <div className="text-center text-xs text-[color:var(--muted)] pb-8">{t.footer.copyright.replace('{year}', String(year))}</div>
+      <div className="text-center text-xs text-[color:var(--muted)] pb-8 pt-4 border-t border-[color:var(--border)]/50 mx-4">
+        {t.footer.copyright.replace('{year}', String(year))}
+      </div>
     </footer>
   );
 }

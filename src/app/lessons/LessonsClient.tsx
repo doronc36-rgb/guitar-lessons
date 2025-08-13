@@ -7,11 +7,11 @@ export default function LessonsClient() {
   return (
     <div className="min-h-screen p-6 md:p-10 max-w-5xl mx-auto space-y-10">
       <div className="surface p-6">
-        <h1 className="text-3xl font-semibold">{t.lessons.title}</h1>
+        <h1 className="text-3xl font-semibold text-center">{t.lessons.title}</h1>
       </div>
 
       <section className="surface p-6">
-        <h2 className="text-2xl font-semibold">{t.lessons.instruments.title}</h2>
+        <h2 className="text-2xl font-semibold text-center">{t.lessons.instruments.title}</h2>
         <ul className="list-disc pr-6 mt-3 space-y-1 text-neutral-800">
           {t.lessons.instruments.items.map((item) => (
             <li key={item}>{item}</li>
@@ -20,7 +20,7 @@ export default function LessonsClient() {
       </section>
 
       <section className="surface p-6">
-        <h2 className="text-2xl font-semibold">{t.lessons.formats.title}</h2>
+        <h2 className="text-2xl font-semibold text-center">{t.lessons.formats.title}</h2>
         <ul className="list-disc pr-6 mt-3 space-y-1 text-neutral-800">
           {t.lessons.formats.items.map((item) => (
             <li key={item}>{item}</li>
@@ -29,7 +29,7 @@ export default function LessonsClient() {
       </section>
 
       <section className="surface p-6">
-        <h2 className="text-2xl font-semibold">{t.lessons.equipment.title}</h2>
+        <h2 className="text-2xl font-semibold text-center">{t.lessons.equipment.title}</h2>
         <ul className="list-disc pr-6 mt-3 space-y-1 text-neutral-800">
           {t.lessons.equipment.items.map((item) => (
             <li key={item}>{item}</li>

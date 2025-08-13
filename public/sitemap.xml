@@ -22,6 +22,9 @@
     <loc>https://guitar-lessons.vercel.app/terms</loc>
   </url>
   <url>
+    <loc>https://guitar-lessons.vercel.app/privacy</loc>
+  </url>
+  <url>
     <loc>https://guitar-lessons.vercel.app/accessibility</loc>
   </url>
 </urlset>

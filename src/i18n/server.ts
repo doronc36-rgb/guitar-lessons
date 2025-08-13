@@ -11,6 +11,7 @@ export type SeoKey =
   | "booking"
   | "contact"
   | "terms"
+  | "privacy"
   | "accessibility";
 
 export async function getServerLocale(): Promise<SupportedLocale> {

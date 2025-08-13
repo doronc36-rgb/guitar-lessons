@@ -8,7 +8,7 @@ export default function BookingClient() {
   const { t } = useI18n();
   return (
     <div className="min-h-screen p-6 md:p-10 max-w-3xl mx-auto space-y-8">
-      <h1 className="text-3xl font-semibold">{t.booking.title}</h1>
+      <h1 className="text-3xl font-semibold text-center">{t.booking.title}</h1>
       <ul className="list-disc pr-6 text-neutral-800 space-y-1">
         {t.booking.bullets.map((b) => (
           <li key={b}>{b}</li>

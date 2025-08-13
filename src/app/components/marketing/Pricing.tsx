@@ -9,7 +9,7 @@ export default function MarketingPricing() {
   const { t } = useI18n();
   return (
     <Container>
-      <Section id="pricing" title={t.marketing.pricing.title} intro={t.marketing.pricing.subtitle}>
+              <Section id="prices" title={t.marketing.pricing.title} intro={t.marketing.pricing.subtitle}>
         <div className="grid gap-4 md:grid-cols-3">
           {t.prices.items.map((p) => (
             <div key={p.label} className="surface p-6 rounded-md shadow-sm">

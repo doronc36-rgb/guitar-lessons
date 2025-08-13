@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  /* Warm Guitar Wood Professional Theme 🎸 */
-  --background: #FBF9F6; /* warm cream like maple */
-  --foreground: #2D1B0E; /* rich coffee brown */
-  --muted: #8B6914; /* golden amber */
-  --border: rgba(45, 27, 14, 0.12);
-  --surface: #FFFFFF; /* pure white cards */
-  --accent: #C2410C; /* warm orange like sunburst */
-  --accent-contrast: #FFFFFF;
-  --primary: #C2410C; /* same as accent for buttons */
+  /* Clean Professional Theme */
+  --background: #F8FAFC; /* page background */
+  --foreground: #0B1220; /* main text */
+  --muted: #475569; /* secondary text / subtle UI */
+  --border: #E2E8F0; /* card/section borders */
+  --surface: #FFFFFF; /* cards/sections/header/footer */
+  --accent: #10B981; /* buttons/links/highlights */
+  --accent-contrast: #052e2b; /* text on accent */
+  --primary: #10B981; /* if a separate primary is used */
 }
 
 @theme inline {
@@ -21,11 +21,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #1A1612; /* dark walnut */
-    --foreground: #F4E5D3; /* warm cream text */
-    --muted: #D2B48C; /* tan/sandy brown */
-    --border: rgba(244, 229, 211, 0.15);
-    --surface: #2D1B0E; /* coffee brown cards */
+    --background: #0B1220; /* dark background */
+    --foreground: #F8FAFC; /* light text */
+    --muted: #94A3B8; /* lighter muted text */
+    --border: #334155; /* darker borders */
+    --surface: #1E293B; /* dark cards */
   }
 }
 

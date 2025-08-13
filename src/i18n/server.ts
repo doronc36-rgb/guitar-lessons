@@ -15,9 +15,9 @@ export type SeoKey =
 
 export async function getServerLocale(): Promise<SupportedLocale> {
   try {
-    const cookieStore = await nextCookies();
-    const locale = cookieStore.get("locale")?.value as SupportedLocale | undefined;
-    if (locale === "en" || locale === "he") return locale;
+    const c = await nextCookies();
+    const v = c.get("locale")?.value as SupportedLocale | undefined;
+    if (v === "en" || v === "he") return v;
   } catch {}
   return "he";
 }

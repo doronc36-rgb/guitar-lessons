@@ -155,10 +155,10 @@ export const en = {
     items: [
       { q: "Do I need an instrument at home?", a: "Highly recommended. Piano/keyboard or personal guitar." },
       { q: "How long should I practice?", a: "At least 15–30 minutes daily for beginners." },
-      { q: "Do you offer online lessons?", a: "Yes, video lessons are available if needed." },
       { q: "Can we learn favorite songs?", a: "Of course, while building strong foundations." },
       { q: "Suitable for kids?", a: "Yes, extensive experience with kids and teens." },
-      { q: "Lessons in English?", a: "Yes, available in English, Hebrew or Spanish." },
+      { q: "What languages are lessons offered in?", a: "Lessons are available in Hebrew and English." },
+      { q: "How are lessons conducted?", a: "Private face-to-face lessons, either in the studio or at the student's home in Ashkelon area." },
     ],
   },
   booking: {
@@ -261,6 +261,7 @@ export const en = {
     },
     links: {
       title: "Quick links",
+      legal: "Support & Legal",
       home: "Home",
       lessons: "Lessons",
       prices: "Prices",

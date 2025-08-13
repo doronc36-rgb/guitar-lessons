@@ -56,9 +56,9 @@ async function sendContactEmail(data: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        service_id: process.env.EMAILJS_SERVICE_ID || 'service_xxxxxxx', // You need to set this
-        template_id: process.env.EMAILJS_TEMPLATE_ID || 'template_xxxxxxx', // You need to set this
-        user_id: process.env.EMAILJS_PUBLIC_KEY || 'your_public_key', // You need to set this
+        service_id: 'service_u721uc1',
+        template_id: 'template_l5ft5fd',
+        user_id: 'WzU794H4Oqhte6XWQ',
         template_params: {
           to_email: 'doron.c@live.com',
           from_name: data.name,

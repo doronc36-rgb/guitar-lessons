@@ -7,20 +7,24 @@ export default function SiteFooter() {
   const { t } = useI18n();
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-16 border-t">
-      <div className="max-w-6xl mx-auto px-4 py-8 grid gap-6 md:grid-cols-3 text-sm text-[color:var(--muted)]">
-        <div className="text-center md:text-left">
-          <div className="font-medium text-[color:var(--foreground)]">{t.footer.about.title}</div>
-          <p className="mt-2">{t.footer.about.body}</p>
+    <footer className="mt-16 border-t bg-neutral-50/50 dark:bg-neutral-900/50">
+      <div className="max-w-6xl mx-auto px-4 py-8 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 text-sm text-[color:var(--muted)]">
+        
+        {/* About Section */}
+        <div className="text-center sm:text-left">
+          <div className="font-medium text-[color:var(--foreground)] mb-3">{t.footer.about.title}</div>
+          <p className="text-xs leading-relaxed">{t.footer.about.body}</p>
         </div>
-        <div className="text-center md:text-left">
-          <div className="font-medium text-[color:var(--foreground)]">{t.footer.links.title}</div>
-          <ul className="mt-2 space-y-1">
+
+        {/* Main Navigation */}
+        <div className="text-center sm:text-left">
+          <div className="font-medium text-[color:var(--foreground)] mb-3">{t.footer.links.title}</div>
+          <ul className="space-y-2">
             <li>
               <Link
                 href="/"
                 aria-label={t.footer.links.home}
-                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                className="hover:text-[color:var(--foreground)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
                 {t.footer.links.home}
               </Link>
@@ -29,7 +33,7 @@ export default function SiteFooter() {
               <Link
                 href="/lessons"
                 aria-label={t.footer.links.lessons}
-                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                className="hover:text-[color:var(--foreground)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
                 {t.footer.links.lessons}
               </Link>
@@ -38,7 +42,7 @@ export default function SiteFooter() {
               <Link
                 href="/prices"
                 aria-label={t.footer.links.prices}
-                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                className="hover:text-[color:var(--foreground)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
                 {t.footer.links.prices}
               </Link>
@@ -47,43 +51,50 @@ export default function SiteFooter() {
               <Link
                 href="/faq"
                 aria-label={t.footer.links.faq}
-                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                className="hover:text-[color:var(--foreground)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
                 {t.footer.links.faq}
               </Link>
             </li>
             <li>
               <Link
-                href="/#reviews"
-                aria-label={t.home?.testimonials?.regionAria || 'Reviews'}
-                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
-              >
-                {t.home?.testimonials?.title || 'Reviews'}
-              </Link>
-            </li>
-            <li>
-              <Link
                 href="/booking"
                 aria-label={t.footer.links.booking}
-                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                className="hover:text-[color:var(--foreground)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
                 {t.footer.links.booking}
               </Link>
             </li>
+          </ul>
+        </div>
+
+        {/* Legal & Support */}
+        <div className="text-center sm:text-left">
+          <div className="font-medium text-[color:var(--foreground)] mb-3">Support & Legal</div>
+          <ul className="space-y-2">
             <li>
               <Link
                 href="/#contact"
                 aria-label={t.footer.links.contact}
-                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                className="hover:text-[color:var(--foreground)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
                 {t.footer.links.contact}
               </Link>
             </li>
             <li>
               <Link
+                href="/#reviews"
+                aria-label={t.home?.testimonials?.regionAria || 'Reviews'}
+                className="hover:text-[color:var(--foreground)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+              >
+                {t.home?.testimonials?.title || 'Reviews'}
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/terms"
                 aria-label={t.terms.title}
-                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                className="hover:text-[color:var(--foreground)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
                 {t.terms.title}
               </Link>
@@ -92,7 +103,7 @@ export default function SiteFooter() {
               <Link
                 href="/privacy"
                 aria-label={t.privacy.title}
-                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                className="hover:text-[color:var(--foreground)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
                 {t.privacy.title}
               </Link>
@@ -101,43 +112,45 @@ export default function SiteFooter() {
               <Link
                 href="/accessibility"
                 aria-label={t.accessibility.title}
-                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                className="hover:text-[color:var(--foreground)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
                 {t.accessibility.title}
               </Link>
             </li>
           </ul>
         </div>
-        <div className="text-center md:text-left">
-          <div className="font-medium text-[color:var(--foreground)]">{t.footer.contact.title}</div>
-          <ul className="mt-2 space-y-1">
+
+        {/* Contact Information */}
+        <div className="text-center sm:text-left">
+          <div className="font-medium text-[color:var(--foreground)] mb-3">{t.footer.contact.title}</div>
+          <ul className="space-y-2">
             <li>
               <a
                 href="https://wa.me/972535247393"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={t.footer.aria.whatsappOpen}
-                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                className="hover:text-[color:var(--foreground)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
-                {t.footer.contact.whatsapp}
+                📱 {t.footer.contact.whatsapp}
               </a>
             </li>
             <li>
               <a
                 href="tel:+972535247393"
                 aria-label={t.footer.aria.phoneDial}
-                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                className="hover:text-[color:var(--foreground)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
-                {t.footer.contact.phone}
+                📞 {t.footer.contact.phone}
               </a>
             </li>
             <li>
               <a
                 href="mailto:doron.c@live.com"
                 aria-label={t.footer.aria.emailSend}
-                className="hover:opacity-80 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+                className="hover:text-[color:var(--foreground)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               >
-                {t.footer.contact.email}
+                ✉️ Email
               </a>
             </li>
           </ul>

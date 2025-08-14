@@ -1,50 +1,36 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
+export const size = { width: 1200, height: 630 };
+export const contentType = "image/png";
 
 export async function GET(request: Request) {
-  const { searchParams, origin } = new URL(request.url);
+  const { searchParams } = new URL(request.url);
   const title = searchParams.get("title") || "שיעורי גיטרה ופסנתר באשקלון";
   const subtitle = searchParams.get("subtitle") || "דורון כהן";
-  const logoUrl = `${origin}/logo.svg`;
 
   return new ImageResponse(
     (
       <div
         style={{
-          width: 1200,
-          height: 630,
+          width: size.width,
+          height: size.height,
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          background: "linear-gradient(135deg, #0f172a, #1e3a8a)",
-          color: "#fff",
-          fontFamily: "sans-serif",
-          position: "relative",
+          backgroundColor: "#0b1220",
+          color: "#ffffff",
+          fontFamily: "Arial, sans-serif",
+          padding: 48,
+          textAlign: "center",
         }}
       >
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "rgba(0,0,0,0.25)",
-          }}
-        />
-        <div style={{ display: "flex", alignItems: "center", gap: 28, zIndex: 1 }}>
-          {/* Using same-origin logo */}
-          <img src={logoUrl} width={120} height={120} />
-          <div style={{ textAlign: "right" }}>
-            <div style={{ fontSize: 64, fontWeight: 800 }}>{title}</div>
-            <div style={{ fontSize: 32, opacity: 0.9 }}>{subtitle}</div>
-          </div>
-        </div>
+        <div style={{ fontSize: 64, fontWeight: 800, marginBottom: 12 }}>{title}</div>
+        <div style={{ fontSize: 32, opacity: 0.9 }}>{subtitle}</div>
       </div>
     ),
-    {
-      width: 1200,
-      height: 630,
-    }
+    size
   );
 }
 

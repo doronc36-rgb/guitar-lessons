@@ -183,18 +183,25 @@ export default function ContactForm() {
             >
               View on Google
             </a>
-            {process.env.NEXT_PUBLIC_GBP_PLACE_ID ? (
+            {(() => {
+              const reviewLink =
+                process.env.NEXT_PUBLIC_GBP_REVIEW_URL ||
+                (process.env.NEXT_PUBLIC_GBP_PLACE_ID
+                  ? `https://search.google.com/local/writereview?placeid=${process.env.NEXT_PUBLIC_GBP_PLACE_ID}`
+                  : "");
+              return reviewLink ? (
               <div className="mt-2">
                 <a
                   className="inline-block underline"
-                  href={`https://search.google.com/local/writereview?placeid=${process.env.NEXT_PUBLIC_GBP_PLACE_ID}`}
+                  href={reviewLink}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Write a review
                 </a>
               </div>
-            ) : null}
+              ) : null;
+            })()}
           </div>
         ) : null}
 

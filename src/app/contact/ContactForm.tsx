@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useI18n } from '@/i18n';
+import emailjs from '@emailjs/browser';
 
 export default function ContactForm() {
   const { t } = useI18n();
@@ -47,29 +48,37 @@ export default function ContactForm() {
     setServerError(null);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'default_service';
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_l5it5fd';
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'WzU794H4Oqhte6XWQ';
+      const toEmail = process.env.NEXT_PUBLIC_CONTACT_TO_EMAIL || 'doron.c@live.com';
 
-      if (response.ok) {
+      const params = {
+        to_email: toEmail,
+        email: toEmail,
+        reply_to: formData.email,
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        timestamp: new Date().toISOString(),
+        user_agent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown',
+        subject: `New Contact Form Message from ${formData.name}`,
+      } as Record<string, unknown>;
+
+      if (typeof window !== 'undefined') {
+        // Minimal runtime debug of IDs in case envs are not injected
+        console.info('[EmailJS] service:', serviceId, 'template:', templateId);
+      }
+      await emailjs.send(serviceId, templateId, params, { publicKey });
+
+      {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' });
         setErrors({});
-      } else {
-        setSubmitStatus('error');
-        try {
-          const data = await response.json();
-          if (data?.details || data?.error) {
-            setServerError(String(data.details || data.error));
-          }
-        } catch {}
       }
-    } catch {
+    } catch (err: unknown) {
       setSubmitStatus('error');
+      setServerError(err instanceof Error ? err.message : String(err));
     } finally {
       setIsSubmitting(false);
     }

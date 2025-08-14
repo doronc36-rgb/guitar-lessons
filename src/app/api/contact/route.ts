@@ -49,21 +49,9 @@ export async function POST(request: NextRequest) {
     });
     
     // Send email notification to you
-    const emailResult = await sendContactEmail({
-      name,
-      email,
-      message,
-      timestamp: new Date().toISOString(),
-      userAgent: request.headers.get('user-agent') || 'Unknown',
-      ip
-    });
-    
-    if (!emailResult.success) {
-      console.error('Failed to send email:', emailResult.error);
-      return NextResponse.json({ ok: false, error: 'Email failed to send', details: String(emailResult.error ?? '') }, { status: 502 });
-    }
-
-    return NextResponse.json({ ok: true }, { status: 200 });
+    // Server-side EmailJS is blocked for non-browser apps.
+    // We log the submission and return success; the email is sent from client now.
+    return NextResponse.json({ ok: true, note: 'Handled on client with EmailJS' }, { status: 200 });
   } catch (error) {
     console.error('Error processing contact form:', error);
     return NextResponse.json(

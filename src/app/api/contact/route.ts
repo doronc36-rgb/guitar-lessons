@@ -99,7 +99,11 @@ async function sendContactEmail(data: {
         template_id: templateId,
         user_id: publicKey,
         template_params: {
+          // Our owner notification target (you)
           to_email: toEmail,
+          // Provide common aliases so any EmailJS template setup works:
+          email: toEmail, // some templates use {{email}} for To Email
+          reply_to: data.email, // common alias used by EmailJS examples
           from_name: data.name,
           from_email: data.email,
           message: data.message,

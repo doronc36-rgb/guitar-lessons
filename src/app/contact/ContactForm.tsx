@@ -14,6 +14,7 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -43,6 +44,7 @@ export default function ContactForm() {
 
     setIsSubmitting(true);
     setSubmitStatus('idle');
+    setServerError(null);
 
     try {
       const response = await fetch('/api/contact', {
@@ -59,6 +61,12 @@ export default function ContactForm() {
         setErrors({});
       } else {
         setSubmitStatus('error');
+        try {
+          const data = await response.json();
+          if (data?.error || data?.details) {
+            setServerError(String(data.error || data.details));
+          }
+        } catch {}
       }
     } catch {
       setSubmitStatus('error');
@@ -166,6 +174,9 @@ export default function ContactForm() {
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center" role="status" aria-live="polite">
             <p className="text-red-800 font-medium">{t.contact.errorTitle}</p>
             <p className="text-red-600 text-sm mt-1">{t.contact.errorBody}</p>
+            {serverError ? (
+              <p className="text-[11px] text-red-500 mt-2 break-all">{serverError}</p>
+            ) : null}
           </div>
         )}
 

@@ -1,20 +1,20 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get("title") || "שיעורי גיטרה ופסנתר באשקלון";
   const subtitle = searchParams.get("subtitle") || "דורון כהן";
+  const width = 1200;
+  const height = 630;
 
   return new ImageResponse(
     (
       <div
         style={{
-          width: size.width,
-          height: size.height,
+          width,
+          height,
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -30,7 +30,7 @@ export async function GET(request: Request) {
         <div style={{ fontSize: 32, opacity: 0.9 }}>{subtitle}</div>
       </div>
     ),
-    size
+    { width, height }
   );
 }
 

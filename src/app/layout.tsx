@@ -10,6 +10,7 @@ import { cookies } from "next/headers";
 import type { SupportedLocale } from "@/i18n";
 import Header from "./components/Header";
 import SiteFooter from "./components/Footer";
+import BreadcrumbsJsonLd from "./components/seo/BreadcrumbsJsonLd";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -94,6 +95,8 @@ export default async function RootLayout({
           {/* Metadata handled server-side via generateMetadata per route */}
           {/* Allow switching locale by hl=en|he in URL */}
           <LocaleFromQuery />
+          {/* Non-visual SEO breadcrumbs JSON-LD */}
+          <BreadcrumbsJsonLd />
         </Providers>
         {/* Google Analytics 4 (gated by env var) */}
         {process.env.NEXT_PUBLIC_GA_ID ? (

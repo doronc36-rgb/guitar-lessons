@@ -13,20 +13,13 @@ export async function generateMetadata(): Promise<Metadata> {
       description: seo.description,
       locale: locale === "en" ? "en_US" : "he_IL",
       type: "website",
-      images: [
-        {
-          url: "/logo.svg",
-          width: 1200,
-          height: 630,
-          alt: seo.title,
-        },
-      ],
+      images: [{ url: `/og?title=${encodeURIComponent(seo.title)}&subtitle=Doron%20Cohen` }],
     },
     twitter: {
       card: "summary_large_image",
       title: seo.title,
       description: seo.description,
-      images: ["/logo.svg"],
+      images: [`/og?title=${encodeURIComponent(seo.title)}&subtitle=Doron%20Cohen`],
     },
     alternates: {
       canonical: "/prices",

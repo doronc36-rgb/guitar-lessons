@@ -183,6 +183,18 @@ export default function ContactForm() {
             >
               View on Google
             </a>
+            {process.env.NEXT_PUBLIC_GBP_PLACE_ID ? (
+              <div className="mt-2">
+                <a
+                  className="inline-block underline"
+                  href={`https://search.google.com/local/writereview?placeid=${process.env.NEXT_PUBLIC_GBP_PLACE_ID}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Write a review
+                </a>
+              </div>
+            ) : null}
           </div>
         ) : null}
 

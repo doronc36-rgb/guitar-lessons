@@ -77,6 +77,21 @@ export default function SiteFooter() {
                     </a>
                   </div>
                 ) : null}
+                {process.env.NEXT_PUBLIC_GBP_PLACE_ID ? (
+                  <div className="flex items-center gap-3 group">
+                    <div className="w-8 h-8 bg-yellow-100 dark:bg-yellow-900/30 rounded-full flex items-center justify-center">
+                      <span className="text-yellow-600 text-sm">⭐</span>
+                    </div>
+                    <a
+                      href={`https://search.google.com/local/writereview?placeid=${process.env.NEXT_PUBLIC_GBP_PLACE_ID}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[color:var(--foreground)] hover:text-yellow-600 transition-colors font-medium"
+                    >
+                      Write a review
+                    </a>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>

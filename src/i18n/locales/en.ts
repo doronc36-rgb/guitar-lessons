@@ -3,6 +3,12 @@ export const en = {
     whatsapp: "WhatsApp",
     call: "Phone call",
     bookLesson: "Book a lesson",
+    errorTitle: "Something went wrong",
+    errorBody: "Please try again or return to the homepage.",
+    tryAgain: "Try again",
+    backHome: "Back to home",
+    notFoundTitle: "Page not found",
+    notFoundBody: "The page you’re looking for doesn’t exist.",
   },
   header: {
     brand: "Doron — Guitar/Piano Lessons",

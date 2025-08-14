@@ -3,6 +3,12 @@ export const he = {
     whatsapp: 'וואטסאפ',
     call: 'שיחה טלפונית',
     bookLesson: 'קבעו שיעור',
+    errorTitle: 'משהו השתבש',
+    errorBody: 'אנא נסו שוב או חזרו לדף הבית.',
+    tryAgain: 'נסו שוב',
+    backHome: 'חזרה לדף הבית',
+    notFoundTitle: 'העמוד לא נמצא',
+    notFoundBody: 'העמוד שחיפשתם אינו קיים.',
   },
   header: {
     brand: 'דורון — שיעורי גיטרה ופסנתר',

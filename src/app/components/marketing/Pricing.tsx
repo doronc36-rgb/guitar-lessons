@@ -25,10 +25,7 @@ export default function MarketingPricing() {
             );
           })}
         </div>
-        <div className="mt-6 flex gap-3">
-          <Button href="/contact">{t.marketing.pricing.ctaContact}</Button>
-          <Button href="/lessons" variant="secondary">{t.marketing.pricing.ctaLessons}</Button>
-        </div>
+        {/* Removed extra buttons to reduce repetition */}
       </Section>
     </Container>
   );

@@ -28,9 +28,7 @@ export default function ContactForm() {
       newErrors.email = t.contact.form.emailInvalid;
     }
 
-    if (!formData.message.trim()) {
-      newErrors.message = t.contact.form.messageRequired;
-    }
+    // Message is optional
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -137,7 +135,6 @@ export default function ContactForm() {
               value={formData.message}
               onChange={handleInputChange}
               rows={4}
-              required
               autoComplete="off"
               className={`w-full px-3 py-2 border rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] transition-colors resize-none ${
                 errors.message ? 'border-red-500' : 'border-gray-300'

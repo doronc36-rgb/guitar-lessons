@@ -29,12 +29,11 @@ export async function POST(request: NextRequest) {
     // Server-side validation
     const name = (body?.name ?? '').toString().trim();
     const email = (body?.email ?? '').toString().trim();
-    const message = (body?.message ?? '').toString().trim();
+    const message = (body?.message ?? '').toString(); // optional, can be empty
     const errors: Record<string, string> = {};
     if (!name) errors.name = 'Name is required';
     if (!email) errors.email = 'Email is required';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = 'Invalid email';
-    if (!message) errors.message = 'Message is required';
     if (Object.keys(errors).length) {
       return NextResponse.json({ error: 'Invalid input', fields: errors }, { status: 400 });
     }
@@ -61,9 +60,9 @@ export async function POST(request: NextRequest) {
     
     if (!emailResult.success) {
       console.error('Failed to send email:', emailResult.error);
-      // Still return success to user but log the email failure
+      return NextResponse.json({ ok: false, error: 'Email failed to send', details: String(emailResult.error ?? '') }, { status: 502 });
     }
-    
+
     return NextResponse.json({ ok: true }, { status: 200 });
   } catch (error) {
     console.error('Error processing contact form:', error);
@@ -114,9 +113,10 @@ async function sendContactEmail(data: {
 
     if (emailJSResponse.ok) {
       return { success: true };
-    } else {
-      return { success: false, error: 'EmailJS API error' };
     }
+
+    const errorText = await emailJSResponse.text();
+    return { success: false, error: `EmailJS API error: ${errorText}` };
   } catch (error) {
     return { success: false, error: error };
   }

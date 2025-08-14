@@ -21,6 +21,7 @@ export async function GET(request: Request) {
           background: "linear-gradient(135deg, #0f172a, #1e3a8a)",
           color: "#fff",
           fontFamily: "sans-serif",
+          position: "relative",
         }}
       >
         <div
@@ -30,8 +31,9 @@ export async function GET(request: Request) {
             background: "rgba(0,0,0,0.25)",
           }}
         />
-        <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
-          <img src={logoUrl} width={120} height={120} style={{ borderRadius: 16 }} />
+        <div style={{ display: "flex", alignItems: "center", gap: 28, zIndex: 1 }}>
+          {/* Using same-origin logo */}
+          <img src={logoUrl} width={120} height={120} />
           <div style={{ textAlign: "right" }}>
             <div style={{ fontSize: 64, fontWeight: 800 }}>{title}</div>
             <div style={{ fontSize: 32, opacity: 0.9 }}>{subtitle}</div>

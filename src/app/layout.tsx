@@ -33,7 +33,7 @@ const pacifico = Pacifico({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://guitar-lessons.vercel.app"),
+  metadataBase: new URL("https://pianoandguitarlessons.com"),
   title: {
     default: "שיעורי גיטרה ופסנתר באשקלון והסביבה | דורון",
     template: "%s | שיעורי מוזיקה באשקלון",
@@ -124,7 +124,7 @@ export default async function RootLayout({
             availableLanguage: ["he", "en"],
             priceRange: "₪120–₪150",
             email: "mailto:doron.c@live.com",
-            url: "https://guitar-lessons.vercel.app",
+            url: "https://pianoandguitarlessons.com",
             sameAs: [
               "https://wa.me/972535247393",
               ...(process.env.NEXT_PUBLIC_GBP_URL ? [process.env.NEXT_PUBLIC_GBP_URL] : [])

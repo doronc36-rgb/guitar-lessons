@@ -63,8 +63,8 @@ export default function ContactForm() {
         setSubmitStatus('error');
         try {
           const data = await response.json();
-          if (data?.error || data?.details) {
-            setServerError(String(data.error || data.details));
+          if (data?.details || data?.error) {
+            setServerError(String(data.details || data.error));
           }
         } catch {}
       }

@@ -125,7 +125,10 @@ export default async function RootLayout({
             priceRange: "₪120–₪150",
             email: "mailto:doron.c@live.com",
             url: "https://guitar-lessons.vercel.app",
-            sameAs: ["https://wa.me/972535247393"],
+            sameAs: [
+              "https://wa.me/972535247393",
+              ...(process.env.NEXT_PUBLIC_GBP_URL ? [process.env.NEXT_PUBLIC_GBP_URL] : [])
+            ],
             address: {
               "@type": "PostalAddress",
               addressLocality: "אשקלון",

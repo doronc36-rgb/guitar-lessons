@@ -1,8 +1,43 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+// Simple in-memory rate limiter (per IP). Note: best-effort in serverless.
+const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
+const RATE_LIMIT_MAX_REQUESTS = 5;   // max per window
+const ipToRequests: Map<string, number[]> = new Map();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const windowStart = now - RATE_LIMIT_WINDOW_MS;
+  const timestamps = ipToRequests.get(ip) || [];
+  const recent = timestamps.filter((t) => t > windowStart);
+  if (recent.length >= RATE_LIMIT_MAX_REQUESTS) return true;
+  recent.push(now);
+  ipToRequests.set(ip, recent);
+  return false;
+}
+
 export async function POST(request: NextRequest) {
   try {
+    const ip = request.headers.get('x-forwarded-for') || 'unknown';
+
+    if (isRateLimited(ip)) {
+      return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
+    }
+
     const body = await request.json();
+
+    // Server-side validation
+    const name = (body?.name ?? '').toString().trim();
+    const email = (body?.email ?? '').toString().trim();
+    const message = (body?.message ?? '').toString().trim();
+    const errors: Record<string, string> = {};
+    if (!name) errors.name = 'Name is required';
+    if (!email) errors.email = 'Email is required';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = 'Invalid email';
+    if (!message) errors.message = 'Message is required';
+    if (Object.keys(errors).length) {
+      return NextResponse.json({ error: 'Invalid input', fields: errors }, { status: 400 });
+    }
     
     // Log the contact form submission
     console.log('Contact form submission:', {
@@ -16,12 +51,12 @@ export async function POST(request: NextRequest) {
     
     // Send email notification to you
     const emailResult = await sendContactEmail({
-      name: body.name,
-      email: body.email,
-      message: body.message,
+      name,
+      email,
+      message,
       timestamp: new Date().toISOString(),
       userAgent: request.headers.get('user-agent') || 'Unknown',
-      ip: request.headers.get('x-forwarded-for') || 'unknown'
+      ip
     });
     
     if (!emailResult.success) {
@@ -50,17 +85,22 @@ async function sendContactEmail(data: {
 }) {
   try {
     // Using EmailJS REST API (free tier: 200 emails/month)
+    const serviceId = process.env.EMAILJS_SERVICE_ID || 'service_u721uc1';
+    const templateId = process.env.EMAILJS_TEMPLATE_ID || 'template_l5ft5fd';
+    const publicKey = process.env.EMAILJS_PUBLIC_KEY || 'WzU794H4Oqhte6XWQ';
+    const toEmail = process.env.CONTACT_TO_EMAIL || 'doron.c@live.com';
+
     const emailJSResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        service_id: 'service_u721uc1',
-        template_id: 'template_l5ft5fd',
-        user_id: 'WzU794H4Oqhte6XWQ',
+        service_id: serviceId,
+        template_id: templateId,
+        user_id: publicKey,
         template_params: {
-          to_email: 'doron.c@live.com',
+          to_email: toEmail,
           from_name: data.name,
           from_email: data.email,
           message: data.message,

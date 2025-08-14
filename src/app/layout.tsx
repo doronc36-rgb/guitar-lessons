@@ -4,7 +4,7 @@ import Script from "next/script";
 // import Link from "next/link";
 import "./globals.css";
 import Providers from "./Providers";
-import ClientMeta from "./ClientMeta";
+// Removed client-side meta updates; rely on Next Metadata API
 import LocaleFromQuery from "./LocaleFromQuery";
 import { cookies } from "next/headers";
 import type { SupportedLocale } from "@/i18n";
@@ -91,24 +91,29 @@ export default async function RootLayout({
             {children}
           </main>
           <SiteFooter />
-          {/* Keep client-side meta in sync with language toggles */}
-          <ClientMeta />
+          {/* Metadata handled server-side via generateMetadata per route */}
           {/* Allow switching locale by hl=en|he in URL */}
           <LocaleFromQuery />
         </Providers>
-        {/* Google Analytics 4 */}
-        <Script 
-          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" 
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXXXX');
-          `}
-        </Script>
+        {/* Google Analytics 4 (gated by env var) */}
+        {process.env.NEXT_PUBLIC_GA_ID ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);} 
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+                  anonymize_ip: true
+                });
+              `}
+            </Script>
+          </>
+        ) : null}
         <Script id="ld-local-business" type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

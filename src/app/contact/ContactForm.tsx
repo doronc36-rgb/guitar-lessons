@@ -30,8 +30,6 @@ export default function ContactForm() {
 
     if (!formData.message.trim()) {
       newErrors.message = t.contact.form.messageRequired;
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = t.contact.form.messageTooShort;
     }
 
     setErrors(newErrors);
@@ -99,6 +97,8 @@ export default function ContactForm() {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
+              required
+              autoComplete="name"
               className={`w-full px-3 py-2 border rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] transition-colors ${
                 errors.name ? 'border-red-500' : 'border-gray-300'
               }`}
@@ -117,6 +117,8 @@ export default function ContactForm() {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
+              required
+              autoComplete="email"
               className={`w-full px-3 py-2 border rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] transition-colors ${
                 errors.email ? 'border-red-500' : 'border-gray-300'
               }`}
@@ -135,6 +137,8 @@ export default function ContactForm() {
               value={formData.message}
               onChange={handleInputChange}
               rows={4}
+              required
+              autoComplete="off"
               className={`w-full px-3 py-2 border rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] transition-colors resize-none ${
                 errors.message ? 'border-red-500' : 'border-gray-300'
               }`}

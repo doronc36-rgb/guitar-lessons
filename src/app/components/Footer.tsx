@@ -61,6 +61,22 @@ export default function SiteFooter() {
                     doron.c@live.com
                   </a>
                 </div>
+                {/* View on Google */}
+                {process.env.NEXT_PUBLIC_GBP_URL ? (
+                  <div className="flex items-center gap-3 group">
+                    <div className="w-8 h-8 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center">
+                      <span className="text-red-600 text-sm">📍</span>
+                    </div>
+                    <a
+                      href={process.env.NEXT_PUBLIC_GBP_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[color:var(--foreground)] hover:text-red-600 transition-colors font-medium"
+                    >
+                      Google Profile
+                    </a>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>

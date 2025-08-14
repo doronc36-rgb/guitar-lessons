@@ -172,6 +172,20 @@ export default function ContactForm() {
           </button>
         </form>
 
+        {/* Write a Google review (if GBP URL is set and Place ID optional) */}
+        {process.env.NEXT_PUBLIC_GBP_URL ? (
+          <div className="text-center">
+            <a
+              className="inline-block mt-2 underline"
+              href={process.env.NEXT_PUBLIC_GBP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View on Google
+            </a>
+          </div>
+        ) : null}
+
         {submitStatus === 'success' && (
           <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center" role="status" aria-live="polite">
             <p className="text-green-800 font-medium">{t.contact.successTitle}</p>

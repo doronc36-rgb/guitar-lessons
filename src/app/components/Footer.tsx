@@ -102,17 +102,17 @@ export default function SiteFooter() {
         <div className="max-w-3xl mx-auto px-4">
           <div className="flex items-center justify-between gap-3 rounded-full border border-[color:var(--border)] bg-white/70 dark:bg-neutral-800/60 px-4 py-2 shadow-sm">
             <a href="mailto:doron.c@live.com" className="flex items-center gap-2 hover:text-[color:var(--foreground)] font-medium break-all" aria-label="Email">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#EA4335" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" stroke="#EA4335" strokeWidth="1.5"/><path d="m3 7 9 6 9-6" stroke="#EA4335" strokeWidth="1.5"/></svg>
+              <img src="/images/email.png" width="18" height="18" alt="email" />
               doron.c@live.com
             </a>
             <span className="opacity-30">|</span>
             <a href="tel:+972535247393" className="flex items-center gap-2 hover:text-[color:var(--foreground)] font-medium whitespace-nowrap" aria-label="Phone">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#10B981" xmlns="http://www.w3.org/2000/svg"><path d="M3 5c0-1.1.9-2 2-2h2l2 4-1.5 1.5a12 12 0 0 0 6 6L15 13l4 2v2a2 2 0 0 1-2 2c-8.284 0-15-6.716-15-15z" stroke="#10B981" strokeWidth="1.5"/></svg>
+              <img src="/images/phone.png" width="18" height="18" alt="phone" />
               053-524-7393
             </a>
             <span className="opacity-30">|</span>
             <a href="https://wa.me/972535247393" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[color:var(--foreground)] font-medium whitespace-nowrap" aria-label="WhatsApp">
-              <svg width="18" height="18" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path fill="#25D366" d="M19.11 17.62a4.89 4.89 0 0 1-2.16-.59a10.9 10.9 0 0 1-1.88-1.21a10.93 10.93 0 0 1-1.74-1.6a5.28 5.28 0 0 1-1.13-1.86a3.3 3.3 0 0 1 .13-2.72a1.18 1.18 0 0 1 .9-.57h.77a.62.62 0 0 1 .57.39l.86 2.01a.7.7 0 0 1-.04.6l-.53.9a.36.36 0 0 0 0 .33a7.88 7.88 0 0 0 1.92 2.27a7.91 7.91 0 0 0 2.42 1.43a.36.36 0 0 0 .34-.05l.86-.64a.7.7 0 0 1 .6-.08l2.08.69a.62.62 0 0 1 .41.57v.77a1.18 1.18 0 0 1-.48.95a3.31 3.31 0 0 1-1.82.58Z"/></svg>
+              <img src="/images/whatsapp.png" width="18" height="18" alt="whatsapp" />
               WhatsApp
             </a>
           </div>

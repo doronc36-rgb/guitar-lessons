@@ -59,7 +59,7 @@ export default function Footer() {
               </h3>
               <ul className="space-y-2 text-sm">
                 <li><Link className="text-neutral-300 hover:text-white transition-colors" href="/contact">צור קשר</Link></li>
-                <li><Link className="text-neutral-300 hover:text-white transition-colors" href="/#reviews">מה אומרים התלמידים</Link></li>
+                <li><a className="text-neutral-300 hover:text-white transition-colors" href="/#reviews">מה אומרים התלמידים</a></li>
                 <li><Link className="text-neutral-300 hover:text-white transition-colors" href="/terms">תנאי שימוש</Link></li>
                 <li><Link className="text-neutral-300 hover:text-white transition-colors" href="/privacy">מדיניות פרטיות</Link></li>
                 <li><Link className="text-neutral-300 hover:text-white transition-colors" href="/accessibility">הצהרת נגישות</Link></li>

@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   const subtitle = searchParams.get("subtitle") || "דורון כהן";
   const width = 1200;
   const height = 630;
-  const logoUrl = new URL("/logo.svg", request.url).toString();
+  const logoUrl = new URL("/images/music_logo_3_optimized.png", request.url).toString();
 
   return new ImageResponse(
     (

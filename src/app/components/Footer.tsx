@@ -18,19 +18,21 @@ export default function SiteFooter() {
           <div className="space-y-4">
             <div>
               <div className="mb-4">
-                <Image src="/logo.svg" alt="Doron Cohen logo" width={40} height={40} priority />
+                <Image src="/images/music_logo_3_optimized.png" alt="Doron Cohen logo" width={40} height={40} priority />
               </div>
               <h3 className="font-bold text-xl text-[color:var(--foreground)] mb-3">{t.footer.about.title}</h3>
               <p className="text-[color:var(--muted)] leading-relaxed text-base">{t.footer.about.body}</p>
             </div>
             <div className="text-[color:var(--muted)]">
               <h4 className="font-semibold text-[color:var(--foreground)] mb-2 text-base">{t.footer.contact.title}</h4>
-              <div className="flex flex-wrap items-center gap-2">
-                <a href="https://wa.me/972535247393" target="_blank" rel="noopener noreferrer" aria-label={t.footer.aria.whatsappOpen} className="hover:text-[color:var(--foreground)] transition-colors font-medium">WhatsApp 053-524-7393</a>
-                <span className="opacity-40">•</span>
-                <a href="tel:+972535247393" aria-label={t.footer.aria.phoneDial} className="hover:text-[color:var(--foreground)] transition-colors font-medium">053-524-7393</a>
-                <span className="opacity-40">•</span>
-                <a href="mailto:doron.c@live.com" aria-label={t.footer.aria.emailSend} className="hover:text-[color:var(--foreground)] transition-colors font-medium">doron.c@live.com</a>
+              <div className="rounded-lg border border-[color:var(--border)] bg-white dark:bg-neutral-800 px-3 py-2">
+                <div className="flex flex-wrap items-center gap-2 text-sm">
+                  <a href="https://wa.me/972535247393" target="_blank" rel="noopener noreferrer" aria-label={t.footer.aria.whatsappOpen} className="hover:text-[color:var(--foreground)] transition-colors font-medium">WhatsApp 053-524-7393</a>
+                  <span className="opacity-40">|</span>
+                  <a href="tel:+972535247393" aria-label={t.footer.aria.phoneDial} className="hover:text-[color:var(--foreground)] transition-colors font-medium">053-524-7393</a>
+                  <span className="opacity-40">|</span>
+                  <a href="mailto:doron.c@live.com" aria-label={t.footer.aria.emailSend} className="hover:text-[color:var(--foreground)] transition-colors font-medium">doron.c@live.com</a>
+                </div>
               </div>
             </div>
           </div>

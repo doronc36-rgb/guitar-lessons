@@ -102,7 +102,7 @@ export default function Footer() {
       {/* Desktop-only contact line across bottom of footer (do not affect mobile) */}
       <div className="hidden md:block w-full border-t border-neutral-800">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3">
-          <div className="flex items-center justify-between text-sm text-neutral-300">
+          <div className="flex items-center justify-center gap-6 text-sm text-neutral-300">
             <a href="https://wa.me/972535247393" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-white">
               <Image src="/images/whatsapp icon new.jpg" alt="WhatsApp" width={24} height={24} />
               <span>WhatsApp</span>

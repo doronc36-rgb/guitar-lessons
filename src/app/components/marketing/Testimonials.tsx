@@ -36,7 +36,7 @@ export default function MarketingTestimonials() {
   if (total === 0) return null;
 
   return (
-    <Container className="py-20">
+    <Container className="py-12">
       <Section id="testimonials" title={t.marketing.testimonials.title} intro={t.marketing.testimonials.subtitle}>
         <div className="p-6 rounded-md shadow-sm border-l-4 border-amber-500 bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-900/20 dark:to-amber-800/20 border border-gray-100 dark:border-gray-700 text-center">
           <div className="flex items-center justify-between">

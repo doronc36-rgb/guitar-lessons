@@ -7,7 +7,7 @@ import { useI18n } from "@/i18n";
 export default function MarketingCTA() {
   const { t } = useI18n();
   return (
-    <Container className="py-20">
+    <Container className="py-12">
       <div id="contact" className="surface p-8 rounded-md shadow-sm text-center">
         <h2 className="text-2xl font-semibold">{t.marketing.cta.title}</h2>
         <p className="mt-2 text-[color:var(--muted)]">{t.marketing.cta.subtitle}</p>

@@ -12,9 +12,9 @@ export default function MarketingFeatures() {
         <div className="grid gap-6 md:grid-cols-3">
           {t.marketing.features.items.map((f: { title: string; body: string }, index: number) => {
             const colors = [
-              "border-l-4 border-amber-500 bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-900/20 dark:to-amber-800/20",
-              "border-l-4 border-red-500 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20", 
-              "border-l-4 border-orange-500 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20"
+              "border-l-4 border-blue-500 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20",
+              "border-l-4 border-indigo-500 bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-indigo-800/20", 
+              "border-l-4 border-sky-500 bg-gradient-to-br from-sky-50 to-sky-100 dark:from-sky-900/20 dark:to-sky-800/20"
             ];
             return (
               <div key={f.title} className={`p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 text-center ${colors[index % 3]}`}>

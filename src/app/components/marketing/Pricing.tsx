@@ -8,7 +8,7 @@ import { useI18n } from "@/i18n";
 export default function MarketingPricing() {
   const { t } = useI18n();
   return (
-    <Container>
+    <Container className="py-20">
               <Section id="prices" title={t.marketing.pricing.title} intro={t.marketing.pricing.subtitle}>
         <div className="grid gap-4 md:grid-cols-3">
           {t.prices.items.map((p, index) => {

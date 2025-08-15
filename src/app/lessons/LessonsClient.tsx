@@ -5,7 +5,7 @@ import { useI18n } from "@/i18n";
 export default function LessonsClient() {
   const { t } = useI18n();
   return (
-    <div className="min-h-screen p-6 md:p-10 max-w-5xl mx-auto space-y-10">
+    <div className="min-h-screen p-6 md:p-10 max-w-5xl mx-auto space-y-20">
       <div className="surface p-6">
         <h1 className="text-3xl font-semibold text-center">{t.lessons.title}</h1>
       </div>

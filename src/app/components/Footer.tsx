@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="space-y-4 md:justify-self-center flex flex-col items-center text-center min-w-[240px]">
+          <div className="space-y-4 md:justify-self-center flex flex-col items-center text-center min-w-[240px] md:hidden">
             <h3 className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
               צור קשר
             </h3>
@@ -68,6 +68,26 @@ export default function Footer() {
                 <span>doron.c@live.com</span>
               </a>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop-only contact line across bottom of footer (do not affect mobile) */}
+      <div className="hidden md:block w-full border-t border-neutral-800">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3">
+          <div className="flex items-center justify-between text-sm text-neutral-300">
+            <a href="https://wa.me/972535247393" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-white">
+              <Image src="/images/whatsapp icon new.jpg" alt="WhatsApp" width={24} height={24} />
+              <span>WhatsApp</span>
+            </a>
+            <a href="tel:0535247393" className="inline-flex items-center gap-2 hover:text-white">
+              <Image src="/images/phone.png" alt="Phone" width={24} height={24} />
+              <span>053-524-7393</span>
+            </a>
+            <a href="mailto:doron.c@live.com" className="inline-flex items-center gap-2 hover:text-white">
+              <Image src="/images/email.png" alt="Email" width={24} height={24} />
+              <span>doron.c@live.com</span>
+            </a>
           </div>
         </div>
       </div>

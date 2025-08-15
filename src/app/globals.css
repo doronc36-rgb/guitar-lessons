@@ -7,9 +7,9 @@
   --muted: #475569; /* secondary text / subtle UI */
   --border: #E2E8F0; /* card/section borders */
   --surface: #FFFFFF; /* cards/sections/header/footer */
-  --accent: #10B981; /* buttons/links/highlights */
-  --accent-contrast: #052e2b; /* text on accent */
-  --primary: #10B981; /* if a separate primary is used */
+  --accent: #F59E0B; /* warm amber for creativity and energy */
+  --accent-contrast: #FFFFFF; /* white text on accent */
+  --primary: #DC2626; /* deep red for music passion */
 }
 
 @theme inline {

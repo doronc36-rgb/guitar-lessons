@@ -39,14 +39,14 @@ export default function HomeClient() {
 
       <Container className="mt-12">
         <div className="grid gap-8 md:grid-cols-3">
-          <Section id="about" title={t.home.fitFor.title} className="border-l-4 border-blue-500 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20">
+          <Section id="about" title={t.home.fitFor.title} className="border-l-4 border-amber-500 bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-900/20 dark:to-amber-800/20">
             <ul className="list-disc pr-6 mt-1 text-[color:var(--foreground)] space-y-1">
               {t.home.fitFor.items.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
           </Section>
-          <Section title={t.home.whatYouGet.title} intro={t.marketing.features.subtitle} className="border-l-4 border-green-500 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20">
+          <Section title={t.home.whatYouGet.title} intro={t.marketing.features.subtitle} className="border-l-4 border-red-500 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20">
             <ul className="list-disc pr-6 mt-1 text-[color:var(--foreground)] space-y-1">
               {t.home.whatYouGet.items.map((item) => (
                 <li key={item}>{item}</li>

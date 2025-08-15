@@ -7,7 +7,6 @@ export default function Footer() {
       {/* Top area */}
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid gap-10 py-12 md:grid-cols-3">
-          
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start space-y-4">
             <Image

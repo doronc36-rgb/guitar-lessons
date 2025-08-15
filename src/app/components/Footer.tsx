@@ -61,10 +61,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-4 text-sm text-neutral-300 hover:text-white"
               >
-                <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <circle cx="16" cy="16" r="14" fill="#25D366" />
-                  <path fill="#ffffff" d="M21.3 20.4c-.3.5-1.8 1.1-2.5 1.2-3.4-.1-7.5-4.2-7.6-7.6.1-.7.7-2.2 1.2-2.5.3-.2.7-.2 1 0l1.6 1.1c.3.2.4.6.2.9l-.7 1.2c.9 1.8 2.2 3.1 4 4l1.2-.7c.3-.2.7-.1.9.2l1.1 1.6c.2.3.2.7-.1 1z"/>
-                </svg>
+                <Image src="/images/whatsapp.png" alt="WhatsApp" width={32} height={32} />
                 WhatsApp
               </a>
 

@@ -71,15 +71,11 @@ export default function Header() {
             </button>
           )}
           <Link href="/" className="inline-flex items-center gap-3 md:gap-3.5">
-            <Image src="/images/music_logo_3_optimized.png" alt={t.header.logoAlt} width={64} height={64} priority />
-            <span className="leading-tight text-white">
-              <span className="font-extrabold text-[color:var(--foreground)] md:text-lg" style={{color:'#f59e0b'}}>
-                {t.header.brand.split('—')[0]?.trim()}
-              </span>
-              <span className="mx-1">—</span>
-              <span className="font-medium md:text-lg text-white/90">
-                {t.header.brand.split('—')[1]?.trim() || ''}
-              </span>
+            <Image src="/images/music_logo_3_optimized.png" alt={t.header.logoAlt} width={64} height={64} priority className="flex-shrink-0" />
+            <span className="leading-tight text-[#111] text-base md:text-lg">
+              <span className="font-bold">דורון</span>
+              <span className="mx-1">–</span>
+              <span className="font-normal">שיעורי גיטרה ופסנתר</span>
             </span>
           </Link>
         </div>

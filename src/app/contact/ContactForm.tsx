@@ -47,29 +47,57 @@ export default function ContactForm() {
     setSubmitStatus('idle');
     setServerError(null);
 
-    try {
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'default_service';
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_l5it5fd';
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'WzU794H4Oqhte6XWQ';
-      const toEmail = process.env.NEXT_PUBLIC_CONTACT_TO_EMAIL || 'doron.c@live.com';
+         try {
+       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'default_service';
+       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'WzU794H4Oqhte6XWQ';
+       const toEmail = process.env.NEXT_PUBLIC_CONTACT_TO_EMAIL || 'doron.c@live.com';
 
-      const params = {
-        to_email: toEmail,
-        email: toEmail,
-        reply_to: formData.email,
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-        timestamp: new Date().toISOString(),
-        user_agent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown',
-        subject: `New Contact Form Message from ${formData.name}`,
-      } as Record<string, unknown>;
+       // Send auto-reply to customer (your current template)
+       const autoReplyTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_l5it5fd';
+       const autoReplyParams = {
+         email: formData.email,        // Send TO customer
+         to_email: formData.email,     // Send TO customer
+         reply_to: toEmail,            // When they reply, it goes to you
+         from_name: formData.name,
+         from_email: formData.email,
+         message: formData.message,
+         timestamp: new Date().toISOString(),
+         user_agent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown',
+       } as Record<string, unknown>;
 
-      if (typeof window !== 'undefined') {
-        // Minimal runtime debug of IDs in case envs are not injected
-        console.info('[EmailJS] service:', serviceId, 'template:', templateId);
-      }
-      await emailjs.send(serviceId, templateId, params, { publicKey });
+                               // Send contact info to you (your new "Contact Us" template)
+        const contactForwardTemplateId = process.env.NEXT_PUBLIC_CONTACT_FORWARD_TEMPLATE_ID || 'template_vjimmmc';
+       const contactForwardParams = {
+         to_email: toEmail,            // Send TO you
+         email: toEmail,               // Send TO you
+         reply_to: formData.email,     // When you reply, it goes to customer
+         from_name: formData.name,     // Customer's name
+         from_email: formData.email,   // Customer's email
+         message: formData.message,
+         timestamp: new Date().toISOString(),
+         user_agent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown',
+         subject: `New Contact Form Message from ${formData.name}`,
+         customer_name: formData.name,
+         customer_email: formData.email,
+         contact_name: formData.name,
+         contact_email: formData.email,
+         contact_message: formData.message,
+       } as Record<string, unknown>;
+
+       if (typeof window !== 'undefined') {
+         // Debug EmailJS configuration and parameters
+         console.info('[EmailJS] service:', serviceId);
+         console.info('[EmailJS] Auto-reply template:', autoReplyTemplateId);
+         console.info('[EmailJS] Contact forward template:', contactForwardTemplateId);
+         console.info('[EmailJS] Auto-reply params:', autoReplyParams);
+         console.info('[EmailJS] Contact forward params:', contactForwardParams);
+       }
+
+       // Send both emails
+       await Promise.all([
+         emailjs.send(serviceId, autoReplyTemplateId, autoReplyParams, { publicKey }),
+         emailjs.send(serviceId, contactForwardTemplateId, contactForwardParams, { publicKey })
+       ]);
 
       {
         setSubmitStatus('success');
@@ -221,6 +249,40 @@ export default function ContactForm() {
             ) : null}
           </div>
         )}
+
+                 {/* Debug section - remove this in production */}
+         {process.env.NODE_ENV === 'development' && (
+           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
+             <p className="text-blue-800 font-medium">Debug Info</p>
+             <p className="text-blue-600 text-sm mt-1">
+               Service ID: {process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'default_service'}
+             </p>
+             <p className="text-blue-600 text-sm">
+               Auto-Reply Template: {process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_l5it5fd'}
+             </p>
+             <p className="text-blue-600 text-sm">
+               Contact Forward Template: {process.env.NEXT_PUBLIC_CONTACT_FORWARD_TEMPLATE_ID || 'template_contact_forward'}
+             </p>
+             <p className="text-blue-600 text-sm">
+               To Email: {process.env.NEXT_PUBLIC_CONTACT_TO_EMAIL || 'doron.c@live.com'}
+             </p>
+             <button
+               type="button"
+               onClick={() => {
+                 console.log('EmailJS Debug Info:', {
+                   serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'default_service',
+                   autoReplyTemplateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_l5it5fd',
+                   contactForwardTemplateId: process.env.NEXT_PUBLIC_CONTACT_FORWARD_TEMPLATE_ID || 'template_contact_forward',
+                   toEmail: process.env.NEXT_PUBLIC_CONTACT_TO_EMAIL || 'doron.c@live.com',
+                   publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'WzU794H4Oqhte6XWQ'
+                 });
+               }}
+               className="mt-2 text-xs bg-blue-200 text-blue-800 px-2 py-1 rounded"
+             >
+               Log Debug Info
+             </button>
+           </div>
+         )}
 
         <div className="text-center">
           <div className="space-y-2">

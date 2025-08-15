@@ -8,6 +8,7 @@ export async function GET(request: Request) {
   const subtitle = searchParams.get("subtitle") || "דורון כהן";
   const width = 1200;
   const height = 630;
+  const logoUrl = new URL("/logo.svg", request.url).toString();
 
   return new ImageResponse(
     (
@@ -26,6 +27,18 @@ export async function GET(request: Request) {
           textAlign: "center",
         }}
       >
+        <div
+          style={{
+            position: "absolute",
+            top: 36,
+            left: 36,
+            display: "flex",
+            alignItems: "center",
+            gap: 16,
+          }}
+        >
+          <img src={logoUrl} width={72} height={72} style={{ borderRadius: 12 }} />
+        </div>
         <div style={{ fontSize: 64, fontWeight: 800, marginBottom: 12 }}>{title}</div>
         <div style={{ fontSize: 32, opacity: 0.9 }}>{subtitle}</div>
       </div>

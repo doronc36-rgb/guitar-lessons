@@ -94,12 +94,29 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-neutral-700">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-3 flex flex-col items-center gap-2 md:flex-row md:justify-center text-[12px] text-neutral-500">
-          <p className="text-center">© Doron Music Lessons 2025</p>
-          <div className="flex items-center gap-3 text-center">
-            <Link className="hover:text-white" href="/privacy">Privacy</Link>
-            <span>•</span>
-            <Link className="hover:text-white" href="/terms">Terms</Link>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-3 flex items-center justify-between text-[12px] text-neutral-500">
+          {/* Left logo (desktop only) */}
+          <div className="hidden md:block">
+            <div className="p-1.5 rounded-full bg-neutral-800/60 border border-neutral-700">
+              <Image src="/images/music_logo_3_optimized.png" alt="Logo" width={40} height={40} />
+            </div>
+          </div>
+
+          {/* Center copyright + links */}
+          <div className="flex flex-col items-center gap-1 mx-4">
+            <p className="text-center">© Doron Music Lessons 2025</p>
+            <div className="flex items-center gap-3 text-center">
+              <Link className="hover:text-white" href="/privacy">Privacy</Link>
+              <span>•</span>
+              <Link className="hover:text-white" href="/terms">Terms</Link>
+            </div>
+          </div>
+
+          {/* Right logo (desktop only) */}
+          <div className="hidden md:block">
+            <div className="p-1.5 rounded-full bg-neutral-800/60 border border-neutral-700">
+              <Image src="/images/music_logo_3_optimized.png" alt="Logo" width={40} height={40} />
+            </div>
           </div>
         </div>
       </div>

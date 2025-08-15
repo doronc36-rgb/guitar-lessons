@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="space-y-4 md:justify-self-center">
+          <div className="space-y-4 md:justify-self-center flex flex-col items-center text-center">
             <h3 className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
               צור קשר
             </h3>
@@ -61,17 +61,17 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-4 text-sm text-neutral-300 hover:text-white"
               >
-                <Image src="/images/whatsapp icon new.jpg" alt="WhatsApp" width={32} height={32} />
+                <Image src="/images/whatsapp icon new.jpg" alt="WhatsApp" width={32} height={32} className="inline-block" />
                 WhatsApp
               </a>
 
               <a href="tel:0535247393" className="inline-flex items-center justify-center gap-4 text-sm text-neutral-300 hover:text-white">
-                <Image src="/images/phone.png" alt="Phone" width={32} height={32} />
+                <Image src="/images/phone.png" alt="Phone" width={32} height={32} className="inline-block" />
                 053-524-7393
               </a>
 
               <a href="mailto:doron.c@live.com" className="inline-flex items-center justify-center gap-4 text-sm text-neutral-300 hover:text-white">
-                <Image src="/images/email.png" alt="Email" width={32} height={32} />
+                <Image src="/images/email.png" alt="Email" width={32} height={32} className="inline-block" />
                 doron.c@live.com
               </a>
             </div>

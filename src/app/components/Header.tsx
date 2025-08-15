@@ -58,8 +58,8 @@ export default function Header() {
       className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-[color:var(--surface)]/70 border-b"
       aria-label={t.header.topNavAria}
     >
-      <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
-        <div className="flex items-center gap-3">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-3">
+        <div className="flex items-center gap-3 md:gap-4">
           {!isHome && (
             <button
               type="button"
@@ -70,9 +70,17 @@ export default function Header() {
               {t.header.back}
             </button>
           )}
-          <Link href="/" className="font-semibold text-lg inline-flex items-center gap-2">
-            <Image src="/images/music_logo_3_optimized.png" alt={t.header.logoAlt} width={40} height={40} priority />
-            {t.header.brand}
+          <Link href="/" className="inline-flex items-center gap-3 md:gap-3.5">
+            <Image src="/images/music_logo_3_optimized.png" alt={t.header.logoAlt} width={64} height={64} priority />
+            <span className="leading-tight text-white">
+              <span className="font-extrabold text-[color:var(--foreground)] md:text-lg" style={{color:'#f59e0b'}}>
+                {t.header.brand.split('—')[0]?.trim()}
+              </span>
+              <span className="mx-1">—</span>
+              <span className="font-medium md:text-lg text-white/90">
+                {t.header.brand.split('—')[1]?.trim() || ''}
+              </span>
+            </span>
           </Link>
         </div>
 

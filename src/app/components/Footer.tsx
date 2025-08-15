@@ -59,20 +59,26 @@ export default function Footer() {
                 href="https://wa.me/972535247393"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-4 text-sm text-neutral-300 hover:text-white"
+                className="text-sm text-neutral-300 hover:text-white"
               >
-                <Image src="/images/whatsapp icon new.jpg" alt="WhatsApp" width={32} height={32} className="inline-block" />
-                WhatsApp
+                <div className="grid grid-cols-[auto,auto] items-center justify-center gap-3">
+                  <Image src="/images/whatsapp icon new.jpg" alt="WhatsApp" width={32} height={32} className="block" />
+                  <span>WhatsApp</span>
+                </div>
               </a>
 
-              <a href="tel:0535247393" className="inline-flex items-center justify-center gap-4 text-sm text-neutral-300 hover:text-white">
-                <Image src="/images/phone.png" alt="Phone" width={32} height={32} className="inline-block" />
-                053-524-7393
+              <a href="tel:0535247393" className="text-sm text-neutral-300 hover:text-white">
+                <div className="grid grid-cols-[auto,auto] items-center justify-center gap-3">
+                  <Image src="/images/phone.png" alt="Phone" width={32} height={32} className="block" />
+                  <span>053-524-7393</span>
+                </div>
               </a>
 
-              <a href="mailto:doron.c@live.com" className="inline-flex items-center justify-center gap-4 text-sm text-neutral-300 hover:text-white">
-                <Image src="/images/email.png" alt="Email" width={32} height={32} className="inline-block" />
-                doron.c@live.com
+              <a href="mailto:doron.c@live.com" className="text-sm text-neutral-300 hover:text-white">
+                <div className="grid grid-cols-[auto,auto] items-center justify-center gap-3">
+                  <Image src="/images/email.png" alt="Email" width={32} height={32} className="block" />
+                  <span>doron.c@live.com</span>
+                </div>
               </a>
             </div>
           </div>

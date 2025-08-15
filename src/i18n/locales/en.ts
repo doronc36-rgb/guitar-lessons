@@ -234,9 +234,11 @@ export const en = {
     form: {
       nameLabel: "Name",
       emailLabel: "Email",
+      phoneLabel: "Phone Number",
       messageLabel: "Message",
       namePlaceholder: "Full name",
       emailPlaceholder: "your.email@example.com",
+      phonePlaceholder: "Enter your phone number",
       messagePlaceholder: "Tell us about your musical goals...",
       submit: "Send message",
       sending: "Sending...",

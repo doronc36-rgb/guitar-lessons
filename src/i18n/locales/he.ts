@@ -235,9 +235,11 @@ export const he = {
     form: {
       nameLabel: 'שם',
       emailLabel: 'אימייל',
+      phoneLabel: 'מספר טלפון',
       messageLabel: 'הודעה',
       namePlaceholder: 'שם מלא',
       emailPlaceholder: 'your.email@example.com',
+      phonePlaceholder: 'הזינו את מספר הטלפון שלכם',
       messagePlaceholder: 'ספרו לנו על היעדים המוזיקליים שלכם...',
       submit: 'שליחת הודעה',
       sending: 'שולח...',

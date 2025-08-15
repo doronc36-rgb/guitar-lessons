@@ -177,24 +177,24 @@ export default function ContactForm() {
              )}
            </div>
 
-           <div>
-             <label htmlFor="phone" className="block text-sm font-medium mb-1">Phone Number</label>
-             <input
-               type="tel"
-               id="phone"
-               name="phone"
-               value={formData.phone}
-               onChange={handleInputChange}
-               autoComplete="tel"
-               className={`w-full px-3 py-2 border rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] transition-colors ${
-                 errors.phone ? 'border-red-500' : 'border-gray-300'
-               }`}
-               placeholder="Enter your phone number"
-             />
-             {errors.phone && (
-               <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
-             )}
-           </div>
+                       <div>
+              <label htmlFor="phone" className="block text-sm font-medium mb-1">{t.contact.form.phoneLabel}</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                autoComplete="tel"
+                className={`w-full px-3 py-2 border rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] transition-colors ${
+                  errors.phone ? 'border-red-500' : 'border-gray-300'
+                }`}
+                placeholder={t.contact.form.phonePlaceholder}
+              />
+              {errors.phone && (
+                <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+              )}
+            </div>
 
           <div>
             <label htmlFor="message" className="block text-sm font-medium mb-1">{t.contact.form.messageLabel}</label>

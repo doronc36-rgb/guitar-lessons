@@ -96,7 +96,11 @@ export default function Header() {
           aria-controls="site-menu"
           aria-label={open ? t.header.menu.close : t.header.menu.open}
         >
-          {t.header.menu.label}
+          <div className="flex flex-col gap-1">
+            <span className={`w-4 h-0.5 bg-current transition-all duration-200 ${open ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+            <span className={`w-4 h-0.5 bg-current transition-all duration-200 ${open ? 'opacity-0' : ''}`}></span>
+            <span className={`w-4 h-0.5 bg-current transition-all duration-200 ${open ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+          </div>
         </button>
       </div>
 

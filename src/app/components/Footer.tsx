@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useI18n } from "@/i18n";
 
 export default function SiteFooter() {
@@ -16,6 +17,9 @@ export default function SiteFooter() {
           {/* About & Contact Combined */}
           <div className="space-y-8">
             <div>
+              <div className="mb-4">
+                <Image src="/logo.svg" alt="Doron Cohen logo" width={40} height={40} priority />
+              </div>
               <h3 className="font-bold text-xl text-[color:var(--foreground)] mb-4">{t.footer.about.title}</h3>
               <p className="text-[color:var(--muted)] leading-relaxed text-base">{t.footer.about.body}</p>
             </div>

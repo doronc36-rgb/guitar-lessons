@@ -5,8 +5,8 @@ export default function Footer() {
   return (
     <footer className="bg-neutral-900 text-neutral-300 relative">
       {/* Top area */}
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid gap-10 py-16 md:py-8 md:grid-cols-2 md:justify-items-center md:items-center text-center">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 relative">
+        <div className="grid gap-10 py-16 md:py-8 md:grid-cols-1 md:justify-items-center md:items-center text-center">
           {/* Brand */}
           <div className="flex items-center justify-center md:hidden">
             <div className="p-2 rounded-full bg-neutral-800/60 border border-neutral-700">
@@ -69,33 +69,35 @@ export default function Footer() {
 
           {/* (Removed) mobile stacked contact column - replaced by mobile row above */}
         </div>
-      </div>
 
-      {/* Desktop-only mirrored logos - equally positioned and not affecting layout */}
-      <div className="hidden md:block absolute top-1/2 -translate-y-1/2 left-12">
-        <div className="p-2 rounded-full bg-neutral-800/60 border border-neutral-700">
-          <Image
-            src="/images/music_logo_3_optimized.png"
-            alt="Doron Music Lessons"
-            width={128}
-            height={128}
-            className="rounded-full block"
-            style={{ transform: 'scaleX(-1)' }}
-          />
+        {/* Desktop-only mirrored logos positioned within top area to avoid overlap */}
+        <div className="hidden md:block absolute top-1/2 -translate-y-1/2 left-12">
+          <div className="p-2 rounded-full bg-neutral-800/60 border border-neutral-700">
+            <Image
+              src="/images/music_logo_3_optimized.png"
+              alt="Doron Music Lessons"
+              width={128}
+              height={128}
+              className="rounded-full block"
+              style={{ transform: 'scaleX(-1)' }}
+            />
+          </div>
+        </div>
+
+        <div className="hidden md:block absolute top-1/2 -translate-y-1/2 right-12">
+          <div className="p-2 rounded-full bg-neutral-800/60 border border-neutral-700">
+            <Image
+              src="/images/music_logo_3_optimized.png"
+              alt="Doron Music Lessons"
+              width={128}
+              height={128}
+              className="rounded-full block"
+            />
+          </div>
         </div>
       </div>
 
-      <div className="hidden md:block absolute top-1/2 -translate-y-1/2 right-12">
-        <div className="p-2 rounded-full bg-neutral-800/60 border border-neutral-700">
-          <Image
-            src="/images/music_logo_3_optimized.png"
-            alt="Doron Music Lessons"
-            width={128}
-            height={128}
-            className="rounded-full block"
-          />
-        </div>
-      </div>
+      
 
       {/* Desktop-only contact line across bottom of footer (do not affect mobile) */}
       <div className="hidden md:block w-full border-t border-neutral-800">

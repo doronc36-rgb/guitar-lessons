@@ -6,15 +6,15 @@ export default function Footer() {
     <footer className="bg-neutral-900 text-neutral-300">
       {/* Top area */}
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid gap-10 py-16 md:grid-cols-3">
+        <div className="grid gap-8 py-16 md:grid-cols-3">
           {/* Brand */}
           <div className="flex items-center justify-center md:justify-start">
-            <div className="p-2 rounded-full bg-neutral-800/60 border border-neutral-700">
+            <div className="p-2 rounded-full bg-neutral-800/60 border border-neutral-700 relative md:left-[-8px]">
               <Image
                 src="/images/music_logo_3_optimized.png"
                 alt="Doron Music Lessons"
-                width={88}
-                height={88}
+                width={104}
+                height={104}
                 className="rounded-full block"
               />
             </div>

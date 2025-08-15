@@ -10,6 +10,7 @@ export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     message: ''
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -60,6 +61,7 @@ export default function ContactForm() {
          reply_to: toEmail,            // When they reply, it goes to you
          from_name: formData.name,
          from_email: formData.email,
+         phone: formData.phone,
          message: formData.message,
          timestamp: new Date().toISOString(),
          user_agent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown',
@@ -73,14 +75,17 @@ export default function ContactForm() {
          reply_to: formData.email,     // When you reply, it goes to customer
          from_name: formData.name,     // Customer's name
          from_email: formData.email,   // Customer's email
+         phone: formData.phone,        // Customer's phone
          message: formData.message,
          timestamp: new Date().toISOString(),
          user_agent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown',
          subject: `New Contact Form Message from ${formData.name}`,
          customer_name: formData.name,
          customer_email: formData.email,
+         customer_phone: formData.phone,
          contact_name: formData.name,
          contact_email: formData.email,
+         contact_phone: formData.phone,
          contact_message: formData.message,
        } as Record<string, unknown>;
 
@@ -99,11 +104,11 @@ export default function ContactForm() {
          emailjs.send(serviceId, contactForwardTemplateId, contactForwardParams, { publicKey })
        ]);
 
-      {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-        setErrors({});
-      }
+             {
+         setSubmitStatus('success');
+         setFormData({ name: '', email: '', phone: '', message: '' });
+         setErrors({});
+       }
     } catch (err: unknown) {
       setSubmitStatus('error');
       setServerError(err instanceof Error ? err.message : String(err));
@@ -152,25 +157,44 @@ export default function ContactForm() {
             )}
           </div>
 
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-1">{t.contact.form.emailLabel}</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-              autoComplete="email"
-              className={`w-full px-3 py-2 border rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] transition-colors ${
-                errors.email ? 'border-red-500' : 'border-gray-300'
-              }`}
-              placeholder={t.contact.form.emailPlaceholder}
-            />
-            {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-            )}
-          </div>
+                     <div>
+             <label htmlFor="email" className="block text-sm font-medium mb-1">{t.contact.form.emailLabel}</label>
+             <input
+               type="email"
+               id="email"
+               name="email"
+               value={formData.email}
+               onChange={handleInputChange}
+               required
+               autoComplete="email"
+               className={`w-full px-3 py-2 border rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] transition-colors ${
+                 errors.email ? 'border-red-500' : 'border-gray-300'
+               }`}
+               placeholder={t.contact.form.emailPlaceholder}
+             />
+             {errors.email && (
+               <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+             )}
+           </div>
+
+           <div>
+             <label htmlFor="phone" className="block text-sm font-medium mb-1">Phone Number</label>
+             <input
+               type="tel"
+               id="phone"
+               name="phone"
+               value={formData.phone}
+               onChange={handleInputChange}
+               autoComplete="tel"
+               className={`w-full px-3 py-2 border rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)] transition-colors ${
+                 errors.phone ? 'border-red-500' : 'border-gray-300'
+               }`}
+               placeholder="Enter your phone number"
+             />
+             {errors.phone && (
+               <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+             )}
+           </div>
 
           <div>
             <label htmlFor="message" className="block text-sm font-medium mb-1">{t.contact.form.messageLabel}</label>

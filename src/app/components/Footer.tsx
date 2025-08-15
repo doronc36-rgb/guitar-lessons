@@ -20,6 +20,24 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Mobile contact row directly under logo */}
+          <div className="md:hidden col-span-full mt-6">
+            <div className="flex items-center justify-center gap-6">
+              <a href="https://wa.me/972535247393" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-neutral-300 hover:text-white">
+                <Image src="/images/whatsapp icon new.jpg" alt="WhatsApp" width={24} height={24} />
+                <span>WhatsApp</span>
+              </a>
+              <a href="tel:0535247393" className="inline-flex items-center gap-2 text-sm text-neutral-300 hover:text-white">
+                <Image src="/images/phone.png" alt="Phone" width={24} height={24} />
+                <span>053-524-7393</span>
+              </a>
+              <a href="mailto:doron.c@live.com" className="inline-flex items-center gap-2 text-sm text-neutral-300 hover:text-white">
+                <Image src="/images/email.png" alt="Email" width={24} height={24} />
+                <span>doron.c@live.com</span>
+              </a>
+            </div>
+          </div>
+
           {/* Quick links */}
           <div className="grid grid-cols-2 gap-6 md:justify-items-center">
             <div>
@@ -49,26 +67,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Contact */}
-          <div className="space-y-4 md:justify-self-center flex flex-col items-center text-center min-w-[240px] md:hidden">
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
-              צור קשר
-            </h3>
-            <div className="flex flex-col gap-3">
-              <a href="https://wa.me/972535247393" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 text-sm text-neutral-300 hover:text-white">
-                <Image src="/images/whatsapp icon new.jpg" alt="WhatsApp" width={28} height={28} className="inline-block" />
-                <span>WhatsApp</span>
-              </a>
-              <a href="tel:0535247393" className="inline-flex items-center justify-center gap-3 text-sm text-neutral-300 hover:text-white">
-                <Image src="/images/phone.png" alt="Phone" width={28} height={28} className="inline-block" />
-                <span>053-524-7393</span>
-              </a>
-              <a href="mailto:doron.c@live.com" className="inline-flex items-center justify-center gap-3 text-sm text-neutral-300 hover:text-white">
-                <Image src="/images/email.png" alt="Email" width={28} height={28} className="inline-block" />
-                <span>doron.c@live.com</span>
-              </a>
-            </div>
-          </div>
+          {/* (Removed) mobile stacked contact column - replaced by mobile row above */}
         </div>
       </div>
 

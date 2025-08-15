@@ -6,20 +6,16 @@ export default function Footer() {
     <footer className="bg-neutral-900 text-neutral-300">
       {/* Top area */}
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid gap-10 py-12 md:grid-cols-3">
+        <div className="grid gap-10 py-16 md:grid-cols-3">
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start space-y-4">
             <Image
               src="/images/music_logo_3_optimized.png"
               alt="Doron Music Lessons"
-              width={70}
-              height={70}
-              className="rounded-full"
+              width={72}
+              height={72}
+              className="rounded-full mt-1 mb-1"
             />
-            <p className="text-sm text-neutral-400 leading-6 text-center md:text-left">
-              Guitar & piano lessons for all ages. Practical, fun, and structured
-              so you see real progress every week.
-            </p>
           </div>
 
           {/* Quick links */}
@@ -29,11 +25,11 @@ export default function Footer() {
                 קישורים מהירים
               </h3>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/">דף הבית</Link></li>
-                <li><Link href="/lessons">שיעורים</Link></li>
-                <li><Link href="/prices">מחירים</Link></li>
-                <li><Link href="/faq">שאלות נפוצות</Link></li>
-                <li><Link href="/booking">קביעת שיעור</Link></li>
+                <li><Link className="text-neutral-300 hover:text-white transition-colors" href="/">דף הבית</Link></li>
+                <li><Link className="text-neutral-300 hover:text-white transition-colors" href="/lessons">שיעורים</Link></li>
+                <li><Link className="text-neutral-300 hover:text-white transition-colors" href="/prices">מחירים</Link></li>
+                <li><Link className="text-neutral-300 hover:text-white transition-colors" href="/faq">שאלות נפוצות</Link></li>
+                <li><Link className="text-neutral-300 hover:text-white transition-colors" href="/booking">קביעת שיעור</Link></li>
               </ul>
             </div>
 
@@ -42,11 +38,11 @@ export default function Footer() {
                 תמיכה ומידע משפטי
               </h3>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/contact">צור קשר</Link></li>
-                <li><Link href="/#reviews">מה אומרים התלמידים</Link></li>
-                <li><Link href="/terms">תנאי שימוש</Link></li>
-                <li><Link href="/privacy">מדיניות פרטיות</Link></li>
-                <li><Link href="/accessibility">הצהרת נגישות</Link></li>
+                <li><Link className="text-neutral-300 hover:text-white transition-colors" href="/contact">צור קשר</Link></li>
+                <li><Link className="text-neutral-300 hover:text-white transition-colors" href="/#reviews">מה אומרים התלמידים</Link></li>
+                <li><Link className="text-neutral-300 hover:text-white transition-colors" href="/terms">תנאי שימוש</Link></li>
+                <li><Link className="text-neutral-300 hover:text-white transition-colors" href="/privacy">מדיניות פרטיות</Link></li>
+                <li><Link className="text-neutral-300 hover:text-white transition-colors" href="/accessibility">הצהרת נגישות</Link></li>
               </ul>
             </div>
           </div>
@@ -56,23 +52,23 @@ export default function Footer() {
             <h3 className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
               צור קשר
             </h3>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
               <a
                 href="https://wa.me/972535247393"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 text-sm hover:text-white"
+                className="inline-flex items-center gap-4 text-sm text-neutral-300 hover:text-white"
               >
                 <Image src="/images/whatsapp.png" alt="WhatsApp" width={32} height={32} />
                 WhatsApp
               </a>
 
-              <a href="tel:+972535247393" className="inline-flex items-center gap-3 text-sm hover:text-white">
+              <a href="tel:0535247393" className="inline-flex items-center gap-4 text-sm text-neutral-300 hover:text-white">
                 <Image src="/images/phone.png" alt="Phone" width={32} height={32} />
                 053-524-7393
               </a>
 
-              <a href="mailto:doron.c@live.com" className="inline-flex items-center gap-3 text-sm hover:text-white">
+              <a href="mailto:doron.c@live.com" className="inline-flex items-center gap-4 text-sm text-neutral-300 hover:text-white">
                 <Image src="/images/email.png" alt="Email" width={32} height={32} />
                 doron.c@live.com
               </a>
@@ -83,12 +79,12 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-neutral-700">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-4 flex flex-col items-center md:flex-row md:justify-between text-xs text-neutral-500">
-          <p>© {new Date().getFullYear()} Doron Music Lessons</p>
-          <div className="flex items-center gap-4">
-            <Link href="/privacy">Privacy</Link>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-3 flex flex-col items-center md:flex-row md:justify-between text-[12px] text-neutral-500">
+          <p>© Doron Music Lessons 2025</p>
+          <div className="flex items-center gap-3">
+            <Link className="hover:text-white" href="/privacy">Privacy</Link>
             <span>•</span>
-            <Link href="/terms">Terms</Link>
+            <Link className="hover:text-white" href="/terms">Terms</Link>
           </div>
         </div>
       </div>

@@ -105,7 +105,7 @@ export default function Footer() {
 
       {/* Desktop-only decorative left logo to mirror right side */}
       <div className="hidden md:block absolute inset-y-0 left-0 flex items-center">
-        <div className="ml-8 p-2 rounded-full bg-neutral-800/60 border border-neutral-700">
+        <div className="ml-14 p-2 rounded-full bg-neutral-800/60 border border-neutral-700">
           <Image src="/images/music_logo_3_optimized.png" alt="Logo" width={128} height={128} />
         </div>
       </div>

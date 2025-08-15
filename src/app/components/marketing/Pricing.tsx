@@ -8,9 +8,9 @@ import { useI18n } from "@/i18n";
 export default function MarketingPricing() {
   const { t } = useI18n();
   return (
-    <Container className="py-6">
+    <Container className="py-4">
               <Section id="prices" title={t.marketing.pricing.title} intro={t.marketing.pricing.subtitle}>
-        <div className="grid gap-2.5 md:grid-cols-3">
+        <div className="grid gap-2 md:grid-cols-3">
           {t.prices.items.map((p, index) => {
             const colors = [
               "border-l-4 border-blue-500 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20",
@@ -18,9 +18,9 @@ export default function MarketingPricing() {
               "border-l-4 border-sky-500 bg-gradient-to-br from-sky-50 to-sky-100 dark:from-sky-900/20 dark:to-sky-800/20"
             ];
             return (
-              <div key={p.label} className={`p-4 rounded-md shadow-sm border border-gray-100 dark:border-gray-700 text-center ${colors[index % 3]}`}>
+              <div key={p.label} className={`p-3 rounded-md shadow-sm border border-gray-100 dark:border-gray-700 text-center ${colors[index % 3]}`}>
                 <div className="font-medium text-[color:var(--foreground)]">{p.label}</div>
-                <div className="mt-1.5 text-2xl font-bold text-[color:var(--foreground)]">{p.price}</div>
+                <div className="mt-1 text-2xl font-bold text-[color:var(--foreground)]">{p.price}</div>
               </div>
             );
           })}

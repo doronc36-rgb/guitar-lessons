@@ -7,9 +7,9 @@ import { useI18n } from "@/i18n";
 export default function MarketingFeatures() {
   const { t } = useI18n();
   return (
-    <Container className="py-6">
+    <Container className="py-4">
       <Section id="features" title={t.marketing.features.title} intro={t.marketing.features.subtitle}>
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="grid gap-2 md:grid-cols-3">
           {t.marketing.features.items.map((f: { title: string; body: string }, index: number) => {
             const colors = [
               "border-l-4 border-blue-500 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20",
@@ -17,8 +17,8 @@ export default function MarketingFeatures() {
               "border-l-4 border-sky-500 bg-gradient-to-br from-sky-50 to-sky-100 dark:from-sky-900/20 dark:to-sky-800/20"
             ];
             return (
-              <div key={f.title} className={`p-4 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 text-center ${colors[index % 3]}`}>
-                <div className="text-xl font-semibold text-[color:var(--foreground)] mb-2">{f.title}</div>
+              <div key={f.title} className={`p-3 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 text-center ${colors[index % 3]}`}>
+                <div className="text-lg font-semibold text-[color:var(--foreground)] mb-1.5">{f.title}</div>
                 <p className="text-[color:var(--muted)] leading-relaxed">{f.body}</p>
               </div>
             );

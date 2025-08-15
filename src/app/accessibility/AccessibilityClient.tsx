@@ -7,7 +7,7 @@ export default function AccessibilityClient() {
   return (
     <div className="min-h-screen p-6 md:p-10 max-w-3xl mx-auto space-y-4">
       <h1 className="text-3xl font-semibold text-center">{t.accessibility.title}</h1>
-      <p className="text-neutral-800">{t.accessibility.body}</p>
+      <p className="text-[color:var(--foreground)]/90">{t.accessibility.body}</p>
     </div>
   );
 }

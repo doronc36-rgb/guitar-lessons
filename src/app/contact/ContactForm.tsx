@@ -312,7 +312,7 @@ export default function ContactForm() {
           <div className="space-y-2">
             <a
               href="tel:+972535247393"
-              className="text-neutral-700 hover:text-black transition-colors underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+              className="text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               aria-label={t.contact.aria.call}
             >
               {t.contact.phoneLabel}
@@ -322,7 +322,7 @@ export default function ContactForm() {
               href="https://wa.me/972535247393"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-700 hover:text-black transition-colors underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+              className="text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               aria-label={t.contact.aria.whatsapp}
             >
               {t.contact.whatsappLabel}
@@ -330,7 +330,7 @@ export default function ContactForm() {
             <br />
             <a
               href="mailto:doron.c@live.com"
-              className="text-neutral-700 hover:text-black transition-colors underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
+              className="text-[color:var(--muted)] hover:text-[color:var(--foreground)] transition-colors underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]"
               aria-label={t.contact.aria.email}
             >
               {t.contact.emailLabel}

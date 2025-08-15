@@ -9,7 +9,7 @@ export default function BookingClient() {
   return (
     <div className="min-h-screen p-6 md:p-10 max-w-3xl mx-auto space-y-8">
       <h1 className="text-3xl font-semibold text-center">{t.booking.title}</h1>
-      <ul className="list-disc pr-6 text-neutral-800 space-y-1">
+      <ul className="list-disc pr-6 text-[color:var(--foreground)]/90 space-y-1">
         {t.booking.bullets.map((b) => (
           <li key={b}>{b}</li>
         ))}
@@ -26,7 +26,7 @@ export default function BookingClient() {
 
       <p className="text-sm text-neutral-600">{t.booking.callToAction}</p>
 
-      <p className="text-neutral-700">
+      <p className="text-[color:var(--muted)]">
         {t.booking.wantPrices}{" "}
         <Link href="/prices" className="underline">
           {t.booking.linkPrices}

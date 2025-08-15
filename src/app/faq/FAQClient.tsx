@@ -13,7 +13,7 @@ export default function FAQClient() {
               <summary className="cursor-pointer font-medium text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)]">
                 {item.q}
               </summary>
-              <p className="mt-2 text-neutral-800">{item.a}</p>
+              <p className="mt-2 text-[color:var(--foreground)]/90">{item.a}</p>
             </details>
           ))}
       </div>

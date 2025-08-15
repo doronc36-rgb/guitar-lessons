@@ -19,7 +19,7 @@ export default function PricesClient() {
         ))}
       </ul>
 
-      <p className="text-neutral-700">{t.prices.cancellation}</p>
+      <p className="text-[color:var(--muted)]">{t.prices.cancellation}</p>
 
       <div className="flex gap-3">
         <Button href="/booking">{t.common.bookLesson}</Button>

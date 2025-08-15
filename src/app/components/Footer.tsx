@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="bg-neutral-900 text-neutral-300">
       {/* Top area */}
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid gap-8 py-16 md:grid-cols-3 md:justify-items-center text-center">
+        <div className="grid gap-10 py-16 md:grid-cols-3 md:justify-items-center text-center">
           {/* Brand */}
           <div className="flex items-center justify-center md:justify-center">
             <div className="p-2 rounded-full bg-neutral-800/60 border border-neutral-700">
@@ -50,35 +50,22 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="space-y-4 md:justify-self-center flex flex-col items-center text-center">
+          <div className="space-y-4 md:justify-self-center flex flex-col items-center text-center min-w-[240px]">
             <h3 className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
               צור קשר
             </h3>
             <div className="flex flex-col gap-3">
-              <a
-                href="https://wa.me/972535247393"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-neutral-300 hover:text-white"
-              >
-                <div className="grid grid-cols-[auto,auto] items-center justify-center gap-3">
-                  <Image src="/images/whatsapp icon new.jpg" alt="WhatsApp" width={32} height={32} className="block" />
-                  <span>WhatsApp</span>
-                </div>
+              <a href="https://wa.me/972535247393" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 text-sm text-neutral-300 hover:text-white">
+                <Image src="/images/whatsapp icon new.jpg" alt="WhatsApp" width={28} height={28} className="inline-block" />
+                <span>WhatsApp</span>
               </a>
-
-              <a href="tel:0535247393" className="text-sm text-neutral-300 hover:text-white">
-                <div className="grid grid-cols-[auto,auto] items-center justify-center gap-3">
-                  <Image src="/images/phone.png" alt="Phone" width={32} height={32} className="block" />
-                  <span>053-524-7393</span>
-                </div>
+              <a href="tel:0535247393" className="inline-flex items-center justify-center gap-3 text-sm text-neutral-300 hover:text-white">
+                <Image src="/images/phone.png" alt="Phone" width={28} height={28} className="inline-block" />
+                <span>053-524-7393</span>
               </a>
-
-              <a href="mailto:doron.c@live.com" className="text-sm text-neutral-300 hover:text-white">
-                <div className="grid grid-cols-[auto,auto] items-center justify-center gap-3">
-                  <Image src="/images/email.png" alt="Email" width={32} height={32} className="block" />
-                  <span>doron.c@live.com</span>
-                </div>
+              <a href="mailto:doron.c@live.com" className="inline-flex items-center justify-center gap-3 text-sm text-neutral-300 hover:text-white">
+                <Image src="/images/email.png" alt="Email" width={28} height={28} className="inline-block" />
+                <span>doron.c@live.com</span>
               </a>
             </div>
           </div>

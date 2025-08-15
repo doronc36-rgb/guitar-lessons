@@ -71,7 +71,7 @@ export default function Header() {
             </button>
           )}
           <Link href="/" className="font-semibold text-lg inline-flex items-center gap-2">
-            <Image src="/images/music_logo_3_optimized.png" alt={t.header.logoAlt} width={32} height={32} priority />
+            <Image src="/images/music_logo_3_optimized.png" alt={t.header.logoAlt} width={40} height={40} priority />
             {t.header.brand}
           </Link>
         </div>

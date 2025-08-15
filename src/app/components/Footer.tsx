@@ -17,8 +17,8 @@ export default function SiteFooter() {
           {/* About & Contact Combined */}
           <div className="space-y-4">
             <div>
-              <div className="mb-4">
-                <Image src="/images/music_logo_3_optimized.png" alt="Doron Cohen logo" width={40} height={40} priority />
+              <div className="mb-4 flex justify-center md:justify-start">
+                <Image src="/images/music_logo_3_optimized.png" alt="Doron Cohen logo" width={56} height={56} priority />
               </div>
               <h3 className="font-bold text-xl text-[color:var(--foreground)] mb-3">{t.footer.about.title}</h3>
               <p className="text-[color:var(--muted)] leading-relaxed text-base">{t.footer.about.body}</p>
@@ -26,12 +26,18 @@ export default function SiteFooter() {
             <div className="text-[color:var(--muted)]">
               <h4 className="font-semibold text-[color:var(--foreground)] mb-2 text-base">{t.footer.contact.title}</h4>
               <div className="rounded-lg border border-[color:var(--border)] bg-white dark:bg-neutral-800 px-3 py-2">
-                <div className="flex flex-wrap items-center gap-2 text-sm">
+                <div className="flex flex-wrap md:flex-nowrap items-center justify-center md:justify-between gap-2 text-sm">
+                  <div className="flex-1 text-center md:text-left">
                   <a href="https://wa.me/972535247393" target="_blank" rel="noopener noreferrer" aria-label={t.footer.aria.whatsappOpen} className="hover:text-[color:var(--foreground)] transition-colors font-medium">WhatsApp 053-524-7393</a>
-                  <span className="opacity-40">|</span>
+                  </div>
+                  <span className="hidden md:block opacity-40">|</span>
+                  <div className="flex-1 text-center">
                   <a href="tel:+972535247393" aria-label={t.footer.aria.phoneDial} className="hover:text-[color:var(--foreground)] transition-colors font-medium">053-524-7393</a>
-                  <span className="opacity-40">|</span>
+                  </div>
+                  <span className="hidden md:block opacity-40">|</span>
+                  <div className="flex-1 text-center md:text-right">
                   <a href="mailto:doron.c@live.com" aria-label={t.footer.aria.emailSend} className="hover:text-[color:var(--foreground)] transition-colors font-medium">doron.c@live.com</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -112,8 +118,11 @@ export default function SiteFooter() {
           </div>
         </div>
       </div>
-      <div className="text-center text-xs text-[color:var(--muted)] pb-4 pt-3 border-t border-[color:var(--border)]/50 mx-4">
+      <div className="relative">
+        <div className="absolute inset-x-0 bottom-0 border-t border-[color:var(--border)]/70" />
+        <div className="text-center text-xs text-[color:var(--muted)] py-3 px-4">
         {t.footer.copyright.replace('{year}', String(year))}
+        </div>
       </div>
     </footer>
   );
